@@ -50,9 +50,9 @@ Feature: Create a form for teachers of a class
         When I check the "CIC0097_2021.2_TA"  checkbox
         When I press the button "Enviar"
 
-        Then I should see the erro mesage "Selecione um template para os professores"
+        Then I should see the error mesage "Selecione um template para os professores"
 
 
-# Scenario: There are no classes in the current semester
-#     Given I am on the "Envio" page
-#     Then I should see "Não há turmas disponíveis para envio"
+    Scenario: There are no classes in the current semester
+        Given I am on the "Envio" page
+        Then I should see "Não há turmas disponíveis para envio"

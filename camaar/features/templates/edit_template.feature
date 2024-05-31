@@ -11,7 +11,7 @@ Feature: Edit a form template
         Given that I created the template "Template 1"
         Then I should see "Template 1"
         When I press the button "Editar Template"
-        Then I should be on the "Template 1" page
+        Then I should be able to edit "Template 1"
 
     Scenario: Succesfully update a template
         And I fill in "Nome do Template" with "Template 1.1"

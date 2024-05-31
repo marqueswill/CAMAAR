@@ -50,8 +50,8 @@ Feature: Create a form for students of a class
         When I check the "CIC0097_2021.2_TA"  checkbox
         When I press the button "Enviar"
 
-        Then I should see the erro mesage "Selecione um template para os alunos"
+        Then I should see the error mesage "Selecione um template para os alunos"
 
-# Scenario: There are no classes in the current semester
-#     Given I am on the "Envio" page
-#     Then I should see "Não há turmas disponíveis para envio"
+    Scenario: There are no classes in the current semester
+        Given I am on the "Envio" page
+        Then I should see "Não há turmas disponíveis para envio"
