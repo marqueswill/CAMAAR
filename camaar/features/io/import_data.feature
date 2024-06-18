@@ -36,6 +36,7 @@ Feature: Registers students data on the system
             | ENGENHARIA DE SOFTWARE  | 2021.2   | CIC0105 | TA    | 35M12   |
             | PROGRAMAÇÃO CONCORRENTE | 2021.2   | CIC0202 | TA    | 35M34   |
 
+
     Scenario: Coordinator tries to import wrong file
         When I select "Membros" from "Select data"
         When I attach the file "db/classes.json" to "admin_import_file"

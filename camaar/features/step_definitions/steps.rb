@@ -83,6 +83,7 @@ end
 
 When(/^(?:|I )select "([^"]*)" from "([^"]*)"$/) do |value, field|
   select(value, from: field.gsub(" ", "_").downcase, visible: :all)
+
 end
 
 When(/^(?:|I )check "([^"]*)"$/) do |field|
@@ -103,11 +104,8 @@ end
 
 # Database and examples
 Given("I am an authenticated User") do
-  user = FactoryBot.create(:user, :user1)
-end
 
-Given('I am an authenticated User from class "BANCOS DE DADOS"') do
-  user = FactoryBot.create(:user, :user4)
+  user.create!
 end
 
 Given(/I am an authenticated Coordinator from the "([^"]*)"$/) do |dpt_name|
@@ -120,70 +118,6 @@ Given(/I am an authenticated Coordinator from the "([^"]*)"$/) do |dpt_name|
   click_button("Confirmar")
 end
 
-# Given(/that I imported (.+?) for the department "(.+?)"$/) do |import_type, dpt_name|
-#   department = Department.find_by({ name: dpt_name })
-
-#   case import_type
-#   when "classes"
-#     classes = SubjectClass.find_by({ department_id: department.id })
-#     p "++++++++++++++++++++++++++++++++++++"
-#     classes = JSON.parse(File.read("./db/classes.json"))
-#     classes.each do |subject_class|
-#       initials = subject_class["code"].gsub(/[^a-zA-Z]/, "")
-#       SubjectClass.create!(
-#         {
-#           subject: subject_class["code"],
-#           name: subject_class["name"],
-#           code: subject_class["class"]["classCode"],
-#           semester: subject_class["class"]["semester"],
-#           schedule: subject_class["class"]["time"],
-#           department_id: Department.find_by(initials:).id,
-#         }
-#       )
-#     end
-#   when "members"
-#     classes_members = JSON.parse(File.read("./db/class_members.json"))
-#     p "___________________________________________________________________________"
-#     classes_members.each do |data|
-#       teacher = Teacher.create!(
-#         {
-#           name: data["docente"]["nome"],
-#           formation: data["docente"]["formacao"],
-#           registration: data["docente"]["usuario"],
-#           occupation: data["docente"]["ocupacao"],
-#           email: data["docente"]["email"],
-#           department_id: Department.find_by(name: data["docente"]["departamento"]).id,
-#         }
-#       )
-
-#       subject_class = SubjectClass.find_by(
-#         { subject: data["code"],
-#           code: data["classCode"],
-#           semester: data["semester"] }
-#       )
-
-#       subject_class.update({
-#         teacher_id: teacher.id,
-#       })
-
-#       data["discente"].each do |student_data|
-#         student = Student.create!({
-#           name: student_data["nome"],
-#           course: student_data["curso"],
-#           registration: student_data["matricula"],
-#           formation: student_data["formacao"],
-#           occupation: student_data["ocupacao"],
-#           email: student_data["email"],
-#         })
-
-#         Enrollment.create!({
-#           student_id: student.id,
-#           subject_class_id: subject_class.id,
-#         })
-#       end
-#     end
-#   end
-# end
 
 When(/I press on "Importar"/) do
   click_button("Importar")
@@ -241,6 +175,7 @@ Given(/^that a form has been assigned to the following classes:$/) do |fields|
                 coordinator_id: 35,
                 subject_class_id: subject_class.id)
   end
+
 end
 
 Given("that I am an User associated with the following classes:") do |_table|
@@ -292,6 +227,7 @@ Given("that the following classes were updated:") do |classes_table|
       subject_class.update({ schedule: class_data["schedule"], name: class_data["name"] })
     end
   end
+
 end
 
 When(/^(?:|I )create a "([^"]*)" question with the following:$/) do |question_type, fields|
@@ -407,6 +343,7 @@ Then("I should see the following on Turmas:") do |table|
     page.should have_content(fields["Turma"])
     page.should have_content(fields["Horário"])
   end
+
 end
 
 Then("I expect to see the following results:") do |_table|
