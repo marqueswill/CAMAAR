@@ -3,13 +3,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center">
         <div class="col-lg-7">
-          <% if flash %>
-            <% flash.each do |k,v| %>
-              <p class="alert alert-success">
-                <%= v %>
-              </p>
-            <% end %>
-          <% end %>
+          <%= render '/layouts/flashes' %>
           <div class="card">
             <div class="card-header text-center">
               <strong >Opções para Importação</strong>
@@ -22,7 +16,7 @@
                       <label for="select" class="form-control-label">Tipos de Dados</label>
                     </div>
                     <div class="col-12 col-md-9">
-                      <%= form.select :select_data, [['Membros', '1'], ['Turmas', '2'], ['Departamentos', '3']], {}, { class: 'form-control', name:"select_data" } %>
+                      <%= form.select :select_data, [['Membros', '1'], ['Turmas', '2'], ['Departamentos', '3']], {}, { class: 'form-control', name:"select_data", id: "select_data" } %>
                     </div>
                   </div>
                   <div class="row form-group">
@@ -30,7 +24,7 @@
                       <%= form.label :file, "Arquivo" %>
                     </div>
                     <div class="col-12 col-md-9">
-                      <%= form.file_field :file, class: "form-control-file"%> 
+                      <%= form.file_field :file, class: "form-control-file"%>
                     </div>
                   </div>
                 </div>
