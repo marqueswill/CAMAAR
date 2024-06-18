@@ -9,13 +9,13 @@ RSpec.describe Teacher, type: :model do
     user3 = create(:user, :user3)
     user4 = create(:user, :user4)
     user5 = create(:user, :user5)
-    coordinator = create(:coordinator, :coordinator1)
-    teacher = create(:teacher, :teacher1)
+    coordinator = create(:coordinator)
+    teacher = create(:teacher)
     expect(teacher).to be_valid
   end
 
   it 'é inválido sem FKS existentes' do
-    teacher = build(:teacher,:teacher1)
+    teacher = build(:teacher)
     expect(teacher).to_not be_valid
   end
 end

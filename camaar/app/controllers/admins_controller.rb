@@ -13,7 +13,7 @@ class AdminsController < ApplicationController
 
   def login
     @admin = Admin.new
-    @admin = Admin.allf
+    @admin = Admin.all
   end
 
   def load
@@ -22,85 +22,29 @@ class AdminsController < ApplicationController
   end
 
   def envio
-    @student_templates = Template.where({ coordinator_id: @coordinator.id, role: 'discente' })
-    @teacher_templates = Template.where({ coordinator_id: @coordinator.id, role: 'docente' })
-
-    flash.clear
     professor_template_id = params[:professor_template_id]
     aluno_template_id = params[:aluno_template_id]
     turma_ids = params[:turma_ids]
-
-    commit = params[:commit]
-    return unless commit == 'confirm'
-
     if turma_ids.present?
-      turma_ids.each do |subject_class_id|
+      turma_ids.each do |turma|
         if professor_template_id.present?
-          subject_class_forms = Form.where(subject_class_id:)
-
-          if subject_class_forms.empty?
-            teacher_template = Template.find_by(id: professor_template_id, draft: false)
-            teacher_form = Form.new(
-              role: teacher_template.role,
-              name: teacher_template.name,
-              coordinator_id: teacher_template.coordinator_id,
-              subject_class_id:
-            )
-
-            if teacher_form.save
-              teacher_template_questions = TemplateQuestion.where({ template_id: teacher_template.id })
-              teacher_template_questions.each do |question|
-                FormQuestion.create({
-                                      title: question.title,
-                                      body: question.body,
-                                      question_type: question.question_type,
-                                      form_id: teacher_form.id
-                                    })
-              end
-
-              flash[:success] =
-                "Os formulários para a turma #{SubjectClass.find_by(id: subject_class_id).name} foram criados com sucesso."
-            end
+          template = Template.find_by(id: professor_template_id, draft: false)
+          unless Form.find_by(role: "teacher", name: template.name, coordinator_id: @coordinator.id, subject_class_id: turma).present?
+            form = Form.create(role: "teacher", name: template.name, coordinator_id: @coordinator.id, subject_class_id: turma)
+            flash[:success] = "O formulário para o template '#{template.name}' para o(s) professor(es) da turma '#{SubjectClass.find_by(id:turma).name}' foi criado com sucesso."
           else
-            flash[:warning] =
-              "Os formulários para a turma #{SubjectClass.find_by(id: subject_class_id).name} já existem."
+            flash[:warning] = "O formulário para o template '#{template.name}' para o(s) professor(es) já existe para a turma #{SubjectClass.find_by(id:turma).name}."
           end
-        end
-
-        next unless aluno_template_id.present?
-
-        subject_class_forms = Form.where(subject_class_id:)
-
-        if subject_class_forms.empty?
-          student_template = Template.find_by(id: aluno_template_id)
-          student_form = Form.new(
-            name: student_template.name,
-            coordinator_id: student_template.coordinator_id,
-            subject_class_id:
-          )
-
-          if student_form.save
-            student_template_questions = TemplateQuestion.where({ template_id: student_template.id })
-            student_template_questions.each do |question|
-              FormQuestion.create({
-                                    title: question.title,
-                                    body: question.body,
-                                    question_type: question.question_type,
-                                    form_id: student_form.id
-                                  })
-            end
-
-            flash[:success] =
-              "Os formulários para a turma #{SubjectClass.find_by(id: subject_class_id).name} foram criados com sucesso."
+        elsif aluno_template_id.present?
+          template = Template.find_by(id: aluno_template_id)
+          unless Form.find_by(role: "student", name: template.name, coordinator_id: @coordinator.id, subject_class_id: turma).present?
+            form = Form.create(name: template.name, coordinator_id: @coordinator.id, subject_class_id: turma)
+            flash[:success] = "O formulário para o template '#{template.name}' para os alunos da turma '#{SubjectClass.find_by(id:turma).name}' foi criado com sucesso."
+          else
+            flash[:warning] = "O formulário para o template '#{template.name}' já existe para os alunos da turma #{SubjectClass.find_by(id:turma).name}."
           end
-        else
-          flash[:warning] =
-            "Os formulários para a turma #{SubjectClass.find_by(id: subject_class_id).name} já existem."
         end
       end
-
-    else
-      flash[:warning] = 'Selecione as turmas para envio.'
     end
   end
 
@@ -178,6 +122,7 @@ class AdminsController < ApplicationController
         flash[:notice] = 'Membros importados com sucesso'
         redirect_to '/admins/import'
       end
+
     when '2'
       classes = JSON.parse(File.read(json))
 
@@ -209,12 +154,12 @@ class AdminsController < ApplicationController
     when '3'
       root_dpto = Department.find_by(initials: 'ROOT')
       if root_dpto.nil?
-        flash[:error] = 'Você não é admin ROOT'
+        flash[:notice] = 'Você não é admin ROOT'
         return redirect_to '/admins/import'
       end
       root_cord = Coordinator.find_by(department_id: root_dpto.id)
       if root_cord.nil?
-        flash[:error] = 'Você não é admin ROOT'
+        flash[:notice] = 'Você não é admin ROOT'
         return redirect_to '/admins/import'
       end
       if current_admin.email == root_cord.email
@@ -227,200 +172,14 @@ class AdminsController < ApplicationController
           )
         end
       else
-        flash[:error] = 'Você não é admin ROOT'
+        flash[:notice] = 'Você não é admin ROOT'
       end
       redirect_to '/admins/import'
     end
   end
 
-  def results
-    @forms = Form.where(coordinator_id: @coordinator.id)
-
-    answered_forms = []
-    @forms.each do |form|
-      @form_questions = FormQuestion.where(form_id: form.id)
-
-      occupation = form.role
-      case occupation
-      when 'discente'
-        answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id))
-      when 'docente'
-        answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id))
-      end
-
-      answered_forms << form if answers.any?
-    end
-    @forms = answered_forms
-
-    @form = Form.find_by_id(params[:form_id]) if params[:form_id]
-    @form_questions = FormQuestion.where(form_id: @form.id) if @form
-    case params[:export]
-    when 'csv'
-      export_to_csv
-    when 'graph'
-      export_to_png
-    end
-  end
-
-  def summary
-    @form = Form.find_by_id(params[:id])
-    @form_questions = FormQuestion.where(form_id: @form.id)
-    @form_summary = generate_summary
-  end
-
-  def generate_summary
-    resumo = {}
-
-    @form_questions.each do |question|
-      answers = if @form.role == 'discente'
-                  StudentAnswer.where(form_question_id: question.id)
-                else
-                  TeacherAnswer.where(form_question_id: question.id)
-                end
-
-      question_body = JSON.parse(question.body)
-      answers.each do |answ|
-        answer_body = JSON.parse(answ.answers)['answers']
-
-        case question.question_type
-        when 'text'
-          resumo[question.title] ||= []
-          resumo[question.title] << answer_body
-        when 'multiple_choice'
-          resumo[question.title] ||= {}
-          question_body['options'].each do |option|
-            resumo[question.title][option[1]] ||= 0 if option[1] != ''
-          end
-
-          answer_body.each do |k, selected|
-            resumo[question.title][question_body['options'][k]] += 1 if selected
-          end
-        end
-      end
-    end
-
-    resumo
-  end
-
-  def export_to_csv
-    csv_string = generate_csv
-    csv_data = CSV.parse(csv_string, headers: true)
-
-    file_path = Rails.root.join('export', "#{@form.id}_#{@form.name}_results.csv")
-    directory_path = File.dirname(file_path)
-    FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)
-
-    CSV.open(file_path, 'w') do |csv|
-      csv << csv_data.headers
-
-      csv_data.each do |row|
-        csv << row
-      end
-    end
-
-    send_file file_path, filename: "#{@form.id}_#{@form.name}_results.csv", type: 'text/csv'
-  end
-
-  def export_to_png
-    graph = generate_graph
-
-    filename = @form.name + '.png'
-    file_path = File.join('export', filename)
-    graph.render_png(file_path)
-    send_file file_path, filename:, type: 'image/png'
-  end
-
-  def generate_graph
-    if @form.role == 'discente'
-      enrollments = Enrollment.where(subject_class_id: @form.subject_class_id)
-      number_of_students = enrollments.distinct.count(:student_id)
-      num_answers = StudentAnswer.where(student_id: enrollments.distinct.pluck(:student_id)).count
-      num_absents = number_of_students - num_answers
-      p = Rdata.new
-      p.add_point([num_answers, num_absents], 'Serie1')
-      p.add_point(%w[Respostas Ausências], 'Serie2')
-      p.add_all_series
-      p.set_abscise_label_serie('Serie2')
-
-      ch = Rchart.new(300, 200)
-      ch.set_font_properties('tahoma.ttf', 8)
-      ch.draw_filled_rounded_rectangle(7, 7, 293, 193, 5, 240, 240, 240)
-      ch.draw_rounded_rectangle(5, 5, 295, 195, 5, 230, 230, 230)
-
-      # Draw the pie chart
-      ch.antialias_quality = 0
-      ch.set_shadow_properties(2, 2, 200, 200, 200)
-      ch.draw_flat_pie_graph_with_shadow(p.get_data, p.get_data_description, 120, 100, 60, Rchart::PIE_PERCENTAGE, 8)
-      ch.clear_shadow
-
-      ch.draw_pie_legend(210, 35, p.get_data, p.get_data_description, 250, 250, 250)
-
-    elsif @form.role == 'docente'
-      form_questions = FormQuestion.where(form_id: @form.id)
-      form_question_ids = form_questions.pluck(:id)
-      teacher_answers = TeacherAnswer.where(form_question_id: form_question_ids)
-
-      text_answers = teacher_answers.where(question_type: 'text')
-      multiple_choice_answers = teacher_answers.where(question_type: 'multiple_question')
-
-      p = Rdata.new
-      p.add_point([text_answers, multiple_choice_answers], 'Serie1')
-      p.add_point(%w[Texto Múltipla-Escolha], 'Serie2')
-      p.add_all_series
-      p.set_abscise_label_serie('Serie2')
-
-      ch = Rchart.new(300, 200)
-      ch.set_font_properties('tahoma.ttf', 8)
-      ch.draw_filled_rounded_rectangle(7, 7, 293, 193, 5, 240, 240, 240)
-      ch.draw_rounded_rectangle(5, 5, 295, 195, 5, 230, 230, 230)
-
-      # Draw the pie chart
-      ch.antialias_quality = 0
-      ch.set_shadow_properties(2, 2, 200, 200, 200)
-      ch.draw_flat_pie_graph_with_shadow(p.get_data, p.get_data_description, 120, 100, 60, Rchart::PIE_PERCENTAGE, 8)
-      ch.clear_shadow
-
-      ch.draw_pie_legend(210, 35, p.get_data, p.get_data_description, 250, 250, 250)
-
-    end
-    ch
-  end
-
-  def generate_csv
-    table = []
-    @form_questions.each do |question|
-      answers = if @form.role == 'discente'
-                  StudentAnswer.where(form_question_id: question.id)
-                else
-                  TeacherAnswer.where(form_question_id: question.id)
-                end
-
-      line = [question.title]
-
-      answers.each do |answ|
-        answer_body = JSON.parse(answ.answers)['answers']
-        case question.question_type
-        when 'text'
-          line << answer_body
-        when 'multiple_choice'
-          answer_body.each do |num, selected|
-            line << num.to_i if selected
-          end
-        end
-      end
-      table << line
-    end
-
-    head = ['Questão']
-    (table[0].length - 1).times do |i|
-      head << "Resposta #{i + 1}"
-    end
-    table.unshift(head)
-
-    CSV.generate do |csv|
-      table.each do |row|
-        csv << row
-      end
-    end
-  end
+  # end
+  # def envio
+  #  UsersMailer.deliver
+  # end
 end

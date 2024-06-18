@@ -1,16 +1,10 @@
 FactoryBot.define do
   factory :form do
+    id { 1 }
     open { true }
     created_at { Time.now.utc }
     updated_at { Time.now.utc }
-
-    trait :form1 do
-      id { 1 }
-      name { 'Avaliação Institucional' }
-      role { 'discente' }
-      open { true }
-      coordinator_id { 100 }
-      subject_class_id { 1 }
-    end
+    coordinator_id { 100 }
+    subject_class_id { 1 }
   end
 end
