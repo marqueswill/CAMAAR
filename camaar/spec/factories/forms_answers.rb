@@ -1,12 +1,8 @@
 FactoryBot.define do
   factory :student_answer do
-    sequence(:id) { |n| n }
-    answers { [{ question: "Satisfatório", type: "text" }] }
-    question_type {1}
+    answers { '{"answers":"abcd"}' }
     created_at { Time.now.utc }
     updated_at { Time.now.utc }
-    sequence(:form_question_id) { |n| n }
-    sequence(:student_id) { |n| n }
 
     trait :student_answers1 do
       id { 0 }

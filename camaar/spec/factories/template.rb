@@ -1,9 +1,18 @@
 FactoryBot.define do
   factory :template do
-    id { 1 }
-    name { 'A' }
     created_at { Time.now.utc }
     updated_at { Time.now.utc }
-    coordinator_id { 100 }
+    trait :template1 do
+      id { 1 }
+      name { 'Template1' }
+      role { 'discente' }
+      coordinator_id { 100 }
+    end
+    trait :template2 do
+      id { 2 }
+      name { 'B' }
+      role { 'docente' }
+      coordinator_id { 100 }
+    end
   end
 end
