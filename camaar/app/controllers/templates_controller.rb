@@ -5,8 +5,10 @@ require "json"
 # for use in views.
 class TemplatesController < ApplicationController
   before_action :set_admin_data
+  before_action :check_for_commit
   before_action :set_template_data, only: [:destroy, :edit, :update, :show]
   layout "admin"
+
 
   def index
   end
@@ -20,6 +22,7 @@ class TemplatesController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
@@ -44,6 +47,13 @@ class TemplatesController < ApplicationController
     end
 
     redirect_to templates_path
+  end
+
+  def check_for_commit
+    case params[:commit]
+    when "delete"
+      destroy
+    end
   end
 
   private

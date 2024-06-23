@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T17:53:18-03:00">2024-06-23T17:53:18-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T20:02:35-03:00">2024-06-23T20:02:35-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,9 +43,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1136</b> relevant lines,
+    <b>1133</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1136</b> lines missed. </span>
+    <span class="red"><b>1133</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -139,7 +139,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#33a488bb0ec1b62d2192fd484497582823660e15" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">59</td>
+            <td class="cell--number">60</td>
             <td class="cell--number">50</td>
             <td class="cell--number">0</td>
             <td class="cell--number">50</td>
@@ -206,9 +206,9 @@
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
             <td class="cell--number">89</td>
-            <td class="cell--number">69</td>
+            <td class="cell--number">66</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">69</td>
+            <td class="cell--number">66</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -630,9 +630,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1010</b> relevant lines,
+    <b>1007</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1010</b> lines missed. </span>
+    <span class="red"><b>1007</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -726,7 +726,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#33a488bb0ec1b62d2192fd484497582823660e15" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">59</td>
+            <td class="cell--number">60</td>
             <td class="cell--number">50</td>
             <td class="cell--number">0</td>
             <td class="cell--number">50</td>
@@ -793,9 +793,9 @@
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
             <td class="cell--number">89</td>
-            <td class="cell--number">69</td>
+            <td class="cell--number">66</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">69</td>
+            <td class="cell--number">66</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -9762,13 +9762,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
             
 
-            <code class="ruby">  def set_admin_data</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -9779,7 +9779,7 @@
 
             
 
-            <code class="ruby">    @errors = []</code>
+            <code class="ruby">  def set_admin_data</code>
           </li>
         </div>
       
@@ -9790,7 +9790,7 @@
 
             
 
-            <code class="ruby">    if coordinator</code>
+            <code class="ruby">    @errors = []</code>
           </li>
         </div>
       
@@ -9801,7 +9801,7 @@
 
             
 
-            <code class="ruby">      @department = Department.find_by_id(@coordinator.department_id)</code>
+            <code class="ruby">    if coordinator</code>
           </li>
         </div>
       
@@ -9812,7 +9812,7 @@
 
             
 
-            <code class="ruby">      @classes = SubjectClass.where(department_id: @coordinator.department_id)</code>
+            <code class="ruby">      @department = Department.find_by_id(@coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9823,7 +9823,7 @@
 
             
 
-            <code class="ruby">      @teachers = Teacher.where(department_id: @coordinator.department_id)</code>
+            <code class="ruby">      @classes = SubjectClass.where(department_id: @coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9834,7 +9834,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      @teachers = Teacher.where(department_id: @coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9845,29 +9845,29 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="34">
+            
+            
+
+            
+
             <code class="ruby">    @templates = Template.where(coordinator_id: @coordinator.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="35">
-            
-            
-
-            
-
-            <code class="ruby">    if @templates.empty?</code>
           </li>
         </div>
       
@@ -9878,7 +9878,7 @@
 
             
 
-            <code class="ruby">      @errors &lt;&lt; &quot;Não foram encontrados templates&quot;</code>
+            <code class="ruby">    if @templates.empty?</code>
           </li>
         </div>
       
@@ -9889,7 +9889,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      @errors &lt;&lt; &quot;Não foram encontrados templates&quot;</code>
           </li>
         </div>
       
@@ -9900,29 +9900,29 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="39">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="40">
-            
-            
-
-            
-
-            <code class="ruby">  def coordinator</code>
           </li>
         </div>
       
@@ -9933,7 +9933,7 @@
 
             
 
-            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
+            <code class="ruby">  def coordinator</code>
           </li>
         </div>
       
@@ -9944,12 +9944,23 @@
 
             
 
+            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="43">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="43">
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
@@ -9960,7 +9971,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="44">
+          <li class="missed" data-hits="0" data-linenumber="45">
             
             
 
@@ -9971,7 +9982,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="45">
+          <li class="missed" data-hits="0" data-linenumber="46">
             
             
 
@@ -9982,7 +9993,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
+          <li class="missed" data-hits="0" data-linenumber="47">
             
             
 
@@ -9993,7 +10004,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="47">
+          <li class="missed" data-hits="0" data-linenumber="48">
             
             
 
@@ -10004,7 +10015,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="48">
+          <li class="missed" data-hits="0" data-linenumber="49">
             
             
 
@@ -10015,7 +10026,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="50">
             
             
 
@@ -10026,7 +10037,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="50">
+          <li class="missed" data-hits="0" data-linenumber="51">
             
             
 
@@ -10037,7 +10048,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="51">
+          <li class="missed" data-hits="0" data-linenumber="52">
             
             
 
@@ -10048,7 +10059,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="52">
+          <li class="missed" data-hits="0" data-linenumber="53">
             
             
 
@@ -10059,7 +10070,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="53">
+          <li class="missed" data-hits="0" data-linenumber="54">
             
             
 
@@ -10070,7 +10081,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="54">
+          <li class="missed" data-hits="0" data-linenumber="55">
             
             
 
@@ -10081,7 +10092,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
+          <li class="missed" data-hits="0" data-linenumber="56">
             
             
 
@@ -10092,7 +10103,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="56">
+          <li class="missed" data-hits="0" data-linenumber="57">
             
             
 
@@ -10103,7 +10114,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
+          <li class="missed" data-hits="0" data-linenumber="58">
             
             
 
@@ -10114,7 +10125,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
+          <li class="missed" data-hits="0" data-linenumber="59">
             
             
 
@@ -10125,7 +10136,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="59">
+          <li class="missed" data-hits="0" data-linenumber="60">
             
             
 
@@ -13642,9 +13653,9 @@
     
 
     <div class="t-line-summary">
-      <b>69</b> relevant lines.
+      <b>66</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>69</b> lines missed.</span>
+      <span class="red"><b>66</b> lines missed.</span>
     </div>
 
     
@@ -13776,13 +13787,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="12">
             
             
 
             
 
-            <code class="ruby">  def index</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13793,29 +13804,29 @@
 
             
 
+            <code class="ruby">  def index</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="14">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="15">
-            
-            
-
-            
-
-            <code class="ruby">  def new</code>
           </li>
         </div>
       
@@ -13826,7 +13837,7 @@
 
             
 
-            <code class="ruby">    template = Template.create({ coordinator_id: coordinator.id })</code>
+            <code class="ruby">  def new</code>
           </li>
         </div>
       
@@ -13837,7 +13848,7 @@
 
             
 
-            <code class="ruby">    redirect_to edit_template_path(template)</code>
+            <code class="ruby">    template = Template.create({ coordinator_id: coordinator.id })</code>
           </li>
         </div>
       
@@ -13848,29 +13859,29 @@
 
             
 
+            <code class="ruby">    redirect_to edit_template_path(template)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="19">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
-            
-            
-
-            
-
-            <code class="ruby">  def create</code>
           </li>
         </div>
       
@@ -13881,29 +13892,29 @@
 
             
 
+            <code class="ruby">  def create</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="22">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="23">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="23">
-            
-            
-
-            
-
-            <code class="ruby">  def show</code>
           </li>
         </div>
       
@@ -13914,23 +13925,12 @@
 
             
 
-            <code class="ruby">    check_for_commit</code>
+            <code class="ruby">  def show</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="25">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -13941,13 +13941,24 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="27">
+          <li class="missed" data-hits="0" data-linenumber="26">
             
             
 
             
 
-            <code class="ruby">  def edit</code>
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13958,29 +13969,29 @@
 
             
 
+            <code class="ruby">  def edit</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="29">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">  def update</code>
           </li>
         </div>
       
@@ -13991,7 +14002,7 @@
 
             
 
-            <code class="ruby">    if !questions.present?</code>
+            <code class="ruby">  def update</code>
           </li>
         </div>
       
@@ -14002,7 +14013,7 @@
 
             
 
-            <code class="ruby">      flash[:alert] = &quot;O template precisa conter pelo menos uma pergunta&quot;</code>
+            <code class="ruby">    if !questions.present?</code>
           </li>
         </div>
       
@@ -14013,7 +14024,7 @@
 
             
 
-            <code class="ruby">      return redirect_to edit_template_path(template, template: template_params)</code>
+            <code class="ruby">      flash[:alert] = &quot;O template precisa conter pelo menos uma pergunta&quot;</code>
           </li>
         </div>
       
@@ -14024,29 +14035,29 @@
 
             
 
+            <code class="ruby">      return redirect_to edit_template_path(template, template: template_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="35">
+            
+            
+
+            
+
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="36">
-            
-            
-
-            
-
-            <code class="ruby">    if template.update(template_params)</code>
           </li>
         </div>
       
@@ -14057,7 +14068,7 @@
 
             
 
-            <code class="ruby">      redirect_to templates_path, success: &quot;Template atualizado com sucesso!&quot;</code>
+            <code class="ruby">    if template.update(template_params.merge(draft: false))</code>
           </li>
         </div>
       
@@ -14068,7 +14079,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      redirect_to templates_path, success: &quot;Template atualizado com sucesso!&quot;</code>
           </li>
         </div>
       
@@ -14079,12 +14090,23 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="40">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 
@@ -14095,7 +14117,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="41">
+          <li class="missed" data-hits="0" data-linenumber="42">
             
             
 
@@ -14106,7 +14128,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="42">
+          <li class="missed" data-hits="0" data-linenumber="43">
             
             
 
@@ -14117,24 +14139,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="43">
-            
-            
-
-            
-
-            <code class="ruby">      if template and template.destroy</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="44">
             
             
 
             
 
-            <code class="ruby">        redirect_to templates_path</code>
+            <code class="ruby">      template.destroy</code>
           </li>
         </div>
       
@@ -14145,7 +14156,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    rescue ActiveRecord::RecordNotFound</code>
           </li>
         </div>
       
@@ -14156,7 +14167,7 @@
 
             
 
-            <code class="ruby">    rescue ActiveRecord::RecordNotFound</code>
+            <code class="ruby">      flash[:alert] = &quot;Não foi possível encontrar o template&quot;</code>
           </li>
         </div>
       
@@ -14167,18 +14178,18 @@
 
             
 
-            <code class="ruby">      flash[:alert] = &quot;Não foi possível encontrar o template&quot;</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="48">
             
             
 
             
 
-            <code class="ruby">      redirect_to templates_path</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14189,7 +14200,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    redirect_to templates_path</code>
           </li>
         </div>
       
