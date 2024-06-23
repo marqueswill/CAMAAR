@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T17:22:26-03:00">2024-06-23T17:22:26-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T17:32:36-03:00">2024-06-23T17:32:36-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,9 +43,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1126</b> relevant lines,
+    <b>1131</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1126</b> lines missed. </span>
+    <span class="red"><b>1131</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -139,10 +139,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#33a488bb0ec1b62d2192fd484497582823660e15" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">54</td>
-            <td class="cell--number">46</td>
+            <td class="cell--number">59</td>
+            <td class="cell--number">50</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">46</td>
+            <td class="cell--number">50</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -205,10 +205,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">86</td>
-            <td class="cell--number">63</td>
+            <td class="cell--number">84</td>
+            <td class="cell--number">64</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">63</td>
+            <td class="cell--number">64</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -630,9 +630,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1000</b> relevant lines,
+    <b>1005</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1000</b> lines missed. </span>
+    <span class="red"><b>1005</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -726,10 +726,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#33a488bb0ec1b62d2192fd484497582823660e15" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">54</td>
-            <td class="cell--number">46</td>
+            <td class="cell--number">59</td>
+            <td class="cell--number">50</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">46</td>
+            <td class="cell--number">50</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -792,10 +792,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">86</td>
-            <td class="cell--number">63</td>
+            <td class="cell--number">84</td>
+            <td class="cell--number">64</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">63</td>
+            <td class="cell--number">64</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -9474,9 +9474,9 @@
     
 
     <div class="t-line-summary">
-      <b>46</b> relevant lines.
+      <b>50</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>46</b> lines missed.</span>
+      <span class="red"><b>50</b> lines missed.</span>
     </div>
 
     
@@ -9790,7 +9790,7 @@
 
             
 
-            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
+            <code class="ruby">    if coordinator</code>
           </li>
         </div>
       
@@ -9801,7 +9801,7 @@
 
             
 
-            <code class="ruby">    @department = Department.find_by_id(@coordinator.department_id) if @coordinator</code>
+            <code class="ruby">      @department = Department.find_by_id(@coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9812,7 +9812,7 @@
 
             
 
-            <code class="ruby">    @classes = SubjectClass.where(department_id: @coordinator.department_id) if @coordinator</code>
+            <code class="ruby">      @classes = SubjectClass.where(department_id: @coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9823,7 +9823,7 @@
 
             
 
-            <code class="ruby">    @teachers = Teacher.where(department_id: @coordinator.department_id) if @coordinator</code>
+            <code class="ruby">      @teachers = Teacher.where(department_id: @coordinator.department_id)</code>
           </li>
         </div>
       
@@ -9834,29 +9834,29 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="33">
+            
+            
+
+            
+
             <code class="ruby">    @templates = Template.where(coordinator_id: @coordinator.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="34">
-            
-            
-
-            
-
-            <code class="ruby">    if @templates.empty?</code>
           </li>
         </div>
       
@@ -9867,7 +9867,7 @@
 
             
 
-            <code class="ruby">      @errors &lt;&lt; &quot;Não foram encontrados templates&quot;</code>
+            <code class="ruby">    if @templates.empty?</code>
           </li>
         </div>
       
@@ -9878,7 +9878,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      @errors &lt;&lt; &quot;Não foram encontrados templates&quot;</code>
           </li>
         </div>
       
@@ -9889,12 +9889,23 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="38">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
+          <li class="never" data-hits="" data-linenumber="39">
             
             
 
@@ -9905,24 +9916,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby">  def set_user_data</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="40">
             
             
 
             
 
-            <code class="ruby">    student = Student.find_by(email: current_user.email)</code>
+            <code class="ruby">  def coordinator</code>
           </li>
         </div>
       
@@ -9933,7 +9933,7 @@
 
             
 
-            <code class="ruby">    if student</code>
+            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
           </li>
         </div>
       
@@ -9944,29 +9944,29 @@
 
             
 
-            <code class="ruby">      @student = student</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="43">
+          <li class="never" data-hits="" data-linenumber="43">
             
             
 
             
 
-            <code class="ruby">      current_user.occupation = student.occupation</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
+          <li class="missed" data-hits="0" data-linenumber="44">
             
             
 
             
 
-            <code class="ruby">      # current_user.name = student.name</code>
+            <code class="ruby">  def set_user_data</code>
           </li>
         </div>
       
@@ -9977,7 +9977,7 @@
 
             
 
-            <code class="ruby">      current_user.name = student.name.split.first.capitalize</code>
+            <code class="ruby">    student = Student.find_by(email: current_user.email)</code>
           </li>
         </div>
       
@@ -9988,7 +9988,7 @@
 
             
 
-            <code class="ruby">      @department = Department.find_by(initials: student.course.split(&quot;/&quot;).last) if student</code>
+            <code class="ruby">    if student</code>
           </li>
         </div>
       
@@ -9999,7 +9999,7 @@
 
             
 
-            <code class="ruby">    else</code>
+            <code class="ruby">      @student = student</code>
           </li>
         </div>
       
@@ -10010,18 +10010,18 @@
 
             
 
-            <code class="ruby">      @teacher = Teacher.find_by(email: current_user.email)</code>
+            <code class="ruby">      current_user.occupation = student.occupation</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="49">
             
             
 
             
 
-            <code class="ruby">      current_user.occupation = @teacher.occupation</code>
+            <code class="ruby">      # current_user.name = student.name</code>
           </li>
         </div>
       
@@ -10032,7 +10032,7 @@
 
             
 
-            <code class="ruby">      current_user.name = @teacher.name.split.first.capitalize</code>
+            <code class="ruby">      current_user.name = student.name.split.first.capitalize</code>
           </li>
         </div>
       
@@ -10043,7 +10043,7 @@
 
             
 
-            <code class="ruby">      @department = Department.find_by_id(@teacher.department_id) if @teacher</code>
+            <code class="ruby">      @department = Department.find_by(initials: student.course.split(&quot;/&quot;).last) if student</code>
           </li>
         </div>
       
@@ -10054,7 +10054,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    else</code>
           </li>
         </div>
       
@@ -10065,12 +10065,67 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      @teacher = Teacher.find_by(email: current_user.email)</code>
           </li>
         </div>
       
         <div>
           <li class="missed" data-hits="0" data-linenumber="54">
+            
+            
+
+            
+
+            <code class="ruby">      current_user.occupation = @teacher.occupation</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">      current_user.name = @teacher.name.split.first.capitalize</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="56">
+            
+            
+
+            
+
+            <code class="ruby">      @department = Department.find_by_id(@teacher.department_id) if @teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="58">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="59">
             
             
 
@@ -13587,9 +13642,9 @@
     
 
     <div class="t-line-summary">
-      <b>63</b> relevant lines.
+      <b>64</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>63</b> lines missed.</span>
+      <span class="red"><b>64</b> lines missed.</span>
     </div>
 
     
@@ -13617,40 +13672,40 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby"># The TemplatesController handles actions related to the management of templates.</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="3">
+          <li class="never" data-hits="" data-linenumber="3">
             
             
 
             
 
-            <code class="ruby">class TemplatesController &lt; ApplicationController</code>
+            <code class="ruby"># This includes creating, editing, updating, showing, and deleting templates,</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="4">
+          <li class="never" data-hits="" data-linenumber="4">
             
             
 
             
 
-            <code class="ruby">  before_action :set_admin_data</code>
+            <code class="ruby"># as well as checking for specific commit actions and setting instance variables</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="5">
+          <li class="never" data-hits="" data-linenumber="5">
             
             
 
             
 
-            <code class="ruby">  before_action :set_template_data, only: [:destroy, :edit, :update, :show]</code>
+            <code class="ruby"># for use in views.</code>
           </li>
         </div>
       
@@ -13661,7 +13716,7 @@
 
             
 
-            <code class="ruby">  before_action :check_for_commit</code>
+            <code class="ruby">class TemplatesController &lt; ApplicationController</code>
           </li>
         </div>
       
@@ -13672,18 +13727,18 @@
 
             
 
-            <code class="ruby">  layout &quot;admin&quot;</code>
+            <code class="ruby">  before_action :set_admin_data</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="missed" data-hits="0" data-linenumber="8">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  before_action :set_template_data, only: [:destroy, :edit, :update, :show]</code>
           </li>
         </div>
       
@@ -13694,7 +13749,7 @@
 
             
 
-            <code class="ruby">  def index</code>
+            <code class="ruby">  before_action :check_for_commit</code>
           </li>
         </div>
       
@@ -13705,7 +13760,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  layout &quot;admin&quot;</code>
           </li>
         </div>
       
@@ -13727,7 +13782,7 @@
 
             
 
-            <code class="ruby">  def new</code>
+            <code class="ruby">  def index</code>
           </li>
         </div>
       
@@ -13738,29 +13793,29 @@
 
             
 
-            <code class="ruby">    redirect_to edit_template_path(template)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="14">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="14">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">  def new</code>
           </li>
         </div>
       
@@ -13771,7 +13826,7 @@
 
             
 
-            <code class="ruby">  def create</code>
+            <code class="ruby">    template = Template.create({ coordinator_id: coordinator.id })</code>
           </li>
         </div>
       
@@ -13782,12 +13837,23 @@
 
             
 
+            <code class="ruby">    redirect_to edit_template_path(template)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="18">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -13798,24 +13864,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby">  def show</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="20">
             
             
 
             
 
-            <code class="ruby">    check_for_commit</code>
+            <code class="ruby">  def create</code>
           </li>
         </div>
       
@@ -13848,7 +13903,7 @@
 
             
 
-            <code class="ruby">  def edit</code>
+            <code class="ruby">  def show</code>
           </li>
         </div>
       
@@ -13859,29 +13914,29 @@
 
             
 
+            <code class="ruby">    check_for_commit</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="25">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
-            
-            
-
-            
-
-            <code class="ruby">  def update</code>
           </li>
         </div>
       
@@ -13892,7 +13947,7 @@
 
             
 
-            <code class="ruby">    if !questions.present?</code>
+            <code class="ruby">  def edit</code>
           </li>
         </div>
       
@@ -13903,34 +13958,12 @@
 
             
 
-            <code class="ruby">      flash[:alert] = &quot;O template precisa conter pelo menos uma pergunta&quot;</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">      return redirect_to edit_template_path(template, template: template_params)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -13941,13 +13974,35 @@
         </div>
       
         <div>
+          <li class="missed" data-hits="0" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">  def update</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">    if !questions.present?</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="missed" data-hits="0" data-linenumber="32">
             
             
 
             
 
-            <code class="ruby">    if template.update(template_params)</code>
+            <code class="ruby">      flash[:alert] = &quot;O template precisa conter pelo menos uma pergunta&quot;</code>
           </li>
         </div>
       
@@ -13958,7 +14013,7 @@
 
             
 
-            <code class="ruby">      redirect_to templates_path, success: &quot;Template atualizado com sucesso!&quot;</code>
+            <code class="ruby">      return redirect_to edit_template_path(template, template: template_params)</code>
           </li>
         </div>
       
@@ -13974,24 +14029,24 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="35">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="36">
+            
+            
+
+            
+
+            <code class="ruby">    if template.update(template_params)</code>
           </li>
         </div>
       
@@ -14002,7 +14057,7 @@
 
             
 
-            <code class="ruby">  def destroy</code>
+            <code class="ruby">      redirect_to templates_path, success: &quot;Template atualizado com sucesso!&quot;</code>
           </li>
         </div>
       
@@ -14013,7 +14068,7 @@
 
             
 
-            <code class="ruby">    if template.destroy</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -14024,18 +14079,18 @@
 
             
 
-            <code class="ruby">      redirect_to templates_path</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14046,18 +14101,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  def destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="missed" data-hits="0" data-linenumber="42">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    if template.destroy</code>
           </li>
         </div>
       
@@ -14068,7 +14123,7 @@
 
             
 
-            <code class="ruby">  def check_for_commit</code>
+            <code class="ruby">      redirect_to templates_path</code>
           </li>
         </div>
       
@@ -14079,7 +14134,7 @@
 
             
 
-            <code class="ruby">    case params[:commit]</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -14090,18 +14145,18 @@
 
             
 
-            <code class="ruby">    when &quot;delete&quot;</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
+          <li class="never" data-hits="" data-linenumber="46">
             
             
 
             
 
-            <code class="ruby">      destroy</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14112,7 +14167,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  def check_for_commit</code>
           </li>
         </div>
       
@@ -14123,18 +14178,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    case params[:commit]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="missed" data-hits="0" data-linenumber="49">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    when &quot;delete&quot;</code>
           </li>
         </div>
       
@@ -14145,40 +14200,40 @@
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">      destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="missed" data-hits="0" data-linenumber="51">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="52">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="52">
-            
-            
-
-            
-
-            <code class="ruby">  # Retrieves the template instance variables needed for the view to prevent data loss after an unsuccessful form submission.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="53">
-            
-            
-
-            
-
-            <code class="ruby">  def set_template_data</code>
           </li>
         </div>
       
@@ -14189,18 +14244,18 @@
 
             
 
-            <code class="ruby">    template</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
             
 
-            <code class="ruby">    template_name</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14211,7 +14266,7 @@
 
             
 
-            <code class="ruby">    role</code>
+            <code class="ruby">  def set_template_data</code>
           </li>
         </div>
       
@@ -14222,7 +14277,7 @@
 
             
 
-            <code class="ruby">    questions</code>
+            <code class="ruby">    template</code>
           </li>
         </div>
       
@@ -14233,29 +14288,29 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    template_name</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="missed" data-hits="0" data-linenumber="59">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    role</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="60">
+          <li class="missed" data-hits="0" data-linenumber="60">
             
             
 
             
 
-            <code class="ruby">  # Retrieves the template instance variable based on the provided ID.</code>
+            <code class="ruby">    questions</code>
           </li>
         </div>
       
@@ -14266,18 +14321,18 @@
 
             
 
-            <code class="ruby">  def template</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="62">
             
             
 
             
 
-            <code class="ruby">    @template = Template.find(params[:id])</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14288,40 +14343,40 @@
 
             
 
+            <code class="ruby">  def template</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">    @template = Template.find(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="65">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="64">
+          <li class="never" data-hits="" data-linenumber="66">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">  # Sets the template name instance variable based on the submitted parameters or uses the default template name if none is provided.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="66">
-            
-            
-
-            
-
-            <code class="ruby">  def template_name</code>
           </li>
         </div>
       
@@ -14332,7 +14387,7 @@
 
             
 
-            <code class="ruby">    template_params = params[:template] || {}</code>
+            <code class="ruby">  def template_name</code>
           </li>
         </div>
       
@@ -14343,7 +14398,7 @@
 
             
 
-            <code class="ruby">    @template_name = template_params[:name] || template.name</code>
+            <code class="ruby">    template_params = params[:template] || {}</code>
           </li>
         </div>
       
@@ -14354,18 +14409,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    @template_name = template_params[:name] || template.name</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="70">
+          <li class="missed" data-hits="0" data-linenumber="70">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -14376,7 +14431,7 @@
 
             
 
-            <code class="ruby">  # Sets the role instance variable based on the submitted parameters or uses the default role if none is provided.</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14436,18 +14491,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
-            
-
-            <code class="ruby">  # Retrieves the questions associated with the template and sets them to the questions instance variable.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="78">
+          <li class="missed" data-hits="0" data-linenumber="77">
             
             
 
@@ -14458,7 +14502,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="79">
+          <li class="missed" data-hits="0" data-linenumber="78">
             
             
 
@@ -14469,7 +14513,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="80">
+          <li class="missed" data-hits="0" data-linenumber="79">
             
             
 
@@ -14480,7 +14524,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="never" data-hits="" data-linenumber="80">
             
             
 
@@ -14491,18 +14535,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
-            
-            
-
-            
-
-            <code class="ruby">  # Defines the permitted parameters for the template.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="83">
+          <li class="missed" data-hits="0" data-linenumber="81">
             
             
 
@@ -14513,7 +14546,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="84">
+          <li class="missed" data-hits="0" data-linenumber="82">
             
             
 
@@ -14524,7 +14557,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="85">
+          <li class="missed" data-hits="0" data-linenumber="83">
             
             
 
@@ -14535,7 +14568,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="86">
+          <li class="missed" data-hits="0" data-linenumber="84">
             
             
 

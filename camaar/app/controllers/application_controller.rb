@@ -25,15 +25,20 @@ class ApplicationController < ActionController::Base
 
   def set_admin_data
     @errors = []
-    @coordinator = Coordinator.find_by({ email: current_admin.email })
-    @department = Department.find_by_id(@coordinator.department_id) if @coordinator
-    @classes = SubjectClass.where(department_id: @coordinator.department_id) if @coordinator
-    @teachers = Teacher.where(department_id: @coordinator.department_id) if @coordinator
+    if coordinator
+      @department = Department.find_by_id(@coordinator.department_id)
+      @classes = SubjectClass.where(department_id: @coordinator.department_id)
+      @teachers = Teacher.where(department_id: @coordinator.department_id)
+    end
     @templates = Template.where(coordinator_id: @coordinator.id)
 
     if @templates.empty?
       @errors << "Não foram encontrados templates"
     end
+  end
+
+  def coordinator
+    @coordinator = Coordinator.find_by({ email: current_admin.email })
   end
 
   def set_user_data

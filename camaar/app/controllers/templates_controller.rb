@@ -1,5 +1,8 @@
 require "json"
-
+# The TemplatesController handles actions related to the management of templates.
+# This includes creating, editing, updating, showing, and deleting templates,
+# as well as checking for specific commit actions and setting instance variables
+# for use in views.
 class TemplatesController < ApplicationController
   before_action :set_admin_data
   before_action :set_template_data, only: [:destroy, :edit, :update, :show]
@@ -10,6 +13,7 @@ class TemplatesController < ApplicationController
   end
 
   def new
+    template = Template.create({ coordinator_id: coordinator.id })
     redirect_to edit_template_path(template)
   end
 
@@ -49,7 +53,6 @@ class TemplatesController < ApplicationController
 
   private
 
-  # Retrieves the template instance variables needed for the view to prevent data loss after an unsuccessful form submission.
   def set_template_data
     template
     template_name
@@ -57,29 +60,24 @@ class TemplatesController < ApplicationController
     questions
   end
 
-  # Retrieves the template instance variable based on the provided ID.
   def template
     @template = Template.find(params[:id])
   end
 
-  # Sets the template name instance variable based on the submitted parameters or uses the default template name if none is provided.
   def template_name
     template_params = params[:template] || {}
     @template_name = template_params[:name] || template.name
   end
 
-  # Sets the role instance variable based on the submitted parameters or uses the default role if none is provided.
   def role
     template_params = params[:template] || {}
     @role = template_params[:role] || template.role
   end
 
-  # Retrieves the questions associated with the template and sets them to the questions instance variable.
   def questions
     @questions = TemplateQuestion.where(template_id: template.id)
   end
 
-  # Defines the permitted parameters for the template.
   def template_params
     params.require(:template).permit(:name, :role)
   end
