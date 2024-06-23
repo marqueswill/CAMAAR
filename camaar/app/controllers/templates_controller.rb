@@ -6,7 +6,6 @@ require "json"
 class TemplatesController < ApplicationController
   before_action :set_admin_data
   before_action :set_template_data, only: [:destroy, :edit, :update, :show]
-  before_action :check_for_commit
   layout "admin"
 
   def index
@@ -21,7 +20,6 @@ class TemplatesController < ApplicationController
   end
 
   def show
-    check_for_commit
   end
 
   def edit
@@ -33,22 +31,19 @@ class TemplatesController < ApplicationController
       return redirect_to edit_template_path(template, template: template_params)
     end
 
-    if template.update(template_params)
+    if template.update(template_params.merge(draft: false))
       redirect_to templates_path, success: "Template atualizado com sucesso!"
     end
   end
 
   def destroy
-    if template.destroy
-      redirect_to templates_path
+    begin
+      template.destroy
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "Não foi possível encontrar o template"
     end
-  end
 
-  def check_for_commit
-    case params[:commit]
-    when "delete"
-      destroy
-    end
+    redirect_to templates_path
   end
 
   private

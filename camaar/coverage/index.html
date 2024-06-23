@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T17:32:36-03:00">2024-06-23T17:32:36-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-23T17:53:18-03:00">2024-06-23T17:53:18-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -43,9 +43,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1131</b> relevant lines,
+    <b>1136</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1131</b> lines missed. </span>
+    <span class="red"><b>1136</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -205,10 +205,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">84</td>
-            <td class="cell--number">64</td>
+            <td class="cell--number">89</td>
+            <td class="cell--number">69</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">64</td>
+            <td class="cell--number">69</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -630,9 +630,9 @@
   </div>
 
   <div class="t-line-summary">
-    <b>1005</b> relevant lines,
+    <b>1010</b> relevant lines,
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>1005</b> lines missed. </span>
+    <span class="red"><b>1010</b> lines missed. </span>
     (<span class="red">
   0.0%
 </span>
@@ -792,10 +792,10 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#fe04bde174241bdb438dbd2831014d08e562015c" class="src_link" title="app/controllers/templates_controller.rb">app/controllers/templates_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">0.00 %</td>
-            <td class="cell--number">84</td>
-            <td class="cell--number">64</td>
+            <td class="cell--number">89</td>
+            <td class="cell--number">69</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">64</td>
+            <td class="cell--number">69</td>
             <td class="cell--number">0.00</td>
             
           </tr>
@@ -13642,9 +13642,9 @@
     
 
     <div class="t-line-summary">
-      <b>64</b> relevant lines.
+      <b>69</b> relevant lines.
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>64</b> lines missed.</span>
+      <span class="red"><b>69</b> lines missed.</span>
     </div>
 
     
@@ -13738,7 +13738,7 @@
 
             
 
-            <code class="ruby">  before_action :set_template_data, only: [:destroy, :edit, :update, :show]</code>
+            <code class="ruby">  before_action :check_for_commit</code>
           </li>
         </div>
       
@@ -13749,7 +13749,7 @@
 
             
 
-            <code class="ruby">  before_action :check_for_commit</code>
+            <code class="ruby">  before_action :set_template_data, only: [:destroy, :edit, :update, :show]</code>
           </li>
         </div>
       
@@ -14112,7 +14112,7 @@
 
             
 
-            <code class="ruby">    if template.destroy</code>
+            <code class="ruby">    begin</code>
           </li>
         </div>
       
@@ -14123,7 +14123,7 @@
 
             
 
-            <code class="ruby">      redirect_to templates_path</code>
+            <code class="ruby">      if template and template.destroy</code>
           </li>
         </div>
       
@@ -14134,7 +14134,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        redirect_to templates_path</code>
           </li>
         </div>
       
@@ -14145,18 +14145,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="missed" data-hits="0" data-linenumber="46">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    rescue ActiveRecord::RecordNotFound</code>
           </li>
         </div>
       
@@ -14167,7 +14167,7 @@
 
             
 
-            <code class="ruby">  def check_for_commit</code>
+            <code class="ruby">      flash[:alert] = &quot;Não foi possível encontrar o template&quot;</code>
           </li>
         </div>
       
@@ -14178,7 +14178,7 @@
 
             
 
-            <code class="ruby">    case params[:commit]</code>
+            <code class="ruby">      redirect_to templates_path</code>
           </li>
         </div>
       
@@ -14189,7 +14189,7 @@
 
             
 
-            <code class="ruby">    when &quot;delete&quot;</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -14200,18 +14200,18 @@
 
             
 
-            <code class="ruby">      destroy</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="51">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14222,18 +14222,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  def check_for_commit</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="missed" data-hits="0" data-linenumber="53">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    case params[:commit]</code>
           </li>
         </div>
       
@@ -14244,18 +14244,18 @@
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">    when &quot;delete&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="missed" data-hits="0" data-linenumber="55">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      destroy</code>
           </li>
         </div>
       
@@ -14266,7 +14266,7 @@
 
             
 
-            <code class="ruby">  def set_template_data</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -14277,18 +14277,18 @@
 
             
 
-            <code class="ruby">    template</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="58">
             
             
 
             
 
-            <code class="ruby">    template_name</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14299,18 +14299,18 @@
 
             
 
-            <code class="ruby">    role</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="60">
             
             
 
             
 
-            <code class="ruby">    questions</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -14321,18 +14321,18 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  def set_template_data</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="missed" data-hits="0" data-linenumber="62">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    template</code>
           </li>
         </div>
       
@@ -14343,7 +14343,7 @@
 
             
 
-            <code class="ruby">  def template</code>
+            <code class="ruby">    template_name</code>
           </li>
         </div>
       
@@ -14354,7 +14354,7 @@
 
             
 
-            <code class="ruby">    @template = Template.find(params[:id])</code>
+            <code class="ruby">    role</code>
           </li>
         </div>
       
@@ -14365,12 +14365,23 @@
 
             
 
+            <code class="ruby">    questions</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="66">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="never" data-hits="" data-linenumber="67">
             
             
 
@@ -14381,24 +14392,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="67">
-            
-            
-
-            
-
-            <code class="ruby">  def template_name</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="68">
             
             
 
             
 
-            <code class="ruby">    template_params = params[:template] || {}</code>
+            <code class="ruby">  def template</code>
           </li>
         </div>
       
@@ -14409,7 +14409,7 @@
 
             
 
-            <code class="ruby">    @template_name = template_params[:name] || template.name</code>
+            <code class="ruby">    @template = Template.find(params[:id])</code>
           </li>
         </div>
       
@@ -14442,7 +14442,7 @@
 
             
 
-            <code class="ruby">  def role</code>
+            <code class="ruby">  def template_name</code>
           </li>
         </div>
       
@@ -14464,7 +14464,7 @@
 
             
 
-            <code class="ruby">    @role = template_params[:role] || template.role</code>
+            <code class="ruby">    @template_name = template_params[:name] || template.name</code>
           </li>
         </div>
       
@@ -14497,7 +14497,7 @@
 
             
 
-            <code class="ruby">  def questions</code>
+            <code class="ruby">  def role</code>
           </li>
         </div>
       
@@ -14508,7 +14508,7 @@
 
             
 
-            <code class="ruby">    @questions = TemplateQuestion.where(template_id: template.id)</code>
+            <code class="ruby">    template_params = params[:template] || {}</code>
           </li>
         </div>
       
@@ -14519,12 +14519,23 @@
 
             
 
+            <code class="ruby">    @role = template_params[:role] || template.role</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="80">
+            
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
+          <li class="never" data-hits="" data-linenumber="81">
             
             
 
@@ -14535,24 +14546,13 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="81">
-            
-            
-
-            
-
-            <code class="ruby">  def template_params</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="missed" data-hits="0" data-linenumber="82">
             
             
 
             
 
-            <code class="ruby">    params.require(:template).permit(:name, :role)</code>
+            <code class="ruby">  def questions</code>
           </li>
         </div>
       
@@ -14563,12 +14563,67 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    @questions = TemplateQuestion.where(template_id: template.id)</code>
           </li>
         </div>
       
         <div>
           <li class="missed" data-hits="0" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="86">
+            
+            
+
+            
+
+            <code class="ruby">  def template_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="87">
+            
+            
+
+            
+
+            <code class="ruby">    params.require(:template).permit(:name, :role)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="89">
             
             
 
