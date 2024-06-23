@@ -72,6 +72,7 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem "rubycritic", require: false
 end
 
 gem 'devise'
@@ -81,7 +82,6 @@ gem 'capybara-email'
 # gem install metric_fu-Saikuro
 gem 'rchart'
 gem 'rdoc'
-gem 'rubycritic', require: false
 gem 'simple_bdd'
 gem 'simplecov'
 gem 'simple_form'
