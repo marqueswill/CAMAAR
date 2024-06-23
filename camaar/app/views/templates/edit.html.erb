@@ -6,7 +6,7 @@
 
             <div class="form-group form-inline">
               <%= f.label :name, "Nome do template:", class: "mr-2"%>
-              <%= f.text_field :name, class: "form-control form-control-sm", id: "name", value: @template.name %>
+              <%= f.text_field :name, class: "form-control form-control-sm", id: "name", value: @template_name %>
 
               <%= f.label :role, "Tipo de template:", class: "mr-2" %>
               <%= f.select :role, options_for_select([["Discente", "discente"], ["Docente", "docente"]], @role) %>
