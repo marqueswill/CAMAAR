@@ -1,4 +1,6 @@
-# frozen_string_literal: true
+# Essa controladora se baseia nas funções da classe pai "Devise::SessionsController"
+# Essencialmente, ela gerencia o início e o fim de sessão de usuário, de forma que
+# o usuário correspondente consiga acessar o sistema Camaar
 
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]

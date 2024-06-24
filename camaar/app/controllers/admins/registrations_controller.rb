@@ -1,4 +1,6 @@
-# frozen_string_literal: true
+# Essa controladora se baseia nas funções da classe pai "Devise::RegistrationsController"
+# Essencialmente, ela gerencia o registro de administradores, de forma que
+# seja possível registrar um administrador para acessar o sistema Camaar
 
 class Admins::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
