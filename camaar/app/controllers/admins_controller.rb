@@ -87,37 +87,46 @@ class AdminsController < ApplicationController
     @errors = []
     json = params[:admin_import][:file].tempfile.path
     selected_data = params[:select_data]
+    import_data(selected_data, json)
+  end
 
+  def import_data(selected_data, json)
+    file = JSON.parse(File.read(json))
     case selected_data
     when '1'
-      members = JSON.parse(File.read(json))
-      ImportMembersService.call(members)
-      flash[:notice] = 'Membros importados com sucesso'
-      redirect_to '/admins/import'
+      import_members(file)
     when '2'
-      classes = JSON.parse(File.read(json))
-      ImportClassesService.call(classes)
-      flash[:notice] = 'Turmas importadas com sucesso'
-      redirect_to '/admins/import'
+      import_classes(file)
     when '3'
-      root_dpto = Department.find_by(initials: 'ROOT')
-      if root_dpto.nil?
-        flash[:error] = 'Você não é admin ROOT'
-        return redirect_to '/admins/import'
-      end
-      root_cord = Coordinator.find_by(department_id: root_dpto.id)
-      if root_cord.nil?
-        flash[:error] = 'Você não é admin ROOT'
-        return redirect_to '/admins/import'
-      end
-      if current_admin.email == root_cord.email
-        departamentos = JSON.parse(File.read(json))
-        ImportDepartmentsService.call(departamentos)
-      else
-        flash[:error] = 'Você não é admin ROOT'
-      end
-      redirect_to '/admins/import'
+      import_departments(file)
     end
+    redirect_to '/admins/import'
+  end
+
+  def import_departments(file)
+    if root?
+      ImportDepartmentsService.call(file)
+    else
+      flash[:error] = 'Você não é admin ROOT'
+    end
+  end
+
+  def import_classes(file)
+    ImportClassesService.call(file)
+    flash[:notice] = 'Turmas importadas com sucesso'
+  end
+
+  def import_members(file)
+    ImportMembersService.call(file)
+    flash[:notice] = 'Membros importados com sucesso'
+  end
+
+  def root?
+    root_dpto = Department.find_by(initials: 'ROOT')
+    return false if root_dpto.nil?
+
+    root_cord = Coordinator.find_by(department_id: root_dpto.id)
+    current_admin&.email == root_cord&.email
   end
 
   def results

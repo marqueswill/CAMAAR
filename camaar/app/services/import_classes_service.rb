@@ -1,5 +1,5 @@
 class ImportClassesService
-  def self.call(_members)
+  def self.call(classes)
     classes.each do |subject_class|
       initials = subject_class['code'].gsub(/[^a-zA-Z]/, '')
       keys = { subject: subject_class['code'],
