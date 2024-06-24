@@ -23,23 +23,37 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
-  
   def set_admin_data
-    @errors = []
-    if coordinator
-      @department = Department.find_by_id(@coordinator.department_id)
-      @classes = SubjectClass.where(department_id: @coordinator.department_id)
-      @teachers = Teacher.where(department_id: @coordinator.department_id)
-    end
-    @templates = Template.where(coordinator_id: @coordinator.id)
-
-    if @templates.empty?
-      @errors << "Não foram encontrados templates"
-    end
+    coordinator
+    department
+    classes
+    teachers
+    templates
   end
 
   def coordinator
     @coordinator = Coordinator.find_by({ email: current_admin.email })
+  end
+
+  def department
+    @department = Department.find_by_id(coordinator.department_id)
+  end
+
+  def classes
+    @classes = SubjectClass.where(department_id: coordinator.department_id)
+  end
+
+  def teachers
+    @teachers = Teacher.where(department_id: coordinator.department_id)
+  end
+
+  def templates
+    @templates = Template.where(coordinator_id: coordinator.id)
+    @errors = []
+
+    if @templates.empty?
+      @errors << "Não foram encontrados templates"
+    end
   end
 
   def set_user_data
