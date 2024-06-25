@@ -36,8 +36,8 @@ class AdminsController < ApplicationController
     if !teacher_template_id.present? && !student_template_id.present?
       flash[:warning] = 'Selecione pelo menos um template para envio.'
     else
-      dispatch_teacher_template(teacher_template_id, subject_class_id) if teacher_template_id.present?
-      dispatch_student_template(student_template_id, subject_class_id) if student_template_id.present?
+      dispatch_template(teacher_template_id, subject_class_id, 'teacher') if teacher_template_id.present?
+      dispatch_template(student_template_id, subject_class_id, 'student') if student_template_id.present?
     end
   end
 
@@ -49,18 +49,36 @@ class AdminsController < ApplicationController
     end
   end
 
-  def dispatch_teacher_template(teacher_template_id,subject_class_id)
-    teacher_form, teacher_template = setup_teacher_form(teacher_template_id,subject_class_id)
-    return unless teacher_form.save
-    DispatchTemplateService.dispatch_teacher(teacher_template,teacher_form)
-    flash[:success] = "O formulário para o professor da turma #{SubjectClass.find_by(id: subject_class_id).name} foi criado com sucesso.<br>"
+  def dispatch_template(template_id, subject_class_id, role)
+
+    form,template = forms?(role,template_id,subject_class_id)
+
+    return unless form.save
+
+    role?(role,template,form)
+
+    flash[:success] = "O formulário para #{role == 'teacher' ? 'o professor' : 'os alunos'} da turma #{SubjectClass.find_by(id: subject_class_id).name} foi criado com sucesso.<br>"
   end
 
-  def dispatch_student_template(student_template_id, subject_class_id)
-    student_form, student_template = setup_student_form(student_template_id, subject_class_id)
-    return unless student_form.save
-    DispatchTemplateService.dispatch_student(student_template,student_form)
-    flash[:success] = "O formulário para os alunos da turma #{SubjectClass.find_by(id: subject_class_id).name} foi criado com sucesso.<br>"
+  def forms?(role,template_id,subject_class_id)
+    case role
+    when 'teacher'
+      form, template = setup_teacher_form(template_id, subject_class_id)
+    when 'student'
+      form, template = setup_student_form(template_id, subject_class_id)
+    else
+      return
+    end
+    [form,template]
+  end
+
+  def role?(role,template,form)
+    case role
+    when 'teacher'
+      DispatchTemplateService.dispatch_teacher(template, form)
+    when 'student'
+      DispatchTemplateService.dispatch_student(template, form)
+    end
   end
 
   def setup_student_form(student_template_id, subject_class_id)
