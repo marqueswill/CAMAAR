@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/user.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -14,14 +14,14 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/application_record.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/admin.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/admin.rb": {
         "lines": [
           1,
           null,
@@ -33,7 +33,76 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/lib/dispatch.rb": {
+        "lines": [
+          1,
+          1,
+          5,
+          5,
+          5,
+          null,
+          5,
+          null,
+          null,
+          1,
+          5,
+          5,
+          null,
+          0,
+          null,
+          5,
+          null,
+          null,
+          null,
+          1,
+          null,
+          9,
+          null,
+          9,
+          null,
+          9,
+          null,
+          9,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          9,
+          null,
+          4,
+          null,
+          5,
+          null,
+          0,
+          null,
+          9,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/admins_controller.rb": {
         "lines": [
           1,
           1,
@@ -59,8 +128,10 @@
           null,
           1,
           12,
+          null,
           12,
           null,
+          5,
           5,
           5,
           null,
@@ -68,14 +139,6 @@
           7,
           null,
           null,
-          null,
-          1,
-          5,
-          5,
-          0,
-          null,
-          5,
-          5,
           null,
           null,
           null,
@@ -85,50 +148,6 @@
           null,
           7,
           null,
-          null,
-          null,
-          1,
-          null,
-          9,
-          null,
-          9,
-          null,
-          9,
-          null,
-          9,
-          null,
-          null,
-          1,
-          9,
-          null,
-          4,
-          null,
-          5,
-          null,
-          0,
-          null,
-          9,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
           null,
           null,
           1,
@@ -289,7 +308,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/application_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/application_controller.rb": {
         "lines": [
           null,
           1,
@@ -344,67 +363,67 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/application_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/admin_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/admin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/classes_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/classes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/departments_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/departments_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/errors_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/errors_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/forms_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subject_classes_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/subject_classes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subjectclasss_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/subjectclasss_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/template_questions_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/template_questions_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/templates_helper.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/helpers/templates_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/answers_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/answers_controller.rb": {
         "lines": [
           1,
           null,
@@ -487,7 +506,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/classes_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/classes_controller.rb": {
         "lines": [
           1,
           1,
@@ -500,7 +519,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/forms_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/forms_controller.rb": {
         "lines": [
           1,
           1,
@@ -584,7 +603,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/home_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/home_controller.rb": {
         "lines": [
           1,
           1,
@@ -602,7 +621,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/subject_classes_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/subject_classes_controller.rb": {
         "lines": [
           1,
           1,
@@ -639,7 +658,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/template_questions_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/template_questions_controller.rb": {
         "lines": [
           1,
           1,
@@ -810,7 +829,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/templates_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/templates_controller.rb": {
         "lines": [
           1,
           null,
@@ -906,7 +925,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -950,7 +969,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/confirmations_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/admins/confirmations_controller.rb": {
         "lines": [
           null,
           null,
@@ -959,7 +978,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/passwords_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/admins/passwords_controller.rb": {
         "lines": [
           null,
           null,
@@ -994,7 +1013,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/registrations_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/admins/registrations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1031,7 +1050,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/sessions_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/admins/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -1049,14 +1068,14 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/confirmations_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/users/confirmations_controller.rb": {
         "lines": [
           null,
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/passwords_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/users/passwords_controller.rb": {
         "lines": [
           null,
           null,
@@ -1086,7 +1105,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/registrations_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/users/registrations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1122,7 +1141,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/sessions_controller.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/controllers/users/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -1141,7 +1160,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/admins_mailer.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/mailers/admins_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1151,7 +1170,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/application_mailer.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1159,7 +1178,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/users_mailer.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/mailers/users_mailer.rb": {
         "lines": [
           1,
           null,
@@ -1172,7 +1191,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/coordinator.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/coordinator.rb": {
         "lines": [
           1,
           1,
@@ -1181,14 +1200,14 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/department.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/department.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/enrollment.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/enrollment.rb": {
         "lines": [
           1,
           1,
@@ -1196,7 +1215,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/form.rb": {
         "lines": [
           1,
           null,
@@ -1206,7 +1225,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form_question.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/form_question.rb": {
         "lines": [
           1,
           1,
@@ -1215,7 +1234,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1226,7 +1245,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student_answer.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/student_answer.rb": {
         "lines": [
           1,
           1,
@@ -1234,7 +1253,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/subject_class.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/subject_class.rb": {
         "lines": [
           1,
           1,
@@ -1245,7 +1264,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/teacher.rb": {
         "lines": [
           1,
           1,
@@ -1253,7 +1272,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher_answer.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/teacher_answer.rb": {
         "lines": [
           1,
           1,
@@ -1261,7 +1280,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/template.rb": {
         "lines": [
           1,
           1,
@@ -1270,7 +1289,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template_question.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/models/template_question.rb": {
         "lines": [
           1,
           1,
@@ -1280,7 +1299,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/admin_registration_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/admin_registration_service.rb": {
         "lines": [
           1,
           1,
@@ -1291,7 +1310,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/dispatch_template_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/dispatch_template_service.rb": {
         "lines": [
           1,
           1,
@@ -1329,7 +1348,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_csv_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/export_csv_service.rb": {
         "lines": [
           1,
           1,
@@ -1376,7 +1395,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_png_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/export_png_service.rb": {
         "lines": [
           1,
           1,
@@ -1429,7 +1448,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_classes_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/import_classes_service.rb": {
         "lines": [
           1,
           1,
@@ -1460,7 +1479,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_departments_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/import_departments_service.rb": {
         "lines": [
           1,
           1,
@@ -1475,7 +1494,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_members_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/import_members_service.rb": {
         "lines": [
           1,
           1,
@@ -1553,7 +1572,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/results_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/results_service.rb": {
         "lines": [
           1,
           1,
@@ -1576,7 +1595,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/setup_form_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/setup_form_service.rb": {
         "lines": [
           1,
           1,
@@ -1602,7 +1621,7 @@
           null
         ]
       },
-      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/summary_service.rb": {
+      "/home/jp_sds/Documentos/camaar/CAMAAR/camaar/app/services/summary_service.rb": {
         "lines": [
           1,
           1,
@@ -1640,7 +1659,7 @@
         ]
       }
     },
-    "timestamp": 1719325070
+    "timestamp": 1719329836
   },
   "Cucumber Features": {
     "coverage": {
