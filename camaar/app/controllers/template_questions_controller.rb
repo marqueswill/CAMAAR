@@ -45,6 +45,7 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def new
+    flash[:alert] = @errors[:warning] if not flash[:alert]
   end
 
   def create
@@ -69,21 +70,10 @@ class TemplateQuestionsController < ApplicationController
   private
 
   def create_question_body
-    body = { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
+    body = initialize_body
     warnings = @errors[:warning]
 
-    if question_type == "multiple_choice"
-      options_number.times.each do |index|
-        input = options[index]
-        option_key = index + 1
-
-        if input.empty?
-          warnings << "option_#{option_key} Campo não pode estar vazio"
-        else
-          body["options"][option_key] = input
-        end
-      end
-    end
+    populate_options(body, warnings) if question_type == "multiple_choice"
 
     body.to_json if warnings.empty?
   end
@@ -91,6 +81,24 @@ class TemplateQuestionsController < ApplicationController
   def parse_question_body
     body = template_question.body
     return JSON.parse(body)["options"].values if body
+  end
+
+  def initialize_body
+    { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
+  end
+
+  def populate_options(body, warnings)
+    options_number.times.each do |index|
+      input = options[index]
+      option_key = index + 1
+
+      if input.empty?
+        warnings << "option_#{option_key}"
+        # warnings << "option_#{option_key} Campo não pode estar vazio"
+      else
+        body["options"][option_key] = input
+      end
+    end
   end
 
   def set_template_question_data
