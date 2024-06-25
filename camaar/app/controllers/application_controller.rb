@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :verify_authenticity_token
 
+
   def after_sign_in_path_for(_resource)
     if admin_signed_in? # Assuming there is such a function
       # admins_page_path
@@ -54,6 +55,17 @@ class ApplicationController < ActionController::Base
     if @templates.empty?
       @errors << "Não foram encontrados templates"
     end
+  end
+
+  def set_errors
+    @errors = { primary: [],
+                secondary: [],
+                sucess: [],
+                danger: [],
+                warning: [],
+                info: [],
+                light: [],
+                dark: [] }
   end
 
   def set_user_data

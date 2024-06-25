@@ -1,8 +1,13 @@
+# This class handles CRUD operations (Create, Read, Update, Delete) for TemplateQuestions.
+# It's used within the admin context to manage questions associated with Templates.
+# It provides methods for listing, showing, editing, creating, and deleting TemplateQuestions.
+# It also handles validations for question options based on the question type.
 class TemplateQuestionsController < ApplicationController
   before_action :set_admin_data
-  before_action :set_template
-  before_action :set_template_question, only: [:edit, :update, :destroy]
   before_action :check_for_commit
+  before_action :set_template_question_data
+  before_action :set_errors
+
   layout "admin"
 
   def index
@@ -12,156 +17,140 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def edit
-    get_question_data_from_model
-    save_to_session
-    save_to_controller
   end
 
   def update
-    @errors = []
-    get_question_data_from_model
-    save_to_session
-    save_to_controller
-
     new_data = {
       id: params[:id].to_i,
-      title: @title,
-      question_type: @question_type,
+      title: title,
+      question_type: question_type,
       body: create_question_body,
-      template_id: @template.id,
+      template_id: template.id,
     }
 
-    if @template_question.update(new_data) and @errors.empty?
-      clear_session
-      redirect_to edit_template_path(@template)
+    warnings = @errors[:warning]
+    if template_question.update(new_data) and warnings.empty?
+      redirect_to edit_template_path(template)
     else
-      @errors.concat @template_question.errors.full_messages
-      flash[:alert] = @errors
-      redirect_to edit_template_template_question_path(@template, @template_question)
+      warnings.concat template_question.errors.full_messages
+      flash[:alert] = warnings
+      redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
     end
   end
 
   def destroy
-    if @template_question.destroy
-      clear_session
-      redirect_to edit_template_path(@template)
+    if template_question.destroy
+      redirect_to edit_template_path(template)
     end
   end
 
   def new
-    save_to_session
-    save_to_controller
+    flash[:alert] = @errors[:warning] if not flash[:alert]
   end
 
   def create
-    save_to_session
-    save_to_controller
-    @errors = []
-
-    @question = TemplateQuestion.new({
-      title: @title,
+    question = TemplateQuestion.new({
+      title: title,
       body: create_question_body,
-      question_type: @question_type,
-      template_id: @template.id,
+      question_type: question_type,
+      template_id: template.id,
     })
 
-    if @question.save and @errors.empty?
-      clear_session
-      redirect_to edit_template_path(@template)
+    warnings = @errors[:warning]
+    if question.save and warnings.empty?
+      redirect_to edit_template_path(template)
     else
-      @errors.concat @question.errors.full_messages
-
-      flash[:alert] = @errors
-
-      save_to_session
-      redirect_to new_template_template_question_path
+      flash[:alert] = warnings.concat question.errors.full_messages
+      redirect_to new_template_template_question_path(params: template_question_params)
     end
   end
 
-  def set_template
-    @template = Template.find_by_id(params[:template_id].to_i)
-  end
-
-  def set_template_question
-    @template_question = TemplateQuestion.find_by_id(params[:id].to_i)
-  end
+  private
 
   def create_question_body
-    body = { "options" => {} }
+    body = initialize_body
+    warnings = @errors[:warning]
 
-    if @question_type == "multiple_choice"
-      @options.each_with_index do |option, index|
-        option_number = index + 1
-        if option_number <= @options_number.to_i
-          if option.empty?
-            @errors << "option_#{option_number} Campo não pode estar vazio"
-          else
-            body["options"][option_number.to_s] = option
-          end
-        else
-          @options[index] = ""
-          body["options"][option_number.to_s] = ""
-        end
+    populate_options(body, warnings) if question_type == "multiple_choice"
+
+    body.to_json if warnings.empty?
+  end
+
+  def parse_question_body
+    body = template_question.body
+    return JSON.parse(body)["options"].values if body
+  end
+
+  def initialize_body
+    { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
+  end
+
+  def populate_options(body, warnings)
+    options_number.times.each do |index|
+      input = options[index]
+      option_key = index + 1
+
+      if input.empty?
+        warnings << "option_#{option_key}"
+        # warnings << "option_#{option_key} Campo não pode estar vazio"
+      else
+        body["options"][option_key] = input
       end
     end
-
-    return body.to_json
   end
 
-  def save_to_session
-    if not params[:template_question]
-      session[:title] = params[:title] if params[:title]
-      session[:options_number] = params[:options_number] if params[:options_number]
-      session[:options] = params[:options] if params[:options]
-      session[:question_type] = params[:question_type] if params[:question_type]
+  def set_template_question_data
+    template
+    template_question
+    question_type
+    title
+    options_number
+    options
+  end
+
+  def template
+    @template = Template.find_by_id(params[:template_id])
+  end
+
+  def template_question
+    @template_question = TemplateQuestion.find_by_id(params[:id]) || TemplateQuestion.new
+  end
+
+  def question_type
+    @question_type = params[:question_type] || template_question.question_type || ""
+  end
+
+  def title
+    @title = params[:title] || template_question.title || ""
+  end
+
+  def options
+    if question_type == "text"
+      @options = ["", "", "", "", ""]
     else
-      session[:title] = params[:template_question][:title] if params[:template_question][:title]
-      session[:options_number] = params[:template_question][:options_number] if params[:template_question][:options_number]
-      session[:options] = params[:options] if params[:options]
-      session[:question_type] = params[:template_question][:question_type] if params[:template_question][:question_type]
+      @options = params[:options] || parse_question_body || ["", "", "", "", ""]
     end
   end
 
-  def save_to_controller
-    @title = session[:title] || ""
-    @options = session[:options] || ["", "", "", "", ""]
-    @options_number = session[:options_number]
-    @question_type = session[:question_type]
-  end
-
-  def get_question_data_from_model
-    session[:question_type] = @template_question.question_type
-    session[:title] = @template_question.title
-    session[:options_number] = 0
-    session[:options] = []
-
-    options = JSON.parse(@template_question.body)["options"]
-    if options.empty?
-      session[:options] = ["", "", "", "", ""]
+  def options_number
+    if question_type == "text"
+      @options_number = 0
     else
-      options.values.each_with_index do |opt, i|
-        session[:options][i] = opt
-        if session[:options][i] != ""
-          session[:options_number] += 1
-        end
-      end
+      input = params[:options_number]
+      @options_number = input ? input.to_i : 5 - options.count { |str| str.empty? }
     end
   end
 
   def check_for_commit
     case params[:commit]
     when "cancel"
-      clear_session
-      redirect_to edit_template_path(@template)
+      redirect_to edit_template_path(template)
     when "delete"
       destroy
     end
   end
 
-  def clear_session
-    session[:title] = nil
-    session[:options_number] = nil
-    session[:options] = nil
-    session[:question_type] = nil
+  def template_question_params
+    params.permit(:title, :question_type, :options_number, options: [])
   end
 end
