@@ -132,37 +132,43 @@ class AdminsController < ApplicationController
   def results
     @forms = Form.where(coordinator_id: @coordinator.id)
 
-    answers = []
-    @forms.each do |form|
-      @form_questions = FormQuestion.where(form_id: form.id)
+    answers = ResultsService.fill_answers(@forms)
+    form_id = params[:form_id]
+    setup_results(form_id)
+  end
 
-      occupation = form.role
-      case occupation
-      when 'discente'
-        answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id)) if @form_questions
-      when 'docente'
-        answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id)) if @form_questions
-      end
-    end
-
-    @form = Form.find_by_id(params[:form_id]) if params[:form_id]
+  def setup_results(form_id)
+    @form = Form.find_by_id(form_id) if form_id
     @form_questions = FormQuestion.where(form_id: @form.id) if @form
 
-    student_answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id)) if @form_questions
-    teacher_answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id)) if @form_questions
+    mode = params[:export]
+    results?(mode)
+  end
 
-    if params[:export].present? and !((student_answers.present? or teacher_answers.present?))
+  def results?(mode)
+    if mode.present? && answers?(@form_questions)
       flash[:warning] = 'O formulário não possui respostas'
       redirect_to '/admins/results'
     else
-      case params[:export]
-      when 'csv'
-        export_to_csv
-      when 'graph'
-        @form = Form.find_by_id(params[:form_id])
-        @form_questions = FormQuestion.where(form_id: @form.id)
-        export_to_png
-      end
+      export?(mode)
+    end
+  end
+
+  def answers?(form_questions)
+    form_pluck = form_questions.pluck(:id)
+    students_answers = StudentAnswer.where(form_question_id: form_pluck) if form_questions
+    teacher_answers = TeacherAnswer.where(form_question_id: form_pluck) if form_questions
+    !(students_answers.present? or teacher_answers.present?)
+  end
+
+  def export?(mode)
+    case mode
+    when 'csv'
+      export_to_csv
+    when 'graph'
+      @form = Form.find_by_id(params[:form_id])
+      @form_questions = FormQuestion.where(form_id: @form.id)
+      export_to_png
     end
   end
 
