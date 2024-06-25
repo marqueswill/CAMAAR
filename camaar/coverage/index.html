@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-24T21:05:53-03:00">2024-06-24T21:05:53-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-24T21:23:48-03:00">2024-06-24T21:23:48-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  96.14%
+  96.16%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.71
+         6.69
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>700</b> relevant lines,
-    <span class="green"><b>673</b> lines covered</span> and
+    <b>703</b> relevant lines,
+    <span class="green"><b>676</b> lines covered</span> and
     <span class="red"><b>27</b> lines missed. </span>
     (<span class="green">
-  96.14%
+  96.16%
 </span>
 )
   </div>
@@ -116,12 +116,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#10df85ba17873eddd16eeb74dcedc434e1640bb9" class="src_link" title="app/controllers/admins_controller.rb">app/controllers/admins_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">97.16 %</td>
-            <td class="cell--number">259</td>
-            <td class="cell--number">141</td>
-            <td class="cell--number">137</td>
+            <td class="green strong cell--number t-file__coverage">97.22 %</td>
+            <td class="cell--number">262</td>
+            <td class="cell--number">144</td>
+            <td class="cell--number">140</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">4.40</td>
+            <td class="cell--number">4.34</td>
             
           </tr>
         
@@ -654,14 +654,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  96.51%
+  96.53%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.4
+         7.36
        </span>
     </span> hits/line
     )
@@ -674,11 +674,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>516</b> relevant lines,
-    <span class="green"><b>498</b> lines covered</span> and
+    <b>519</b> relevant lines,
+    <span class="green"><b>501</b> lines covered</span> and
     <span class="red"><b>18</b> lines missed. </span>
     (<span class="green">
-  96.51%
+  96.53%
 </span>
 )
   </div>
@@ -747,12 +747,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#10df85ba17873eddd16eeb74dcedc434e1640bb9" class="src_link" title="app/controllers/admins_controller.rb">app/controllers/admins_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">97.16 %</td>
-            <td class="cell--number">259</td>
-            <td class="cell--number">141</td>
-            <td class="cell--number">137</td>
+            <td class="green strong cell--number t-file__coverage">97.22 %</td>
+            <td class="cell--number">262</td>
+            <td class="cell--number">144</td>
+            <td class="cell--number">140</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">4.40</td>
+            <td class="cell--number">4.34</td>
             
           </tr>
         
@@ -2737,7 +2737,7 @@
     <h3>app/controllers/admins_controller.rb</h3>
     <h4>
       <span class="green">
-  97.16%
+  97.22%
 </span>
 
       lines covered
@@ -2746,8 +2746,8 @@
     
 
     <div class="t-line-summary">
-      <b>141</b> relevant lines.
-      <span class="green"><b>137</b> lines covered</span> and
+      <b>144</b> relevant lines.
+      <span class="green"><b>140</b> lines covered</span> and
       <span class="red"><b>4</b> lines missed.</span>
     </div>
 
@@ -5190,13 +5190,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="222">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="222">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    file_path = fill_csv(@form, csv_data)</code>
           </li>
         </div>
       
@@ -5207,40 +5207,40 @@
 
             
 
-            <code class="ruby">    file_path = Rails.root.join(&#39;export&#39;, &quot;#{@form.id}_#{@form.name}_results.csv&quot;)</code>
+            <code class="ruby">    send_file file_path, filename: &quot;#{@form.id}_#{@form.name}.csv&quot;.gsub(&#39; &#39;, &#39;_&#39;).downcase, type: &#39;text/csv&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="224">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="224">
+            
             
 
             
 
-            <code class="ruby">    directory_path = File.dirname(file_path)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="225">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="226">
+          <li class="never" data-hits="" data-linenumber="225">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="226">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def fill_csv(form, csv_data)</code>
           </li>
         </div>
       
@@ -5251,7 +5251,7 @@
 
             
 
-            <code class="ruby">    CSV.open(file_path, &#39;w&#39;) do |csv|</code>
+            <code class="ruby">    file_path = Rails.root.join(&#39;export&#39;, &quot;#{form.id}_#{form.name}_results.csv&quot;)</code>
           </li>
         </div>
       
@@ -5262,29 +5262,29 @@
 
             
 
-            <code class="ruby">      csv &lt;&lt; csv_data.headers</code>
+            <code class="ruby">    directory_path = File.dirname(file_path)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="229">
+          <li class="covered" data-hits="2" data-linenumber="229">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="230">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="230">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      csv_data.each do |row|</code>
           </li>
         </div>
       
@@ -5295,18 +5295,18 @@
 
             
 
-            <code class="ruby">        csv &lt;&lt; row</code>
+            <code class="ruby">    CSV.open(file_path, &#39;w&#39;) do |csv|</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="232">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="232">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">      end</code>
+            
+
+            <code class="ruby">      csv &lt;&lt; csv_data.headers</code>
           </li>
         </div>
       
@@ -5317,18 +5317,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="234">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="234">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      csv_data.each do |row|</code>
           </li>
         </div>
       
@@ -5339,7 +5339,7 @@
 
             
 
-            <code class="ruby">    send_file file_path, filename: &quot;#{@form.id}_#{@form.name}.csv&quot;.gsub(&#39; &#39;, &#39;_&#39;).downcase, type: &#39;text/csv&#39;</code>
+            <code class="ruby">        csv &lt;&lt; row</code>
           </li>
         </div>
       
@@ -5350,7 +5350,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -5361,12 +5361,45 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="238">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    file_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="239">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="240">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="238">
+          <li class="covered" data-hits="1" data-linenumber="241">
             <span class="hits">1</span>
             
 
@@ -5377,7 +5410,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="239">
+          <li class="covered" data-hits="2" data-linenumber="242">
             <span class="hits">2</span>
             
 
@@ -5388,7 +5421,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="240">
+          <li class="covered" data-hits="2" data-linenumber="243">
             <span class="hits">2</span>
             
 
@@ -5399,7 +5432,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="241">
+          <li class="covered" data-hits="2" data-linenumber="244">
             <span class="hits">2</span>
             
 
@@ -5410,7 +5443,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="242">
+          <li class="covered" data-hits="2" data-linenumber="245">
             <span class="hits">2</span>
             
 
@@ -5421,7 +5454,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="243">
+          <li class="never" data-hits="" data-linenumber="246">
             
             
 
@@ -5432,46 +5465,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="244">
+          <li class="never" data-hits="" data-linenumber="247">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="245">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def generate_graph</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="246">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    if @form.role == &#39;discente&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="247">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      ch = ExportPngService.generate_teacher_graph(@form)</code>
           </li>
         </div>
       
@@ -5482,12 +5482,45 @@
 
             
 
+            <code class="ruby">  def generate_graph</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="249">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    if @form.role == &#39;discente&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="250">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      ch = ExportPngService.generate_teacher_graph(@form)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="251">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    elsif @form.role == &#39;docente&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="249">
+          <li class="covered" data-hits="1" data-linenumber="252">
             <span class="hits">1</span>
             
 
@@ -5498,7 +5531,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="250">
+          <li class="never" data-hits="" data-linenumber="253">
             
             
 
@@ -5509,7 +5542,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="251">
+          <li class="covered" data-hits="2" data-linenumber="254">
             <span class="hits">2</span>
             
 
@@ -5520,7 +5553,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="252">
+          <li class="never" data-hits="" data-linenumber="255">
             
             
 
@@ -5531,7 +5564,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="253">
+          <li class="never" data-hits="" data-linenumber="256">
             
             
 
@@ -5542,7 +5575,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="254">
+          <li class="covered" data-hits="1" data-linenumber="257">
             <span class="hits">1</span>
             
 
@@ -5553,7 +5586,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="255">
+          <li class="covered" data-hits="2" data-linenumber="258">
             <span class="hits">2</span>
             
 
@@ -5564,7 +5597,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="256">
+          <li class="covered" data-hits="2" data-linenumber="259">
             <span class="hits">2</span>
             
 
@@ -5575,7 +5608,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="257">
+          <li class="covered" data-hits="2" data-linenumber="260">
             <span class="hits">2</span>
             
 
@@ -5586,7 +5619,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="258">
+          <li class="never" data-hits="" data-linenumber="261">
             
             
 
@@ -5597,7 +5630,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="259">
+          <li class="never" data-hits="" data-linenumber="262">
             
             
 

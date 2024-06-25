@@ -219,8 +219,12 @@ class AdminsController < ApplicationController
   def export_to_csv
     csv_string = generate_csv
     csv_data = CSV.parse(csv_string, headers: true)
+    file_path = fill_csv(@form, csv_data)
+    send_file file_path, filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
+  end
 
-    file_path = Rails.root.join('export', "#{@form.id}_#{@form.name}_results.csv")
+  def fill_csv(form, csv_data)
+    file_path = Rails.root.join('export', "#{form.id}_#{form.name}_results.csv")
     directory_path = File.dirname(file_path)
     FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)
 
@@ -231,8 +235,7 @@ class AdminsController < ApplicationController
         csv << row
       end
     end
-
-    send_file file_path, filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
+    file_path
   end
 
   def export_to_png
