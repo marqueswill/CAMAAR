@@ -143,12 +143,7 @@ class AdminsController < ApplicationController
       when 'docente'
         answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id)) if @form_questions
       end
-
-      # if answers.any?
-      #   answered_forms << form
-      # end
     end
-    # @forms = answered_forms
 
     @form = Form.find_by_id(params[:form_id]) if params[:form_id]
     @form_questions = FormQuestion.where(form_id: @form.id) if @form
@@ -258,41 +253,7 @@ class AdminsController < ApplicationController
 
   def generate_csv
     table = []
-    @form_questions.each do |question|
-      answers = if @form.role == 'discente'
-                  StudentAnswer.where(form_question_id: question.id)
-                else
-                  TeacherAnswer.where(form_question_id: question.id)
-                end
-
-      line = [question.title]
-
-      answers.each do |answ|
-        question_body = JSON.parse(FormQuestion.find_by_id(answ.form_question_id).body)
-        answer_body = JSON.parse(answ.answers)['answers']
-
-        case question.question_type
-        when 'text'
-          line << answer_body
-        when 'multiple_choice'
-          answer_body.each do |num, selected|
-            line << question_body['options'][num] if selected
-          end
-        end
-      end
-      table << line
-    end
-
-    head = ['Questão']
-    (table[0].length - 1).times do |i|
-      head << "Resposta #{i + 1}"
-    end
-    table.unshift(head)
-
-    CSV.generate do |csv|
-      table.each do |row|
-        csv << row
-      end
-    end
+    table = ExportCsvService.fill_table(table, @form, @form_questions)
+    ExportCsvService.call(table)
   end
 end
