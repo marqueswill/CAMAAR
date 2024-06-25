@@ -17,6 +17,7 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def edit
+    flash[:alert] = @errors[:warning] if not flash[:alert]
   end
 
   def update
@@ -34,6 +35,7 @@ class TemplateQuestionsController < ApplicationController
     else
       warnings.concat template_question.errors.full_messages
       flash[:alert] = warnings
+
       redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
     end
   end

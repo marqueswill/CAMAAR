@@ -7,7 +7,8 @@
             <div class="form-group row">
               <%= f.label :title, "Título:", class: "col-sm-2 col-form-label"%>
               <div class="col-sm-10">
-                <%= f.text_field :title,  value: @title,class:"form-control"%>
+                <%= f.text_field :title,  value: @title,class:"form-control", required:true%>
+                <div class="invalid-feedback"></div>
               </div>
             </div>
             <div>
@@ -22,8 +23,11 @@
               <div id="options_fields">
                 <% 5.times do |i| %>
                   <div style="display: none;" id="option<%= i %>_field">
+                    <br>
                     <%= f.label "option#{i+1}", "Opção #{i+1}" %>
-                    <%= f.text_field :options, id: "option#{i+1}", name: "options[]", value: @options[i] %>
+                    <%= f.text_field :options, class:"form-control",id: "option#{i+1}", name: "options[]", value: @options[i] %>
+                    <% empty_field = flash[:alert].include? ("option_#{i+1}") %>
+                    <p class="text-danger"><%= "Campo obrigatório" if empty_field%></p>
                   </div>
                 <% end %>
               </div>
@@ -35,7 +39,6 @@
               <%= f.submit "Salvar", class:"btn btn-success btn-sm"%>
             </div>
           <% end %>
-         <%= render '/layouts/flashes' %>
         </div>
       </div>
     </div>
