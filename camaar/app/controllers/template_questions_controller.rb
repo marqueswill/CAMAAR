@@ -60,9 +60,7 @@ class TemplateQuestionsController < ApplicationController
     if question.save and warnings.empty?
       redirect_to edit_template_path(template)
     else
-      warnings.concat question.errors.full_messages
-
-      flash[:alert] = warnings
+      flash[:alert] = warnings.concat question.errors.full_messages
       redirect_to new_template_template_question_path(params: template_question_params)
     end
   end
