@@ -28,11 +28,12 @@ class TemplateQuestionsController < ApplicationController
       template_id: template.id,
     }
 
-    if template_question.update(new_data) and @errors[:warning].empty?
+    warnings = @errors[:warning]
+    if template_question.update(new_data) and warnings.empty?
       redirect_to edit_template_path(template)
     else
-      @errors[:warning].concat template_question.errors.full_messages
-      flash[:alert] = @errors[:warning]
+      warnings.concat template_question.errors.full_messages
+      flash[:alert] = warnings
       redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
     end
   end
@@ -54,12 +55,13 @@ class TemplateQuestionsController < ApplicationController
       template_id: template.id,
     })
 
-    if question.save and @errors[:warning].empty?
+    warnings = @errors[:warning]
+    if question.save and warnings.empty?
       redirect_to edit_template_path(template)
     else
-      @errors[:warning].concat question.errors.full_messages
+      warnings.concat question.errors.full_messages
 
-      flash[:alert] = @errors[:warning]
+      flash[:alert] = warnings
       redirect_to new_template_template_question_path(params: template_question_params)
     end
   end
@@ -68,6 +70,7 @@ class TemplateQuestionsController < ApplicationController
 
   def create_question_body
     body = { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
+    warnings = @errors[:warning]
 
     if question_type == "multiple_choice"
       options_number.times.each do |index|
@@ -75,14 +78,14 @@ class TemplateQuestionsController < ApplicationController
         option_key = index + 1
 
         if input.empty?
-          @errors[:warning] << "option_#{option_key} Campo não pode estar vazio"
+          warnings << "option_#{option_key} Campo não pode estar vazio"
         else
           body["options"][option_key] = input
         end
       end
     end
 
-    body.to_json if @errors[:warning].empty?
+    body.to_json if warnings.empty?
   end
 
   def parse_question_body
