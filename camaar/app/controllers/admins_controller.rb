@@ -25,16 +25,13 @@ class AdminsController < ApplicationController
 
     case commit?(classes_ids, commit)
     when true
-      dispatch = Dispatch.new
-      dispatch.execute(classes_ids, student_template_id, teacher_template_id).each do |item|
+      Dispatch.new.execute(classes_ids, student_template_id, teacher_template_id).each do |item|
         flash[item[0].to_sym] = item[1]
       end
     when false
       flash[:warning] = 'Selecione as turmas para envio.'
     end
   end
-
-
 
   def commit?(classes_ids,commit)
     if classes_ids.present? && commit == 'confirm'
@@ -46,48 +43,10 @@ class AdminsController < ApplicationController
 
   def import
     @errors = []
-    json = params[:admin_import][:file].tempfile.path
-    selected_data = params[:select_data]
-    import_data(selected_data, json)
-  end
-
-  def import_data(selected_data, json)
-    file = JSON.parse(File.read(json))
-    case selected_data
-    when '1'
-      import_members(file)
-    when '2'
-      import_classes(file)
-    when '3'
-      import_departments(file)
-    end
+    json = JSON.parse(File.read(params[:admin_import][:file].tempfile.path))
+    symbol,msg = Import.new.import_data(params[:select_data], json,current_admin.email)
+    flash[symbol.to_sym] = msg
     redirect_to '/admins/import'
-  end
-
-  def import_departments(file)
-    if root?
-      ImportDepartmentsService.call(file)
-    else
-      flash[:error] = 'Você não é admin ROOT'
-    end
-  end
-
-  def import_classes(file)
-    ImportClassesService.call(file)
-    flash[:notice] = 'Turmas importadas com sucesso'
-  end
-
-  def import_members(file)
-    ImportMembersService.call(file)
-    flash[:notice] = 'Membros importados com sucesso'
-  end
-
-  def root?
-    root_dpto = Department.find_by(initials: 'ROOT')
-    return false if root_dpto.nil?
-
-    root_cord = Coordinator.find_by(department_id: root_dpto.id)
-    current_admin&.email == root_cord&.email
   end
 
   def results

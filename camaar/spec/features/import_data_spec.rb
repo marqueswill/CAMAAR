@@ -29,9 +29,7 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/classes.json'
 
-    page.attach_file(json) do
-      page.find('file-upload-button').click
-    end
+    page.attach_file('admin_import_file',json)
 
     click_button 'Importar'
 
@@ -41,15 +39,13 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/class_members.json'
 
-    page.attach_file(json) do
-      page.find('file-upload-button').click
-    end
+    page.attach_file('admin_import_file',json)
 
     click_button 'Importar'
 
     email = 'mholanda@unb.br'
 
-    open_email(email).click_link 'Registrar'
+    expect(open_email(email)).to have_content 'Registrar'
   end
 
   scenario 'admin can import classes' do
@@ -75,9 +71,7 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/classes.json'
 
-    page.attach_file(json) do
-      page.find('file-upload-button').click
-    end
+    page.attach_file('admin_import_file',json)
 
     click_button 'Importar'
 
@@ -109,9 +103,8 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/departments.json'
 
-    page.attach_file(json) do
-      page.find('file-upload-button').click
-    end
+    page.attach_file('admin_import_file',json)
+
 
     expect(page).to have_content 'Importar'
 
