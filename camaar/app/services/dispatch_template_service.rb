@@ -22,4 +22,13 @@ class DispatchTemplateService
                           })
     end
   end
+
+  def self.dispatch(role,template,form)
+    case role
+    when 'teacher'
+      DispatchTemplateService.dispatch_teacher(template, form)
+    when 'student'
+      DispatchTemplateService.dispatch_student(template, form)
+    end
+  end
 end

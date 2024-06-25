@@ -13,15 +13,15 @@ class AdminsController < ApplicationController
     @classes = SubjectClass.all
   end
 
-  def setup_envio
-    @student_templates = Template.where({ coordinator_id: @coordinator.id, draft: false, role: 'discente' })
-    @teacher_templates = Template.where({ coordinator_id: @coordinator.id, draft: false, role: 'docente' })
+  def setup_envio(coordinator_id)
+    @student_templates = Template.where({ coordinator_id: coordinator_id, draft: false, role: 'discente' })
+    @teacher_templates = Template.where({ coordinator_id: coordinator_id, draft: false, role: 'docente' })
     flash.clear
     [params[:teacher_template], params[:student_template],params[:classes_ids], params[:commit]]
   end
 
   def envio
-    teacher_template_id, student_template_id, classes_ids, commit = setup_envio
+    teacher_template_id, student_template_id, classes_ids, commit = setup_envio(@coordinator.id)
     case commit?(classes_ids, commit)
     when true
       classes_ids.each do |subject_class_id|
@@ -33,11 +33,12 @@ class AdminsController < ApplicationController
   end
 
   def dispatch?(teacher_template_id,student_template_id,subject_class_id)
-    if !teacher_template_id.present? && !student_template_id.present?
+    teacher_present,student_present = [teacher_template_id.present?,student_template_id.present?]
+    if !teacher_present && !student_present
       flash[:warning] = 'Selecione pelo menos um template para envio.'
     else
-      dispatch_template(teacher_template_id, subject_class_id, 'teacher') if teacher_template_id.present?
-      dispatch_template(student_template_id, subject_class_id, 'student') if student_template_id.present?
+      dispatch_template(teacher_template_id, subject_class_id, 'teacher') if teacher_present
+      dispatch_template(student_template_id, subject_class_id, 'student') if student_present
     end
   end
 
@@ -55,7 +56,7 @@ class AdminsController < ApplicationController
 
     return unless form.save
 
-    role?(role,template,form)
+    DispatchTemplateService.dispatch(role,template,form)
 
     flash[:success] = "O formulário para #{role == 'teacher' ? 'o professor' : 'os alunos'} da turma #{SubjectClass.find_by(id: subject_class_id).name} foi criado com sucesso.<br>"
   end
@@ -63,22 +64,13 @@ class AdminsController < ApplicationController
   def forms?(role,template_id,subject_class_id)
     case role
     when 'teacher'
-      form, template = setup_teacher_form(template_id, subject_class_id)
+      form, template = SetupFormService.setup_teacher_form(template_id, subject_class_id)
     when 'student'
-      form, template = setup_student_form(template_id, subject_class_id)
+      form, template = SetupFormService.setup_student_form(template_id, subject_class_id)
     else
       return
     end
     [form,template]
-  end
-
-  def role?(role,template,form)
-    case role
-    when 'teacher'
-      DispatchTemplateService.dispatch_teacher(template, form)
-    when 'student'
-      DispatchTemplateService.dispatch_student(template, form)
-    end
   end
 
   def setup_student_form(student_template_id, subject_class_id)
@@ -223,7 +215,11 @@ class AdminsController < ApplicationController
     file_path = Rails.root.join('export', "#{form.id}_#{form.name}_results.csv")
     directory_path = File.dirname(file_path)
     FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)
+    csv?(file_path,csv_data)
+    file_path
+  end
 
+  def csv?(file_path,csv_data)
     CSV.open(file_path, 'w') do |csv|
       csv << csv_data.headers
 
@@ -231,24 +227,21 @@ class AdminsController < ApplicationController
         csv << row
       end
     end
-    file_path
   end
 
   def export_to_png
-    graph = generate_graph
-    filename = "#{@form.name}.png"
+    name,id,graph,filename = [@form.name,@form.id,generate_graph,"#{name}.png"]
     file_path = ExportPngService.call(filename, graph)
-    send_file file_path, filename: "#{@form.id}_#{@form.name}.png".gsub(' ', '_').downcase, type: 'image/png'
+    send_file file_path, filename: "#{id}_#{name}.png".gsub(' ', '_').downcase, type: 'image/png'
   end
 
   def generate_graph
     case @form.role
     when 'discente'
-      ch = ExportPngService.generate_teacher_graph(@form)
+      ExportPngService.generate_teacher_graph(@form)
     when 'docente'
-      ch = ExportPngService.generate_student_graph(@form)
+      ExportPngService.generate_student_graph(@form)
     end
-    ch
   end
 
   def generate_csv
