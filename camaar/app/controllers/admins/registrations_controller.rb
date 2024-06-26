@@ -7,25 +7,29 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # POST /resource
+  # Método que possibilita o registro de Administrador.
+  # O método em quesstão efetuará uma chamada de serviço para AdminRegistrationService, que irá
+  # enviar um email confirmando o pedido de registro de usuáario.
   def create
     super do |resource|
       AdminRegistrationService.call(resource)
     end
   end
 
-  # GET /resource/edit
+  # Método proibido.
+  # O método em questão é herdado pela controladora do devise, mas proibido em nosso sistema,
+  # retornando um http status :forbidden e renderizando uma tela de erro.
   def edit
     render :'errors/forbidden', status: :forbidden
   end
 
   protected
-
+  # Método que solicita o requerimento dos parâmetros de registro
   def sign_up_params
     params.require(:admin).permit(:email, :password, :password_confirmation)
   end
 
-  #
-  # If you have extra params to permit, append them to the sanitizer.
+  # Método que configura os parâmetros de registro
   def configure_sign_up_params
     added_attrs = %i[email password password_confirmation remember_me]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)

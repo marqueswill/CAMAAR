@@ -3,10 +3,11 @@
 # o usuário correspondente consiga trocar sua senha e posteriormente acessar o sistema Camaar
 
 class Users::PasswordsController < Devise::PasswordsController # PUT /resource/password
-  # override this so user isn't signed in after resetting password
+
+  # Método que possibilita que o usuário atualize sua senha, efetuando uma requisição PUT
+  # Caso não haja erro, será confirmado pela execução do método user_password_service
   def update
     self.resource = resource_class.reset_password_by_token(resource_params)
-
     if resource.errors.empty?
       user_password_service(resource)
     else
@@ -16,6 +17,7 @@ class Users::PasswordsController < Devise::PasswordsController # PUT /resource/p
 
   protected
 
+  # Método que possibilita a confirmação de conta caso haja algum erro durante a troca de senha.
   def user_password_service(resource)
     resource.unlock_access! if unlockable?(resource)
     resource.send_confirmation_instructions unless resource.confirmed?

@@ -3,11 +3,12 @@
 # o usuário correspondente consiga acessar o sistema Camaar
 
 class Users::SessionsController < Devise::SessionsController
+  # configurar os parâmetros de sessão apenas quando presente a sessão :create
   before_action :configure_sign_in_params, only: [:create]
 
   protected
 
-  # If you have extra params to permit, append them to the sanitizer.
+  # Método que configura os parâmetros de sessão de usuário
   def configure_sign_in_params
     added_attrs = %i[email password password_confirmation remember_me]
     devise_parameter_sanitizer.permit(:sign_in, keys: added_attrs)
