@@ -1,7 +1,8 @@
-# This class handles CRUD operations (Create, Read, Update, Delete) for TemplateQuestions.
-# It's used within the admin context to manage questions associated with Templates.
-# It provides methods for listing, showing, editing, creating, and deleting TemplateQuestions.
-# It also handles validations for question options based on the question type.
+# Essa classe gerencia operações CRUD (Create, Read, Update, Delete) para a model TemplateQuestions.
+# É usada no contexto de páginas do administrador para gerenciar questões associadas com templates.
+# Provê métodos para listar, mostrar, editar, criar e deletar TemplareQuestions.
+# A classe também possui suporte a validações para opções de questões baseadas em seus respectivos tipos.
+
 class TemplateQuestionsController < ApplicationController
   before_action :set_admin_data
   before_action :check_for_commit
