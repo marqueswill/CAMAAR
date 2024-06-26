@@ -13,6 +13,7 @@ class Export < AdminsController
     CSV.parse(csv_string, headers: true)
   end
 
+
   # def export_to_png(form)
   #   name,id,graph,filename = [form.name,form.id,generate_graph(form),"#{name}.png"]
   #   ExportPngService.call(filename, graph)
