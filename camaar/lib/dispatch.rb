@@ -7,6 +7,14 @@ class Dispatch < AdminsController
     results
   end
 
+  def commit?(classes_ids,commit)
+    if classes_ids.present? && commit == 'confirm'
+      return true
+    else
+      return false
+    end
+  end
+
   def dispatch?(teacher_template_id,student_template_id,subject_class_id)
     teacher_present,student_present = [teacher_template_id.present?,student_template_id.present?]
     if !teacher_present && !student_present

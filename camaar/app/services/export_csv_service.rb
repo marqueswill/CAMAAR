@@ -13,6 +13,15 @@ class ExportCsvService
     end
   end
 
+  def self.csv?(file_path,csv_data)
+    CSV.open(file_path, 'w') do |csv|
+      csv << csv_data.headers
+      csv_data.each do |row|
+        csv << row
+      end
+    end
+  end
+
   def self.fill_table(table, form, form_questions)
     form_questions.each do |question|
       answers = if form.role == 'discente'

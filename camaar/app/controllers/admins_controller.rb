@@ -22,22 +22,14 @@ class AdminsController < ApplicationController
 
   def envio
     teacher_template_id, student_template_id, classes_ids, commit = setup_envio(@coordinator.id)
-
-    case commit?(classes_ids, commit)
+    dispatch = Dispatch.new
+    case dispatch.commit?(classes_ids, commit)
     when true
-      Dispatch.new.execute(classes_ids, student_template_id, teacher_template_id).each do |item|
+      dispatch.execute(classes_ids, student_template_id, teacher_template_id).each do |item|
         flash[item[0].to_sym] = item[1]
       end
     when false
       flash[:warning] = 'Selecione as turmas para envio.'
-    end
-  end
-
-  def commit?(classes_ids,commit)
-    if classes_ids.present? && commit == 'confirm'
-      return true
-    else
-      return false
     end
   end
 
@@ -82,13 +74,14 @@ class AdminsController < ApplicationController
   end
 
   def export?(mode)
+    export = Export.new
     case mode
     when 'csv'
-      export_to_csv
+      csv_data = export.export_to_csv(@form,@form_questions)
+      send_file export.fill_csv(@form.id,@form.name, csv_data), filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
     when 'graph'
-      @form = Form.find_by_id(params[:form_id])
-      @form_questions = FormQuestion.where(form_id: @form.id)
-      export_to_png
+      @form,@form_questions = [Form.find_by_id(params[:form_id]),FormQuestion.where(form_id: @form.id)]
+      export_to_png(export)
     end
   end
 
@@ -96,16 +89,8 @@ class AdminsController < ApplicationController
     @form = Form.find_by_id(params[:id])
     @form_questions = FormQuestion.where(form_id: @form.id)
     @form_answers = StudentAnswer.where(form_question_id: @form_questions[0].id)
-    # @form_status = @form.open ? "Aberto": "Fechado"
-
-    @total_number = if @form.role == 'discente'
-                      Enrollment.where(subject_class_id: @form.subject_class_id).length
-                    else
-                      1
-                    end
-    @answered_number = @form_answers.length
-
-    @form_summary = generate_summary
+    @total_number = @form.role == 'discente' ? Enrollment.where(subject_class_id: @form.subject_class_id).length : 1
+    @answered_number,@form_summary = [@form_answers.length,generate_summary]
   end
 
   def generate_summary
@@ -113,49 +98,10 @@ class AdminsController < ApplicationController
     SummaryService.call(resumo, @form_questions, @form)
   end
 
-  def export_to_csv
-    csv_string = generate_csv
-    csv_data = CSV.parse(csv_string, headers: true)
-    file_path = fill_csv(@form, csv_data)
-    send_file file_path, filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
-  end
-
-  def fill_csv(form, csv_data)
-    file_path = Rails.root.join('export', "#{form.id}_#{form.name}_results.csv")
-    directory_path = File.dirname(file_path)
-    FileUtils.mkdir_p(directory_path) unless File.directory?(directory_path)
-    csv?(file_path,csv_data)
-    file_path
-  end
-
-  def csv?(file_path,csv_data)
-    CSV.open(file_path, 'w') do |csv|
-      csv << csv_data.headers
-
-      csv_data.each do |row|
-        csv << row
-      end
-    end
-  end
-
-  def export_to_png
-    name,id,graph,filename = [@form.name,@form.id,generate_graph,"#{name}.png"]
+  def export_to_png(export)
+    name,id,graph,filename = [@form.name,@form.id,export.generate_graph(@form),"#{name}.png"]
     file_path = ExportPngService.call(filename, graph)
     send_file file_path, filename: "#{id}_#{name}.png".gsub(' ', '_').downcase, type: 'image/png'
   end
 
-  def generate_graph
-    case @form.role
-    when 'discente'
-      ExportPngService.generate_teacher_graph(@form)
-    when 'docente'
-      ExportPngService.generate_student_graph(@form)
-    end
-  end
-
-  def generate_csv
-    table = []
-    table = ExportCsvService.fill_table(table, @form, @form_questions)
-    ExportCsvService.call(table)
-  end
 end
