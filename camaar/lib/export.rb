@@ -13,6 +13,17 @@ class Export < AdminsController
     CSV.parse(csv_string, headers: true)
   end
 
+  def execute_csv(form,form_questions)
+    form_id, form_name = [form.id,form.name]
+    fill_csv(form_id,form_name, export_to_csv(form,form_questions))
+  end
+
+  # Método que gerencia as requisições para exportar um gráfico de setores relacionado a algum formulário respondido.
+  # O método em questão irá enviar um arquivo png do gráfico ao browser do administrador.
+  def export_to_png(form)
+    name,id,graph,filename = [form.name,form.id,generate_graph(form),"#{form.name}.png"]
+    ExportPngService.call(filename, graph)
+  end
 
   # def export_to_png(form)
   #   name,id,graph,filename = [form.name,form.id,generate_graph(form),"#{name}.png"]

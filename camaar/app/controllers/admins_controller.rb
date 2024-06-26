@@ -89,8 +89,7 @@ class AdminsController < ApplicationController
     export = Export.new
     case mode
     when 'csv'
-      csv_data = export.export_to_csv(@form,@form_questions)
-      send_file export.fill_csv(@form.id,@form.name, csv_data), filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
+      send_file export.execute_csv(@form,@form_questions), filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
     when 'graph'
       @form,@form_questions = [Form.find_by_id(params[:form_id]),FormQuestion.where(form_id: @form.id)]
       export_to_png(export)
