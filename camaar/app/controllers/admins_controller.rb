@@ -1,8 +1,9 @@
 require 'json'
 require 'rchart'
 require 'csv'
-
-# AdminsController gerencia as requisições nas páginas que o administrador/coordenador tem acesso
+# A classe AdminsController gerencia as principais ações relacionadas às funcionalidades do administrador.
+# Essa classe inclui a importação de dados, a exportação de resultados em CSV e Gráficos, visualização de
+# respostas de formulários, gerenciamento de templates etc.
 class AdminsController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
