@@ -34,9 +34,9 @@ class FormsController < ApplicationController
 
         case occupation
         when "discente"
-          answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id))
+          answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id), student_id: @student.id)
         when "docente"
-          answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id))
+          answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id), teacher_id: @teacher.id)
         end
 
         if answers.any?
