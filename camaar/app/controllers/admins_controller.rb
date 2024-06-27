@@ -8,11 +8,11 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_admin_data
   before_action :load
-
+  attr_reader :coordinator, :classes, :forms
   # Carrega os templates e as classes do departamento
   def load
-    @templates = Template.where(coordinator_id: @coordinator.id, draft: false)
-    @classes = SubjectClass.all
+    coord_id = coordinator.id
+    @templates,@forms = [Template.where(coordinator_id: coord_id, draft: false),Form.where(coordinator_id: coord_id)]
   end
 
   # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
@@ -28,7 +28,7 @@ class AdminsController < ApplicationController
   # as respectivas mensagens na página do administrador. Há o uso de uma instância da classe Dispatch, responsável por executar
   # os métodos de envio
   def envio
-    teacher_template_id, student_template_id, classes_ids, commit = setup_envio(@coordinator.id)
+    teacher_template_id, student_template_id, classes_ids, commit = setup_envio(coordinator.id)
     dispatch = Dispatch.new
     case dispatch.commit?(classes_ids, commit)
     when true
@@ -54,9 +54,7 @@ class AdminsController < ApplicationController
   # Método que gerencia as requisições para a visualização e obtenção de resultados para o administrador, que consistem
   # sumariamente nas respostas de alunos e/ou professores a um formulário previamente submetido.
   def results
-    @forms = Form.where(coordinator_id: @coordinator.id)
-
-    answers = ResultsService.fill_answers(@forms)
+    answers = ResultsService.fill_answers(forms)
     form_id = params[:form_id]
     setup_results(form_id)
   end
