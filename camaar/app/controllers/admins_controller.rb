@@ -9,19 +9,21 @@ class AdminsController < ApplicationController
   before_action :set_admin_data
   before_action :load
   attr_reader :coordinator, :classes, :forms
+
   # Carrega os templates e as classes do departamento
   def load
     coord_id = coordinator.id
-    @templates,@forms = [Template.where(coordinator_id: coord_id, draft: false),Form.where(coordinator_id: coord_id)]
+    @templates = Template.where(coordinator_id: coord_id, draft: false)
+    @forms = Form.where(coordinator_id: coord_id)
   end
 
   # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
   # professor, aluno, as classes e verifica se houve a requisição para enviar um template/formulário.
   def setup_envio(coordinator_id)
-    @student_templates = Template.where({ coordinator_id: coordinator_id, draft: false, role: 'discente' })
-    @teacher_templates = Template.where({ coordinator_id: coordinator_id, draft: false, role: 'docente' })
+    @student_templates = Template.where({ coordinator_id:, draft: false, role: 'discente' })
+    @teacher_templates = Template.where({ coordinator_id:, draft: false, role: 'docente' })
     flash.clear
-    [params[:teacher_template], params[:student_template],params[:classes_ids], params[:commit]]
+    [params[:teacher_template], params[:student_template], params[:classes_ids], params[:commit]]
   end
 
   # Método que recebe uma requisição para enviar um template/formulário. Caso haja sucesso ou erro, serão printadas
@@ -46,7 +48,7 @@ class AdminsController < ApplicationController
   def import
     @errors = []
     json = JSON.parse(File.read(params[:admin_import][:file].tempfile.path))
-    symbol,msg = Import.new.import_data(params[:select_data], json,current_admin.email)
+    symbol, msg = Import.new.import_data(params[:select_data], json, current_admin.email)
     flash[symbol.to_sym] = msg
     redirect_to '/admins/import'
   end
@@ -56,14 +58,15 @@ class AdminsController < ApplicationController
   def results
     answers = ResultsService.fill_answers(forms)
     form_id = params[:form_id]
-    setup_results(form_id)
+
+    setup_results(form_id) if form_id
   end
 
   # Método que funciona como setup para a visualização de resultados de formulários respondidos.
   # O método em questão configura os formulários e as questões, e verifica se houve ou não respostas.
   def setup_results(form_id)
-    @form = Form.find_by_id(form_id) if form_id
-    @form_questions = FormQuestion.where(form_id: @form.id) if @form
+    @form = Form.find_by_id(form_id)
+    @form_questions = FormQuestion.where(form_id: @form.id)
 
     mode = params[:export]
     results?(mode)
@@ -76,21 +79,8 @@ class AdminsController < ApplicationController
       flash[:warning] = 'O formulário não possui respostas'
       redirect_to '/admins/results'
     else
-      export?(mode)
-    end
-  end
-
-  # Método que gerencia as requisições para exportar os resultados de algum formulário.
-  # Caso a requisição seja para 'csv', será gerado um arquivo CSV contendo as respostas do formulário.
-  # Caso a requisição seja para 'graph', será gerado um arquivo png contendo um gráfico relacionado às estatísticas do form.
-  def export?(mode)
-    export = Export.new
-    case mode
-    when 'csv'
-      send_file export.execute_csv(@form,@form_questions), filename: "#{@form.id}_#{@form.name}.csv".gsub(' ', '_').downcase, type: 'text/csv'
-    when 'graph'
-      @form,@form_questions = [Form.find_by_id(params[:form_id]),FormQuestion.where(form_id: @form.id)]
-      export_to_png(export)
+      file, filename, type = Export.new.execute(mode, @form, @form_questions)
+      send_file file, filename:, type:
     end
   end
 
@@ -99,9 +89,9 @@ class AdminsController < ApplicationController
   def summary
     @form = Form.find_by_id(params[:id])
     @form_questions = FormQuestion.where(form_id: @form.id)
-    @form_answers = StudentAnswer.where(form_question_id: @form_questions[0].id)
     @total_number = @form.role == 'discente' ? Enrollment.where(subject_class_id: @form.subject_class_id).length : 1
-    @answered_number,@form_summary = [@form_answers.length,generate_summary]
+    @answered_number = StudentAnswer.where(form_question_id: @form_questions[0].id).length
+    @form_summary = generate_summary
   end
 
   # Método que gerencia as requisições para efetuar um resumo das respostas de todos os usuários acerca de um
@@ -110,13 +100,4 @@ class AdminsController < ApplicationController
     resumo = {}
     SummaryService.call(resumo, @form_questions, @form)
   end
-
-  # Método que gerencia as requisições para exportar um gráfico de setores relacionado a algum formulário respondido.
-  # O método em questão irá enviar um arquivo png do gráfico ao browser do administrador.
-  def export_to_png(export)
-    name,id,graph,filename = [@form.name,@form.id,export.generate_graph(@form),"#{name}.png"]
-    file_path = ExportPngService.call(filename, graph)
-    send_file file_path, filename: "#{id}_#{name}.png".gsub(' ', '_').downcase, type: 'image/png'
-  end
-
 end
