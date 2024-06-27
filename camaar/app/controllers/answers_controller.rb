@@ -8,12 +8,12 @@ class AnswersController < ApplicationController
     occupation = current_user.occupation
 
     @form = Form.find_by_id(params[:form_id])
-    form_questions_number = FormQuestion.where(form_id: @form.id).length
 
+    questions = FormQuestion.where(form_id: @form.id)
     answers_params = params[:answers]
     if answers_params.present?
-      form_questions_number.times.each do |i|
-        answ = answers_params[(i + 1).to_s]
+      questions.each do |question|
+        answ = answers_params[(question.id).to_s]
         if not answ or answ.empty?
           flash[:error] = "Responda todas questões."
           redirect_to edit_form_path(@form) and return
