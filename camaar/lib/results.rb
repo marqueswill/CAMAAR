@@ -6,4 +6,11 @@ class Results < AdminsController
     teacher_answers = TeacherAnswer.where(form_question_id: form_pluck) if form_questions
     !(students_answers.present? or teacher_answers.present?)
   end
+
+  # Método que gerencia as requisições para efetuar um resumo das respostas de todos os usuários acerca de um
+  # formulário.
+  def generate_summary(form_questions,form)
+    resumo = {}
+    SummaryService.call(resumo, form_questions, form)
+  end
 end

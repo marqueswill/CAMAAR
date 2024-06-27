@@ -73,6 +73,7 @@ RSpec.feature 'Results in graph and csv', type: :feature do
       click_link form.name
       expect(page).to have_content form.name
       expect(page).to have_content form_question.title
+      sleep(30)
     end
   end
   describe 'admin can see summary of teachers forms' do
