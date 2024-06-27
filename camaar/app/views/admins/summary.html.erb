@@ -5,9 +5,9 @@
       <div class="formbold-form-wrapper">
         
 
-        <h1 class="h1-aligned"><%= @form.name %></h1>
+        <h1 class="h1-aligned"><%= form.name %></h1>
       
-        <% @form_summary.each_with_index do |(title, answers), index| %>
+        <% form_summary.each_with_index do |(title, answers), index| %>
   <h2 class="formbold-form-question-title"><%= index + 1 %> - <%= title %></h2>
   
   <% if answers.length > 1 %>
@@ -22,7 +22,7 @@
     <% end %>
   <% end %>
 <% end %>
-        <h2>Número de respostas: <%= "#{@answered_number}/#{@total_number}"%></h2>
+        <h2>Número de respostas: <%= "#{answered_number}/#{total_number}"%></h2>
 
       </div>
     </div>

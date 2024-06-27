@@ -88,14 +88,16 @@ class AdminsController < ApplicationController
   # os atributos necessários para a interação MVC.
   def summary
     @form = Form.find_by_id(params[:id])
-    @total_number = @form.role == 'discente' ? Enrollment.where(subject_class_id: @form.subject_class_id).length : 1
-    summary?(@form) if @form
+    summary?
   end
 
-  def summary?(form)
+  def summary?
+    form = Form.find_by_id(params[:id])
+    @total_number = form.role == 'discente' ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1
     form_questions = FormQuestion.where(form_id: form.id)
     @answered_number = StudentAnswer.where(form_question_id: form_questions[0].id).length
     @form_summary = Results.new.generate_summary(form_questions,form)
+
   end
 
 end

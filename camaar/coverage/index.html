@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-27T13:45:30-03:00">2024-06-27T13:45:30-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-06-27T14:06:49-03:00">2024-06-27T14:06:49-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -117,7 +117,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#45424bc1c5373d4e5c61903a3db1c9696e5cd99c" class="src_link" title="app/controllers/admins_controller.rb">app/controllers/admins_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">96.30 %</td>
-            <td class="cell--number">101</td>
+            <td class="cell--number">105</td>
             <td class="cell--number">54</td>
             <td class="cell--number">52</td>
             <td class="cell--number">2</td>
@@ -836,7 +836,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#45424bc1c5373d4e5c61903a3db1c9696e5cd99c" class="src_link" title="app/controllers/admins_controller.rb">app/controllers/admins_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">96.30 %</td>
-            <td class="cell--number">101</td>
+            <td class="cell--number">105</td>
             <td class="cell--number">54</td>
             <td class="cell--number">52</td>
             <td class="cell--number">2</td>
@@ -3997,23 +3997,12 @@
 
             
 
-            <code class="ruby">    @total_number = @form.role == &#39;discente&#39; ? Enrollment.where(subject_class_id: @form.subject_class_id).length : 1</code>
+            <code class="ruby">    form?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="92">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">    summary?(@form) if @form</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="93">
+          <li class="never" data-hits="" data-linenumber="92">
             
             
 
@@ -4024,7 +4013,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="94">
+          <li class="never" data-hits="" data-linenumber="93">
             
             
 
@@ -4035,13 +4024,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="95">
+          <li class="covered" data-hits="1" data-linenumber="94">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def summary?(form)</code>
+            <code class="ruby">  def form?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="95">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    form = Form.find_by_id(params[:id])</code>
           </li>
         </div>
       
@@ -4057,13 +4057,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="97">
-            <span class="hits">3</span>
+          <li class="never" data-hits="" data-linenumber="97">
+            
             
 
             
 
-            <code class="ruby">    @answered_number = StudentAnswer.where(form_question_id: form_questions[0].id).length</code>
+            <code class="ruby">    {</code>
           </li>
         </div>
       
@@ -4074,18 +4074,18 @@
 
             
 
-            <code class="ruby">    @form_summary = Results.new.generate_summary(form_questions,form)</code>
+            <code class="ruby">      form: form,</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="99">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="99">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">      total_number: form.role == &#39;discente&#39; ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1,</code>
           </li>
         </div>
       
@@ -4096,12 +4096,56 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      answered_number: StudentAnswer.where(form_question_id: form_questions[0].id).length,</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="101">
+            
+            
+
+            
+
+            <code class="ruby">      form_summary: Results.new.generate_summary(form_questions,form)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="102">
+            
+            
+
+            
+
+            <code class="ruby">    }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="104">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="105">
             
             
 
