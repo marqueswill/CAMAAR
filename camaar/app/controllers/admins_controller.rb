@@ -1,11 +1,11 @@
-require 'json'
-require 'rchart'
-require 'csv'
+require "json"
+require "rchart"
+require "csv"
 # A classe AdminsController gerencia as principais ações relacionadas às funcionalidades do administrador.
 # Essa classe inclui a importação de dados, a exportação de resultados em CSV e Gráficos, visualização de
 # respostas de formulários, gerenciamento de templates etc.
 class AdminsController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_action :authenticate_admin!
   before_action :set_admin_data
   before_action :load
@@ -21,8 +21,8 @@ class AdminsController < ApplicationController
   # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
   # professor, aluno, as classes e verifica se houve a requisição para enviar um template/formulário.
   def setup_envio(coordinator_id)
-    @student_templates = Template.where({ coordinator_id:, draft: false, role: 'discente' })
-    @teacher_templates = Template.where({ coordinator_id:, draft: false, role: 'docente' })
+    @student_templates = Template.where({ coordinator_id:, draft: false, role: "discente" })
+    @teacher_templates = Template.where({ coordinator_id:, draft: false, role: "docente" })
     flash.clear
     [params[:teacher_template], params[:student_template], params[:classes_ids], params[:commit]]
   end
@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
         flash[item[0].to_sym] = item[1]
       end
     when false
-      flash[:warning] = 'Selecione as turmas para envio.'
+      flash[:warning] = "Selecione as turmas para envio."
     end
   end
 
@@ -51,7 +51,7 @@ class AdminsController < ApplicationController
     json = JSON.parse(File.read(params[:admin_import][:file].tempfile.path))
     symbol, msg = Import.new.import_data(params[:select_data], json, current_admin.email)
     flash[symbol.to_sym] = msg
-    redirect_to '/admins/import'
+    redirect_to "/admins/import"
   end
 
   # Método que gerencia as requisições para a visualização e obtenção de resultados para o administrador, que consistem
@@ -70,15 +70,15 @@ class AdminsController < ApplicationController
     form_questions = FormQuestion.where(form_id: form_id)
 
     mode = params[:export]
-    results?(mode,form,form_questions)
+    results?(mode, form, form_questions)
   end
 
   # Método auxiliar que age de forma a verificar se houve ou não respostas para um formulário acessado na view de resultados.
   # O método em questão verifica se houve ou não respostas e, caso seja requerido, configura a exportação destas.
-  def results?(mode,form,form_questions)
+  def results?(mode, form, form_questions)
     if mode.present? && Results.new.answers?(form_questions)
-      flash[:warning] = 'O formulário não possui respostas'
-      redirect_to '/admins/results'
+      flash[:warning] = "O formulário não possui respostas"
+      redirect_to "/admins/results"
     else
       file, filename, type = Export.new.execute(mode, form, form_questions)
       send_file file, filename:, type:
@@ -88,17 +88,30 @@ class AdminsController < ApplicationController
   # Método que funciona como um "setup" dos parâmetros relacionados ao resumo das respostas de um formulário, configurando
   # os atributos necessários para a interação MVC.
   def summary
-    @form = Form.find_by_id(params[:id])
+    form
+    form_questions
     summary?
   end
 
   def summary?
-    form = Form.find_by_id(params[:id])
-    @total_number = form.role == 'discente' ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1
-    form_questions = FormQuestion.where(form_id: form.id)
-    @answered_number = StudentAnswer.where(form_question_id: form_questions[0].id).length
-    @form_summary = Results.new.generate_summary(form_questions,form)
-
+    total_number
+    answered_number
+    @form_summary = Results.new.generate_summary(form_questions, form)
   end
 
+  def form
+    @form = Form.find_by_id(params[:id])
+  end
+
+  def form_questions
+    @form_questions = FormQuestion.where(form_id: form.id)
+  end
+
+  def total_number
+    @total_number = form.role == "discente" ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1
+  end
+
+  def answered_number
+    @answered_number = StudentAnswer.where(form_question_id: form_questions[0].id).length
+  end
 end
