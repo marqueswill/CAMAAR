@@ -1,0 +1,5 @@
+TooManyInstanceVariables:
+  max_instance_variables: 10
+paths: # Files to analyse. Churn calculation is scoped to these files when using Git SCM.
+  - 'app/controllers/'
+  - 'app/models/'
