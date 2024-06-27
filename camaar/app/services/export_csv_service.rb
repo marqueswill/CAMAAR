@@ -1,3 +1,7 @@
+# A classe ExportCsvService é responsável por exportar as respostas de formulários submetidos a
+# discentes e/ou discentes em uma planilha de formato CSV. Ao final da execução dos serviços, será submetido
+# um caminho para que seja possível efetuar a requisição do arquivo CSV.
+
 class ExportCsvService
   def self.call(table)
     head = ['Questão']
