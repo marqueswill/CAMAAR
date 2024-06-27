@@ -7,6 +7,8 @@
             <div class="form-group form-inline">
               <%= f.label :title, "Título:" , class: "mr-2"%>
               <%= f.text_field :title, id: "question_title", class:"form-control form-control-sm",value: @title %>
+              <% empty_field = flash[:alert].include? ("Title Questão precisa de um título") %>
+              <p class="text-danger"><%= "Questão precisa de um título" if empty_field%></p>
             </div>
             <div>
               <%= f.label :question_type, "Tipo de questão:" %>
@@ -38,6 +40,5 @@
           <br>
         </div>
       </div>
-      <%= render '/layouts/flashes' %>
     </div>
   </div>
