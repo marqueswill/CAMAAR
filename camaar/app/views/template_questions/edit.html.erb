@@ -7,8 +7,9 @@
             <div class="form-group row">
               <%= f.label :title, "Título:", class: "col-sm-2 col-form-label"%>
               <div class="col-sm-10">
-                <%= f.text_field :title,  value: @title,class:"form-control", required:true%>
-                <div class="invalid-feedback"></div>
+                <%= f.text_field :title,  value: @title,class:"form-control"%>
+                <% empty_field = flash[:alert].include? ("Title Questão precisa de um título") %>
+                <p class="text-danger"><%= "Questão precisa de um título" if empty_field%></p>
               </div>
             </div>
             <div>

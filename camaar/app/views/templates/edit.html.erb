@@ -5,8 +5,7 @@
         <%= form_with model: @template, method: :put do |f|%>
           <div class="form-group form-inline">
             <%= f.label :name, "Nome do template:", class: "mr-2"%>
-            <%= f.text_field :name, class: "form-control form-control-sm", id: "name", value: @template.name, required:true %>
-            <div class="invalid-feedback"></div>
+            <%= f.text_field :name, class: "form-control form-control-sm", id: "name", value: @template.name %>
             <%= f.label :role, "Tipo de template:", class: "mr-2" %>
             <%= f.select :role, options_for_select([["Discente", "discente"], ["Docente", "docente"]], @role) %>
           </div>

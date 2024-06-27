@@ -8,9 +8,8 @@ require "json"
 class TemplatesController < ApplicationController
   before_action :set_admin_data
   before_action :check_for_commit
-  before_action :set_template_data, only: [:destroy, :edit, :update, :show]
+  before_action :set_template_data, only: [:destroy, :edit, :update]
   layout "admin"
-
 
   def index
   end
@@ -20,19 +19,17 @@ class TemplatesController < ApplicationController
     redirect_to edit_template_path(template)
   end
 
-  def create
-  end
-
-  def show
-
-  end
-
   def edit
   end
 
   def update
     if !questions.present?
       flash[:alert] = "O template precisa conter pelo menos uma pergunta"
+      return redirect_to edit_template_path(template, template: template_params)
+    end
+
+    if params[:template][:name].empty?
+      flash[:alert] = "Template precisa de um nome"
       return redirect_to edit_template_path(template, template: template_params)
     end
 

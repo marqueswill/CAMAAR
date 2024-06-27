@@ -6,8 +6,7 @@
           <%= form_with url: template_template_questions_path(@template), method: :post do |f| %>
             <div class="form-group form-inline">
               <%= f.label :title, "Título:" , class: "mr-2"%>
-              <%= f.text_field :title, id: "question_title", class:"form-control form-control-sm",value: @title, required:true %>
-              <div class="invalid-feedback"></div>
+              <%= f.text_field :title, id: "question_title", class:"form-control form-control-sm",value: @title %>
             </div>
             <div>
               <%= f.label :question_type, "Tipo de questão:" %>
@@ -39,5 +38,6 @@
           <br>
         </div>
       </div>
+      <%= render '/layouts/flashes' %>
     </div>
   </div>

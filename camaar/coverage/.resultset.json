@@ -992,6 +992,7 @@
           null,
           null,
           null,
+          null,
           0,
           0,
           0,
@@ -1008,14 +1009,6 @@
           null,
           0,
           0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           null,
           0,
@@ -1026,8 +1019,8 @@
           0,
           0,
           0,
-          0,
           null,
+          0,
           0,
           0,
           0,
@@ -1043,6 +1036,8 @@
           0,
           0,
           0,
+          null,
+          0,
           0,
           0,
           null,
@@ -1051,7 +1046,13 @@
           0,
           0,
           0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -1153,6 +1154,8 @@
       "/home/will/Documents/UnB/Disciplinas/5o SEMESTRE/EngSw/CAMAAR/camaar/app/controllers/templates_controller.rb": {
         "lines": [
           0,
+          null,
+          null,
           null,
           null,
           null,
@@ -1821,7 +1824,7 @@
         }
       }
     },
-    "timestamp": 1719328940
+    "timestamp": 1719511870
   },
   "RSpec": {
     "coverage": {

@@ -31,10 +31,11 @@ class TemplateQuestionsController < ApplicationController
     }
 
     warnings = @errors[:warning]
-    if template_question.update(new_data) and warnings.empty?
+    question = template_question
+    if question.update(new_data) and warnings.empty?
       redirect_to edit_template_path(template)
     else
-      warnings.concat template_question.errors.full_messages
+      warnings.concat question.errors.full_messages
       flash[:alert] = warnings
 
       redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
