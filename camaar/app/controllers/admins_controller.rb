@@ -1,11 +1,11 @@
-require "json"
-require "rchart"
-require "csv"
+require 'json'
+require 'rchart'
+require 'csv'
 # A classe AdminsController gerencia as principais ações relacionadas às funcionalidades do administrador.
 # Essa classe inclui a importação de dados, a exportação de resultados em CSV e Gráficos, visualização de
 # respostas de formulários, gerenciamento de templates etc.
 class AdminsController < ApplicationController
-  layout "admin"
+  layout 'admin'
   before_action :authenticate_admin!
   before_action :set_admin_data
   before_action :load
@@ -21,8 +21,8 @@ class AdminsController < ApplicationController
   # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
   # professor, aluno, as classes e verifica se houve a requisição para enviar um template/formulário.
   def setup_envio(coordinator_id)
-    @student_templates = Template.where({ coordinator_id:, draft: false, role: "discente" })
-    @teacher_templates = Template.where({ coordinator_id:, draft: false, role: "docente" })
+    @student_templates = Template.where({ coordinator_id:, draft: false, role: 'discente' })
+    @teacher_templates = Template.where({ coordinator_id:, draft: false, role: 'docente' })
     flash.clear
     [params[:teacher_template], params[:student_template], params[:classes_ids], params[:commit]]
   end
@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
         flash[item[0].to_sym] = item[1]
       end
     when false
-      flash[:warning] = "Selecione as turmas para envio."
+      flash[:warning] = 'Selecione as turmas para envio.'
     end
   end
 
@@ -51,7 +51,7 @@ class AdminsController < ApplicationController
     json = JSON.parse(File.read(params[:admin_import][:file].tempfile.path))
     symbol, msg = Import.new.import_data(params[:select_data], json, current_admin.email)
     flash[symbol.to_sym] = msg
-    redirect_to "/admins/import"
+    redirect_to '/admins/import'
   end
 
   # Método que gerencia as requisições para a visualização e obtenção de resultados para o administrador, que consistem
@@ -67,7 +67,7 @@ class AdminsController < ApplicationController
   # O método em questão configura os formulários e as questões, e verifica se houve ou não respostas.
   def setup_results(form_id)
     form = Form.find_by_id(form_id)
-    form_questions = FormQuestion.where(form_id: form_id)
+    form_questions = FormQuestion.where(form_id:)
 
     mode = params[:export]
     results?(mode, form, form_questions)
@@ -77,8 +77,8 @@ class AdminsController < ApplicationController
   # O método em questão verifica se houve ou não respostas e, caso seja requerido, configura a exportação destas.
   def results?(mode, form, form_questions)
     if mode.present? && Results.new.answers?(form_questions)
-      flash[:warning] = "O formulário não possui respostas"
-      redirect_to "/admins/results"
+      flash[:warning] = 'O formulário não possui respostas'
+      redirect_to '/admins/results'
     else
       file, filename, type = Export.new.execute(mode, form, form_questions)
       send_file file, filename:, type:
@@ -108,7 +108,7 @@ class AdminsController < ApplicationController
   end
 
   def total_number
-    @total_number = form.role == "discente" ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1
+    @total_number = form.role == 'discente' ? Enrollment.where(subject_class_id: form.subject_class_id).length : 1
   end
 
   def answered_number
