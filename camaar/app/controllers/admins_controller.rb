@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
   before_action :load
 
   # Atributos para evitar o uso de variáveis de instância
-  attr_reader :coordinator, :classes, :forms
+  attr_reader :forms
 
   # Carrega os templates e as classes do departamento
   def load
