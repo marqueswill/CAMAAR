@@ -6,4 +6,12 @@ class User < ApplicationRecord
          :confirmable
 
   # enum role: { student: 0, teacher: 1 }
+
+  def discente?
+    occupation == "discente"
+  end
+
+  def docente?
+    occupation == "docente"
+  end
 end

@@ -1,87 +1,80 @@
 class FormsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_data
-  before_action :initializer
+  before_action :initialize_data
   layout "user"
 
-  attr_reader :enrollments, :filter, :errors, :pending_forms, :answered_forms, :questions_and_answers, :subject_classes
-
-  def initializer
-    @enrollments = Enrollment.where(student_id: @student.id)
-    @filter = params[:filter] || "pending"
-    @errors = []
-    @pending_forms = []
-    @answered_forms = []
-    @questions_and_answers = []
-    @subject_classes = nil
-  end
-
   def index
-
-    occupation = current_user.occupation
-    case occupation
-    when "discente"
-      if enrollments.empty?
-        errors << "Parece que você não está matriculado em nenhum disciplina."
-      else
-        subject_classes = SubjectClass.where(id: enrollments.pluck(:subject_class_id))
-      end
-    when "docente"
-      subject_classes = SubjectClass.where(teacher_id: @teacher.id)
-    end
-
-    if subject_classes.blank?
-      @forms = []
-      errors << "Usuário não está associado a nenhuma turma"
-    else
-      @forms = Form.where(subject_class_id: subject_classes.pluck(:id), role: occupation)
-
-      @forms.each do |form|
-        @form_questions = FormQuestion.where(form_id: form.id)
-        form_question_ids = @form_questions.pluck(:id)
-        
-        answers = case occupation
-                  when "discente"
-                    StudentAnswer.where(form_question_id: form_question_ids)
-                  when "docente"
-                    TeacherAnswer.where(form_question_id: form_question_ids)
-                  end
-      
-        if answers.any?
-          answered_forms << form
-        else
-          pending_forms << form
-        end
-      end
-
-      @forms = if filter == "pending"
-                 pending_forms
-               else
-                 answered_forms
-               end
-    end
+    @forms = filtered_forms
   end
 
   def edit
-    @form = Form.find_by_id(params[:id])
-    @form_questions = FormQuestion.where(form_id: @form.id)
+    @form = Form.find(params[:id])
+    @form_questions = @form.form_question
   end
 
   def update; end
 
   def show
-    @form = Form.find_by_id(params[:id])
-    @form_questions = FormQuestion.where(form_id: @form.id)
+    @form = Form.find(params[:id])
+    @form_questions = @form.form_question
+    @questions_and_answers = set_questions_and_answers
+  end
 
-    answer_model, identifier = if current_user.occupation == "discente"
-                                [StudentAnswer, { student_id: @student.id }]
-                              else
-                                [TeacherAnswer, { teacher_id: @teacher.id }]
-                              end
+  private
 
-    @form_questions.each do |question|
-      answer = answer_model.find_by(identifier.merge({ form_question_id: question.id }))
-      questions_and_answers << [question, answer]
+  attr_reader :user_service, :filter
+
+  def initialize_data
+    @user_service = user_service_for_current_user
+    @filter = params[:filter] || "pending"
+  end
+
+  def user_service_for_current_user
+    if current_user.discente?
+      DiscenteService.new(current_user)
+    elsif current_user.docente?
+      DocenteService.new(current_user)
+    else
+      raise "Tipo de usuário não suportado"
     end
+  end
+
+  def filtered_forms
+    forms = user_service.forms
+    return [] if forms.empty?
+
+    categorized_forms = categorize_forms(forms)
+    filter == "pending" ? categorized_forms[:pending] : categorized_forms[:answered]
+  end
+
+  def categorize_forms(forms)
+    forms.each_with_object(pending: [], answered: []) do |form, result|
+      if form_answered?(form)
+        puts "Form #{form.id} is answered"
+        result[:answered] << form
+      else
+        puts "Form #{form.id} is pending"
+        result[:pending] << form
+      end
+    end
+  end
+  
+  def set_questions_and_answers
+    @form_questions.map do |question|
+      answer = user_service.find_answer(question)
+      [question, answer]
+    end
+  end
+
+  def form_answered?(form)
+    answered = form.form_question.all? do |question|
+      puts "VASCO: #{question}"
+      answer = user_service.find_answer(question)
+      puts "Question #{question.id} answer: #{answer.present?}"
+      answer.present?
+    end
+    puts "Form #{form.id} overall answered status: #{answered}"
+    answered
   end
 end
