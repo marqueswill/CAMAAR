@@ -2,11 +2,18 @@ require "csv"
 
 class AnswersController < ApplicationController
   before_action :set_user_data
+  before_action :validate_answers, only: :create
   layout "user"
 
   def create
-    occupation = current_user.occupation
+    @form = Form.find_by_id(params[:form_id])
+    path = submit_answers(params[:answers], params[:commit], current_user, @form)
+    redirect_to path
+  end
 
+  private
+
+  def validate_answers
     @form = Form.find_by_id(params[:form_id])
     answers_params = params[:answers]
 
@@ -18,30 +25,15 @@ class AnswersController < ApplicationController
         end
       end
     end
-
-    process_answers(answers_params, params[:commit], occupation)
   end
 
-  private
-
-  def process_answers(answers_params, commit, occupation)
-    @errors = []
-
-    if commit && commit == "Enviar"
-      handle_answer_submission(occupation, answers_params)
-      redirect_to forms_path
+  def submit_answers(answers_params, commit, current_user, form)
+    if commit == "Enviar"
+      AnswerCreationService.new(current_user, answers_params, form).create_answers
+      forms_path
     else
       flash[:warning] = @errors
-      redirect_to edit_form_path(id: @form.id)
-    end
-  end
-
-  def handle_answer_submission(occupation, answers_params)
-    case occupation
-    when "discente"
-      StudentAnswersService.new(current_user, @form, answers_params).create_answers
-    when "docente"
-      TeacherAnswersService.new(current_user, @form, answers_params).create_answers
+      edit_form_path(id: form.id)
     end
   end
 end
