@@ -1,60 +1,51 @@
 require "json"
 
+# A classe TemplatesController gerencia ações relacionadas ao gerenciamento de templates.
+# Essa classe inclui a criação, edição, atualização, visualização e deleção de templates,
+# assim como possui métodos de verificação de ações específicas de commit e definição de
+# variáveis de instância a serem usadas nas views.
+
 class TemplatesController < ApplicationController
   before_action :set_admin_data
-  before_action :get_admin_templates
-  before_action :set_template_data, only: [:destroy, :edit, :update, :show]
   before_action :check_for_commit
+  before_action :set_template_data, only: [:destroy, :edit, :update]
   layout "admin"
 
   def index
-    @templates = Template.where({ coordinator_id: @coordinator.id })
   end
 
   def new
-    template = Template.create({ coordinator_id: @coordinator.id })
+    template = Template.create({ coordinator_id: coordinator.id })
     redirect_to edit_template_path(template)
-  end
-
-  def create
-  end
-
-  def show
-    @templates = Template.where(coordinator_id: @coordinator.id)
-    check_for_commit
   end
 
   def edit
   end
 
   def update
-    @errors = []
-    save_template_data
-
-    if @questions.any?
-      template = @template.update(
-        name: @template_name,
-        role: @role,
-        draft: false,
-      )
-
-      if template
-        redirect_to templates_path
-      end
-    else
+    if !questions.present?
       flash[:alert] = "O template precisa conter pelo menos uma pergunta"
+      return redirect_to edit_template_path(template, template: template_params)
+    end
 
-      # render :edit
-      redirect_to edit_template_path(@template)
+    if params[:template][:name].empty?
+      flash[:alert] = "Template precisa de um nome"
+      return redirect_to edit_template_path(template, template: template_params)
+    end
+
+    if template.update(template_params.merge(draft: false))
+      redirect_to templates_path, success: "Template atualizado com sucesso!"
     end
   end
 
   def destroy
-    template = @template.destroy
-
-    if template
-      redirect_to templates_path
+    begin
+      template.destroy
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "Não foi possível encontrar o template"
     end
+
+    redirect_to templates_path
   end
 
   def check_for_commit
@@ -64,29 +55,34 @@ class TemplatesController < ApplicationController
     end
   end
 
-  def save_template_data
-    @template_name = params[:template][:name] if not params[:template][:name].empty?
-    @role = params[:template][:role] if not params[:template][:role].empty?
-  end
-
-  def get_admin_templates
-    @templates = Template.where(coordinator_id: @coordinator.id)
-    if @templates.empty?
-      @errors << "Não foram encontrados templates"
-    end
-  end
+  private
 
   def set_template_data
-    @templates = Template.where(coordinator_id: @coordinator.id)
+    template
+    template_name
+    role
+    questions
+  end
 
-    @template = Template.find_by_id(params[:id])
-    if @template
-      @template_name = @template.name|| params[:name]
-      @role = @template.role || params[:role]
-      @questions = TemplateQuestion.where({ template_id: @template.id })
-    else
-      flash[:alert] = "Não foi possível encontrar o template."
-      redirect_to templates_path
-    end
+  def template
+    @template = Template.find(params[:id])
+  end
+
+  def template_name
+    template_params = params[:template] || {}
+    @template_name = template_params[:name] || template.name
+  end
+
+  def role
+    template_params = params[:template] || {}
+    @role = template_params[:role] || template.role
+  end
+
+  def questions
+    @questions = TemplateQuestion.where(template_id: template.id)
+  end
+
+  def template_params
+    params.require(:template).permit(:name, :role)
   end
 end
