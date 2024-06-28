@@ -19,61 +19,29 @@ class AnswersController < ApplicationController
       end
     end
 
+    process_answers(answers_params, params[:commit], occupation)
+  end
+
+  private
+
+  def process_answers(answers_params, commit, occupation)
     @errors = []
 
-
-    if params[:commit] and params[:commit] == "Enviar"
-      case occupation
-      when "discente"
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          StudentAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            student_id: @student.id,
-          )
-        end
-      when "docente"
-        answers_params = params[:answers]
-
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          TeacherAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            teacher_id: current_user.id,
-          )
-        end
-      end
-
+    if commit && commit == "Enviar"
+      handle_answer_submission(occupation, answers_params)
       redirect_to forms_path
     else
       flash[:warning] = @errors
       redirect_to edit_form_path(id: @form.id)
-      # redirect_to "/users/forms/#{}/edit/"
     end
   end
 
-  def create_answer_body(answer)
-    question_body = JSON.parse(@form_question.body)
-    answer_body = { "answers" => {} }
-
-    if @form_question.question_type == "multiple_choice"
-      question_body["options"].each do |option_number, value|
-        if option_number == answer
-          answer_body["answers"][option_number.to_s] = true
-        else
-          answer_body["answers"][option_number.to_s] = false
-        end
-      end
-    else
-      answer_body["answers"] = answer
+  def handle_answer_submission(occupation, answers_params)
+    case occupation
+    when "discente"
+      StudentAnswersService.new(current_user, @form, answers_params).create_answers
+    when "docente"
+      TeacherAnswersService.new(current_user, @form, answers_params).create_answers
     end
-
-    return answer_body.to_json
   end
 end
