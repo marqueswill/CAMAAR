@@ -72,11 +72,10 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-i-answers-3F">#answers?</a>
+    <li ><a href="#method-i-answered_number">#answered_number</a>
     <li ><a href="#method-i-envio">#envio</a>
-    <li ><a href="#method-i-export-3F">#export?</a>
-    <li ><a href="#method-i-export_to_png">#export_to_png</a>
-    <li ><a href="#method-i-generate_summary">#generate_summary</a>
+    <li ><a href="#method-i-form">#form</a>
+    <li ><a href="#method-i-form_questions">#form_questions</a>
     <li ><a href="#method-i-import">#import</a>
     <li ><a href="#method-i-load">#load</a>
     <li ><a href="#method-i-results">#results</a>
@@ -84,6 +83,8 @@
     <li ><a href="#method-i-setup_envio">#setup_envio</a>
     <li ><a href="#method-i-setup_results">#setup_results</a>
     <li ><a href="#method-i-summary">#summary</a>
+    <li ><a href="#method-i-summary-3F">#summary?</a>
+    <li ><a href="#method-i-total_number">#total_number</a>
   </ul>
 </div>
 
@@ -97,7 +98,7 @@
 
   <section class="description">
     
-<p><a href="AdminsController.html"><code>AdminsController</code></a> gerencia as requisições nas páginas que o administrador/coordenador tem acesso</p>
+<p>A classe <a href="AdminsController.html"><code>AdminsController</code></a> gerencia as principais ações relacionadas às funcionalidades do administrador. Essa classe inclui a importação de dados, a exportação de resultados em CSV e Gráficos, visualização de respostas de formulários, gerenciamento de templates etc.</p>
 
   </section>
 
@@ -105,6 +106,42 @@
 
 
 
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-i-classes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">classes</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        <p>Atributos para evitar o uso de variáveis de instância</p>
+        </div>
+      </div>
+      <div id="attribute-i-coordinator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">coordinator</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        <p>Atributos para evitar o uso de variáveis de instância</p>
+        </div>
+      </div>
+      <div id="attribute-i-forms" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">forms</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        <p>Atributos para evitar o uso de variáveis de instância</p>
+        </div>
+      </div>
+    </section>
 
 
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
@@ -112,25 +149,22 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-answers-3F" class="method-detail ">
+      <div id="method-i-answered_number" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">answers?</span><span
-              class="method-args">(form_questions)</span>
+            <span class="method-name">answered_number</span><span
+              class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Método auxiliar que verifica se houve questões respondidas por professores ou alunos, retornando um booleano</p>
+          <p>Método que recupera o total quantitativo dos alunos/professores que responderam o respectivo formulário acessado</p>
 
-          <div class="method-source-code" id="answers-3F-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 86</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">answers?</span>(<span class="ruby-identifier">form_questions</span>)
-  <span class="ruby-identifier">form_pluck</span> = <span class="ruby-identifier">form_questions</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:id</span>)
-  <span class="ruby-identifier">students_answers</span> = <span class="ruby-constant">StudentAnswer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_question_id:</span> <span class="ruby-identifier">form_pluck</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">form_questions</span>
-  <span class="ruby-identifier">teacher_answers</span> = <span class="ruby-constant">TeacherAnswer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_question_id:</span> <span class="ruby-identifier">form_pluck</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">form_questions</span>
-  <span class="ruby-operator">!</span>(<span class="ruby-identifier">students_answers</span>.<span class="ruby-identifier">present?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">teacher_answers</span>.<span class="ruby-identifier">present?</span>)
+          <div class="method-source-code" id="answered_number-source">
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">answered_number</span>
+  <span class="ruby-ivar">@answered_number</span> = <span class="ruby-constant">StudentAnswer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_question_id:</span> <span class="ruby-identifier">form_questions</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">id</span>).<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -151,9 +185,9 @@
           <p>Método que recebe uma requisição para enviar um template/formulário. Caso haja sucesso ou erro, serão printadas as respectivas mensagens na página do administrador. Há o uso de uma instância da classe Dispatch, responsável por executar os métodos de envio</p>
 
           <div class="method-source-code" id="envio-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 30</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">envio</span>
-  <span class="ruby-identifier">teacher_template_id</span>, <span class="ruby-identifier">student_template_id</span>, <span class="ruby-identifier">classes_ids</span>, <span class="ruby-identifier">commit</span> = <span class="ruby-identifier">setup_envio</span>(<span class="ruby-ivar">@coordinator</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">teacher_template_id</span>, <span class="ruby-identifier">student_template_id</span>, <span class="ruby-identifier">classes_ids</span>, <span class="ruby-identifier">commit</span> = <span class="ruby-identifier">setup_envio</span>(<span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">dispatch</span> = <span class="ruby-constant">Dispatch</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">dispatch</span>.<span class="ruby-identifier">commit?</span>(<span class="ruby-identifier">classes_ids</span>, <span class="ruby-identifier">commit</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
@@ -170,79 +204,45 @@
 
       </div>
 
-      <div id="method-i-export-3F" class="method-detail ">
+      <div id="method-i-form" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">export?</span><span
-              class="method-args">(mode)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Método que gerencia as requisições para exportar os resultados de algum formulário. Caso a requisição seja para ‘csv’, será gerado um arquivo CSV contendo as respostas do formulário. Caso a requisição seja para ‘graph’, será gerado um arquivo png contendo um gráfico relacionado às estatísticas do form.</p>
-
-          <div class="method-source-code" id="export-3F-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 96</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">export?</span>(<span class="ruby-identifier">mode</span>)
-  <span class="ruby-identifier">export</span> = <span class="ruby-constant">Export</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">mode</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;csv&#39;</span>
-    <span class="ruby-identifier">csv_data</span> = <span class="ruby-identifier">export</span>.<span class="ruby-identifier">export_to_csv</span>(<span class="ruby-ivar">@form</span>,<span class="ruby-ivar">@form_questions</span>)
-    <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">export</span>.<span class="ruby-identifier">fill_csv</span>(<span class="ruby-ivar">@form</span>.<span class="ruby-identifier">id</span>,<span class="ruby-ivar">@form</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">csv_data</span>), <span class="ruby-value">filename:</span> <span class="ruby-node">&quot;#{@form.id}_#{@form.name}.csv&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39; &#39;</span>, <span class="ruby-string">&#39;_&#39;</span>).<span class="ruby-identifier">downcase</span>, <span class="ruby-value">type:</span> <span class="ruby-string">&#39;text/csv&#39;</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;graph&#39;</span>
-    <span class="ruby-ivar">@form</span>,<span class="ruby-ivar">@form_questions</span> = [<span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:form_id</span>]),<span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span> <span class="ruby-ivar">@form</span>.<span class="ruby-identifier">id</span>)]
-    <span class="ruby-identifier">export_to_png</span>(<span class="ruby-identifier">export</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-export_to_png" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">export_to_png</span><span
-              class="method-args">(export)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Método que gerencia as requisições para exportar um gráfico de setores relacionado a algum formulário respondido. O método em questão irá enviar um arquivo png do gráfico ao browser do administrador.</p>
-
-          <div class="method-source-code" id="export_to_png-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 127</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">export_to_png</span>(<span class="ruby-identifier">export</span>)
-  <span class="ruby-identifier">name</span>,<span class="ruby-identifier">id</span>,<span class="ruby-identifier">graph</span>,<span class="ruby-identifier">filename</span> = [<span class="ruby-ivar">@form</span>.<span class="ruby-identifier">name</span>,<span class="ruby-ivar">@form</span>.<span class="ruby-identifier">id</span>,<span class="ruby-identifier">export</span>.<span class="ruby-identifier">generate_graph</span>(<span class="ruby-ivar">@form</span>),<span class="ruby-node">&quot;#{name}.png&quot;</span>]
-  <span class="ruby-identifier">file_path</span> = <span class="ruby-constant">ExportPngService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">graph</span>)
-  <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">file_path</span>, <span class="ruby-value">filename:</span> <span class="ruby-node">&quot;#{id}_#{name}.png&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39; &#39;</span>, <span class="ruby-string">&#39;_&#39;</span>).<span class="ruby-identifier">downcase</span>, <span class="ruby-value">type:</span> <span class="ruby-string">&#39;image/png&#39;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-generate_summary" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">generate_summary</span><span
+            <span class="method-name">form</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Método que gerencia as requisições para efetuar um resumo das respostas de todos os usuários acerca de um formulário.</p>
+          <p>Método que recupera o respectivo formulário acessado</p>
 
-          <div class="method-source-code" id="generate_summary-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 120</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_summary</span>
-  <span class="ruby-identifier">resumo</span> = {}
-  <span class="ruby-constant">SummaryService</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">resumo</span>, <span class="ruby-ivar">@form_questions</span>, <span class="ruby-ivar">@form</span>)
+          <div class="method-source-code" id="form-source">
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">form</span>
+  <span class="ruby-ivar">@form</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-form_questions" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">form_questions</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera as questões do respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="form_questions-source">
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">form_questions</span>
+  <span class="ruby-ivar">@form_questions</span> = <span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span> <span class="ruby-identifier">form</span>.<span class="ruby-identifier">id</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -263,11 +263,11 @@
           <p>Método que recebe uma requisição para importar algum dado a partir de um json. Caso haja sucesso ou erro, serão printadas as respectivas mensagens na página do administrador. Há o uso de uma instância da classe Import, responsável por executar os métodos de importação.</p>
 
           <div class="method-source-code" id="import-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 46</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">import</span>
   <span class="ruby-ivar">@errors</span> = []
   <span class="ruby-identifier">json</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:admin_import</span>][<span class="ruby-value">:file</span>].<span class="ruby-identifier">tempfile</span>.<span class="ruby-identifier">path</span>))
-  <span class="ruby-identifier">symbol</span>,<span class="ruby-identifier">msg</span> = <span class="ruby-constant">Import</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">import_data</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:select_data</span>], <span class="ruby-identifier">json</span>,<span class="ruby-identifier">current_admin</span>.<span class="ruby-identifier">email</span>)
+  <span class="ruby-identifier">symbol</span>, <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Import</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">import_data</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:select_data</span>], <span class="ruby-identifier">json</span>, <span class="ruby-identifier">current_admin</span>.<span class="ruby-identifier">email</span>)
   <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">symbol</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">msg</span>
   <span class="ruby-identifier">redirect_to</span> <span class="ruby-string">&#39;/admins/import&#39;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -290,10 +290,11 @@
           <p>Carrega os templates e as classes do departamento</p>
 
           <div class="method-source-code" id="load-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">load</span>
-  <span class="ruby-ivar">@templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">coordinator_id:</span> <span class="ruby-ivar">@coordinator</span>.<span class="ruby-identifier">id</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>)
-  <span class="ruby-ivar">@classes</span> = <span class="ruby-constant">SubjectClass</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">coord_id</span> = <span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-ivar">@templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">coordinator_id:</span> <span class="ruby-identifier">coord_id</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>)
+  <span class="ruby-ivar">@forms</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">coordinator_id:</span> <span class="ruby-identifier">coord_id</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -314,13 +315,12 @@
           <p>Método que gerencia as requisições para a visualização e obtenção de resultados para o administrador, que consistem sumariamente nas respostas de alunos e/ou professores a um formulário previamente submetido.</p>
 
           <div class="method-source-code" id="results-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 56</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">results</span>
-  <span class="ruby-ivar">@forms</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">coordinator_id:</span> <span class="ruby-ivar">@coordinator</span>.<span class="ruby-identifier">id</span>)
-
-  <span class="ruby-identifier">answers</span> = <span class="ruby-constant">ResultsService</span>.<span class="ruby-identifier">fill_answers</span>(<span class="ruby-ivar">@forms</span>)
+  <span class="ruby-constant">ResultsService</span>.<span class="ruby-identifier">fill_answers</span>(<span class="ruby-identifier">forms</span>)
   <span class="ruby-identifier">form_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:form_id</span>]
-  <span class="ruby-identifier">setup_results</span>(<span class="ruby-identifier">form_id</span>)
+
+  <span class="ruby-identifier">setup_results</span>(<span class="ruby-identifier">form_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">form_id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -332,7 +332,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">results?</span><span
-              class="method-args">(mode)</span>
+              class="method-args">(mode, form, form_questions)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -341,13 +341,14 @@
           <p>Método auxiliar que age de forma a verificar se houve ou não respostas para um formulário acessado na view de resultados. O método em questão verifica se houve ou não respostas e, caso seja requerido, configura a exportação destas.</p>
 
           <div class="method-source-code" id="results-3F-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 76</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">results?</span>(<span class="ruby-identifier">mode</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">answers?</span>(<span class="ruby-ivar">@form_questions</span>)
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">results?</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">form</span>, <span class="ruby-identifier">form_questions</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Results</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">answers?</span>(<span class="ruby-identifier">form_questions</span>)
     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:warning</span>] = <span class="ruby-string">&#39;O formulário não possui respostas&#39;</span>
     <span class="ruby-identifier">redirect_to</span> <span class="ruby-string">&#39;/admins/results&#39;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">export?</span>(<span class="ruby-identifier">mode</span>)
+    <span class="ruby-identifier">file</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">type</span> = <span class="ruby-constant">Export</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">form</span>, <span class="ruby-identifier">form_questions</span>)
+    <span class="ruby-identifier">send_file</span> <span class="ruby-identifier">file</span>, <span class="ruby-value">filename:</span>, <span class="ruby-value">type:</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -369,12 +370,12 @@
           <p>Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de professor, aluno, as classes e verifica se houve a requisição para enviar um template/formulário.</p>
 
           <div class="method-source-code" id="setup_envio-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 20</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setup_envio</span>(<span class="ruby-identifier">coordinator_id</span>)
-  <span class="ruby-ivar">@student_templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>({ <span class="ruby-value">coordinator_id:</span> <span class="ruby-identifier">coordinator_id</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">role:</span> <span class="ruby-string">&#39;discente&#39;</span> })
-  <span class="ruby-ivar">@teacher_templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>({ <span class="ruby-value">coordinator_id:</span> <span class="ruby-identifier">coordinator_id</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">role:</span> <span class="ruby-string">&#39;docente&#39;</span> })
+  <span class="ruby-ivar">@student_templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>({ <span class="ruby-value">coordinator_id:</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">role:</span> <span class="ruby-string">&#39;discente&#39;</span> })
+  <span class="ruby-ivar">@teacher_templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>({ <span class="ruby-value">coordinator_id:</span>, <span class="ruby-value">draft:</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">role:</span> <span class="ruby-string">&#39;docente&#39;</span> })
   <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">clear</span>
-  [<span class="ruby-identifier">params</span>[<span class="ruby-value">:teacher_template</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:student_template</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:classes_ids</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:commit</span>]]
+  [<span class="ruby-identifier">params</span>[<span class="ruby-value">:teacher_template</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:student_template</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:classes_ids</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:commit</span>]]
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -395,13 +396,13 @@
           <p>Método que funciona como setup para a visualização de resultados de formulários respondidos. O método em questão configura os formulários e as questões, e verifica se houve ou não respostas.</p>
 
           <div class="method-source-code" id="setup_results-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 66</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">setup_results</span>(<span class="ruby-identifier">form_id</span>)
-  <span class="ruby-ivar">@form</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">form_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">form_id</span>
-  <span class="ruby-ivar">@form_questions</span> = <span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span> <span class="ruby-ivar">@form</span>.<span class="ruby-identifier">id</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@form</span>
+  <span class="ruby-identifier">form</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">form_id</span>)
+  <span class="ruby-identifier">form_questions</span> = <span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span>)
 
   <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:export</span>]
-  <span class="ruby-identifier">results?</span>(<span class="ruby-identifier">mode</span>)
+  <span class="ruby-identifier">results?</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">form</span>, <span class="ruby-identifier">form_questions</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -422,13 +423,59 @@
           <p>Método que funciona como um “setup” dos parâmetros relacionados ao resumo das respostas de um formulário, configurando os atributos necessários para a interação MVC.</p>
 
           <div class="method-source-code" id="summary-source">
-            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 110</span>
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">summary</span>
-  <span class="ruby-ivar">@form</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-  <span class="ruby-ivar">@form_questions</span> = <span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span> <span class="ruby-ivar">@form</span>.<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@form_answers</span> = <span class="ruby-constant">StudentAnswer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_question_id:</span> <span class="ruby-ivar">@form_questions</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@total_number</span> = <span class="ruby-ivar">@form</span>.<span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;discente&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Enrollment</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">subject_class_id:</span> <span class="ruby-ivar">@form</span>.<span class="ruby-identifier">subject_class_id</span>).<span class="ruby-identifier">length</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
-  <span class="ruby-ivar">@answered_number</span>,<span class="ruby-ivar">@form_summary</span> = [<span class="ruby-ivar">@form_answers</span>.<span class="ruby-identifier">length</span>,<span class="ruby-identifier">generate_summary</span>]
+  <span class="ruby-identifier">form</span>
+  <span class="ruby-identifier">form_questions</span>
+  <span class="ruby-identifier">summary?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-summary-3F" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">summary?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que executa métodos essenciais para receber o número de respostas do formulário e o número de questões, além de possuir uma instância de objeto da classe Results que é responsável por gerar um resumo das questões respondidas do formulário em questão</p>
+
+          <div class="method-source-code" id="summary-3F-source">
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">summary?</span>
+  <span class="ruby-identifier">total_number</span>
+  <span class="ruby-identifier">answered_number</span>
+  <span class="ruby-ivar">@form_summary</span> = <span class="ruby-constant">Results</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">generate_summary</span>(<span class="ruby-identifier">form_questions</span>, <span class="ruby-identifier">form</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-total_number" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">total_number</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera o total quantitativo dos alunos/professores que podem responder o respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="total_number-source">
+            <pre><span class="ruby-comment"># File app/controllers/admins_controller.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_number</span>
+  <span class="ruby-ivar">@total_number</span> = <span class="ruby-identifier">form</span>.<span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;discente&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Enrollment</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">subject_class_id:</span> <span class="ruby-identifier">form</span>.<span class="ruby-identifier">subject_class_id</span>).<span class="ruby-identifier">length</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -9,6 +9,8 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_admin_data
   before_action :load
+
+  # Atributos para evitar o uso de variáveis de instância
   attr_reader :coordinator, :classes, :forms
 
   # Carrega os templates e as classes do departamento
