@@ -1,0 +1,6 @@
+---
+detectors:
+  TooManyInstanceVariables:
+    enabled: false
+    max_instance_variables: 10
+
