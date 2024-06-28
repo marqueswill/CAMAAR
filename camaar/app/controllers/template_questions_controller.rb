@@ -6,38 +6,21 @@
 class TemplateQuestionsController < ApplicationController
   before_action :set_admin_data
   before_action :check_for_commit
-  before_action :set_template_question_data
+  before_action :set_template_data, :set_template_question_data
   before_action :set_errors
 
   layout "admin"
 
-  def index
-  end
-
-  def show
-  end
-
   def edit
-    flash[:alert] = @errors[:warning] if not flash[:alert]
   end
 
   def update
-    new_data = {
-      id: params[:id].to_i,
-      title: title,
-      question_type: question_type,
-      body: create_question_body,
-      template_id: template.id,
-    }
-
-    warnings = @errors[:warning]
+    messages = warnings
     question = template_question
-    if question.update(new_data) and warnings.empty?
+    if question.update(updated_data) and messages.empty?
       redirect_to edit_template_path(template)
     else
-      warnings.concat question.errors.full_messages
-      flash[:alert] = warnings
-
+      flash[:alert] = messages.concat question.errors.full_messages
       redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
     end
   end
@@ -49,7 +32,6 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def new
-    flash[:alert] = @errors[:warning] if not flash[:alert]
   end
 
   def create
@@ -60,11 +42,11 @@ class TemplateQuestionsController < ApplicationController
       template_id: template.id,
     })
 
-    warnings = @errors[:warning]
-    if question.save and warnings.empty?
+    messages = warnings
+    if question.save and messages.empty?
       redirect_to edit_template_path(template)
     else
-      flash[:alert] = warnings.concat question.errors.full_messages
+      flash[:alert] = messages.concat question.errors.full_messages
       redirect_to new_template_template_question_path(params: template_question_params)
     end
   end
@@ -73,11 +55,11 @@ class TemplateQuestionsController < ApplicationController
 
   def create_question_body
     body = initialize_body
-    warnings = @errors[:warning]
+    messages = warnings
 
-    populate_options(body, warnings) if question_type == "multiple_choice"
+    populate_options(body, messages) if question_type == "multiple_choice"
 
-    body.to_json if warnings.empty?
+    body.to_json if messages.empty?
   end
 
   def parse_question_body
@@ -89,22 +71,24 @@ class TemplateQuestionsController < ApplicationController
     { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
   end
 
-  def populate_options(body, warnings)
+  def populate_options(body, messages)
     options_number.times.each do |index|
       input = options[index]
       option_key = index + 1
 
       if input.empty?
-        warnings << "option_#{option_key}"
-        # warnings << "option_#{option_key} Campo não pode estar vazio"
+        messages << "option_#{option_key}"
       else
         body["options"][option_key] = input
       end
     end
   end
 
-  def set_template_question_data
+  def set_template_data
     template
+  end
+
+  def set_template_question_data
     template_question
     question_type
     title
@@ -145,6 +129,10 @@ class TemplateQuestionsController < ApplicationController
     end
   end
 
+  def warnings
+    set_errors[:warning]
+  end
+
   def check_for_commit
     case params[:commit]
     when "cancel"
@@ -152,6 +140,14 @@ class TemplateQuestionsController < ApplicationController
     when "delete"
       destroy
     end
+  end
+
+  def updated_data
+    {
+      title: title,
+      question_type: question_type,
+      body: create_question_body,
+    }
   end
 
   def template_question_params
