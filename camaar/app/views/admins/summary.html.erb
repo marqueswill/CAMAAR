@@ -11,11 +11,11 @@
           <% if answers.length > 1 && answers.is_a?(Hash) %>
             <%= pie_chart answers %>
             <% answers.each do |option, number| %>
-              <p><%= "#{option} - #{number}"%></p>
+              <p class = "formbold-form-label"><%= "#{option} - #{number}"%></p>
             <% end %>
           <% else %>
             <% answers.each do |answ| %>
-              <p class="alert alert-dark"><%= answ %></p>
+              <p class="formbold-form-input"><%= answ %></p>
             <% end %>
           <% end %>
         <% end %>
