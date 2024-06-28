@@ -6,7 +6,7 @@
 class TemplateQuestionsController < ApplicationController
   before_action :set_admin_data
   before_action :check_for_commit
-  before_action :set_template_data, :set_template_question_data
+  before_action :set_template_question_data
   before_action :set_errors
 
   layout "admin"
@@ -15,7 +15,7 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def update
-    messages = warnings
+    messages = []
     question = template_question
     if question.update(updated_data) and messages.empty?
       redirect_to edit_template_path(template)
@@ -35,14 +35,8 @@ class TemplateQuestionsController < ApplicationController
   end
 
   def create
-    question = TemplateQuestion.new({
-      title: title,
-      body: create_question_body,
-      question_type: question_type,
-      template_id: template.id,
-    })
+    question, messages = Question.new.create(template, question_type, title, options, options_number)
 
-    messages = warnings
     if question.save and messages.empty?
       redirect_to edit_template_path(template)
     else
@@ -51,44 +45,10 @@ class TemplateQuestionsController < ApplicationController
     end
   end
 
-  private
-
-  def create_question_body
-    body = initialize_body
-    messages = warnings
-
-    populate_options(body, messages) if question_type == "multiple_choice"
-
-    body.to_json if messages.empty?
-  end
-
-  def parse_question_body
-    body = template_question.body
-    return JSON.parse(body)["options"].values if body
-  end
-
-  def initialize_body
-    { "options" => { 1 => "", 2 => "", 3 => "", 4 => "", 5 => "" } }
-  end
-
-  def populate_options(body, messages)
-    options_number.times.each do |index|
-      input = options[index]
-      option_key = index + 1
-
-      if input.empty?
-        messages << "option_#{option_key}"
-      else
-        body["options"][option_key] = input
-      end
-    end
-  end
-
-  def set_template_data
-    template
-  end
+  protected
 
   def set_template_question_data
+    template
     template_question
     question_type
     title
@@ -116,7 +76,7 @@ class TemplateQuestionsController < ApplicationController
     if question_type == "text"
       @options = ["", "", "", "", ""]
     else
-      @options = params[:options] || parse_question_body || ["", "", "", "", ""]
+      @options = params[:options] || QuestionService.parse_question_body(template_question.body) || ["", "", "", "", ""]
     end
   end
 
@@ -127,10 +87,6 @@ class TemplateQuestionsController < ApplicationController
       input = params[:options_number]
       @options_number = input ? input.to_i : 5 - options.count { |str| str.empty? }
     end
-  end
-
-  def warnings
-    set_errors[:warning]
   end
 
   def check_for_commit
@@ -146,11 +102,11 @@ class TemplateQuestionsController < ApplicationController
     {
       title: title,
       question_type: question_type,
-      body: create_question_body,
+      body: QuestionService.create_question_body,
     }
   end
 
   def template_question_params
-    params.permit(:title, :question_type, :options_number, options: [])
+    params.permit(:title, :template_id, :question_type, :options_number, options: [])
   end
 end
