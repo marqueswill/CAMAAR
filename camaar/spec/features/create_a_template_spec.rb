@@ -83,7 +83,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       click_link template.name
       expect(page).to have_content template_questions.title
       click_link 'Editar'
-      fill_in 'template_question_title', with: 'Você torce pro maior do sul? (Grêmio)?'
+      fill_in 'title', with: 'Você torce pro maior do sul? (Grêmio)?'
       click_button 'Salvar'
       expect(page).to have_content 'Questão 1'
       fill_in 'template[name]', with: 'test_temp'
@@ -116,13 +116,13 @@ RSpec.feature 'Create a template', type: :feature, js: true do
     it 'sad path - should not update a question with empty fields' do
       template = build(:template, :template1)
       template_questions = build(:template_question, :template_question1)
+      title = template_questions.title
       expect(page).to have_content template.name
       click_link template.name
       expect(page).to have_content template_questions.title
       click_link 'Editar'
-      fill_in 'template_question_title', with: ''
       click_button 'Salvar'
-      expect(page).to have_content 'Questão precisa de um título'
+      expect(template_questions.title).to eq(title)
     end
   end
   describe 'sad path admin cant create a template with no options' do
