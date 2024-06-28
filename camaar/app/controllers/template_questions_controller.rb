@@ -102,7 +102,7 @@ class TemplateQuestionsController < ApplicationController
     {
       title: title,
       question_type: question_type,
-      body: QuestionService.create_question_body,
+      body: Question.new.create(template, question_type, title, options, options_number),
     }
   end
 
