@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :verify_authenticity_token
 
-
   def after_sign_in_path_for(_resource)
     if admin_signed_in? # Assuming there is such a function
       # admins_page_path
@@ -57,6 +56,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
   def set_errors
     @errors = { primary: [],
                 secondary: [],
@@ -69,7 +70,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user_data
-    student = Student.find_by(email: current_user.email)
+    email = current_user.email
+    student = Student.find_by(email: email)
     if student
       @student = student
       current_user.occupation = student.occupation
@@ -77,7 +79,7 @@ class ApplicationController < ActionController::Base
       current_user.name = student.name.split.first.capitalize
       @department = Department.find_by(initials: student.course.split("/").last) if student
     else
-      @teacher = Teacher.find_by(email: current_user.email)
+      @teacher = Teacher.find_by(email: email)
       current_user.occupation = @teacher.occupation
       current_user.name = @teacher.name.split.first.capitalize
       @department = Department.find_by_id(@teacher.department_id) if @teacher

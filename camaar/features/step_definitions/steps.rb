@@ -155,7 +155,6 @@ Given(/I am an authenticated Coordinator from the "([^"]*)"$/) do |dpt_name|
   coordinator = Coordinator.find_by({ department_id: department.id })
 
   visit('/admins/login')
-  # puts page.body
   fill_in('email', with: coordinator.email)
   fill_in('password', with: 'admin123')
   click_button('Confirmar')
