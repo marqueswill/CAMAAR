@@ -2,11 +2,18 @@ require "csv"
 
 class AnswersController < ApplicationController
   before_action :set_user_data
+  before_action :validate_answers, only: :create
   layout "user"
 
   def create
-    occupation = current_user.occupation
+    @form = Form.find_by_id(params[:form_id])
+    path = submit_answers(params[:answers], params[:commit], current_user, @form)
+    redirect_to path
+  end
 
+  private
+
+  def validate_answers
     @form = Form.find_by_id(params[:form_id])
 
     questions = FormQuestion.where(form_id: @form.id)
@@ -59,22 +66,13 @@ class AnswersController < ApplicationController
     end
   end
 
-  def create_answer_body(answer)
-    question_body = JSON.parse(@form_question.body)
-    answer_body = { "answers" => {} }
-
-    if @form_question.question_type == "multiple_choice"
-      question_body["options"].each do |option_number, value|
-        if option_number == answer
-          answer_body["answers"][option_number.to_s] = true
-        else
-          answer_body["answers"][option_number.to_s] = false
-        end
-      end
+  def submit_answers(answers_params, commit, current_user, form)
+    if commit == "Enviar"
+      AnswerCreationService.new(current_user, answers_params, form).create_answers
+      forms_path
     else
-      answer_body["answers"] = answer
+      flash[:warning] = @errors
+      edit_form_path(id: form.id)
     end
-
-    return answer_body.to_json
   end
 end
