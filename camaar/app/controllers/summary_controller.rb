@@ -1,3 +1,6 @@
+# A classe SummaryController advém da classe AdminsController gerencia as principais ações relacionadas
+# à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores
+
 class SummaryController < AdminsController
   layout 'admin'
   before_action :authenticate_admin!
