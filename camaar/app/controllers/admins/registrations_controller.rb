@@ -1,75 +1,37 @@
-# frozen_string_literal: true
+# Essa controladora se baseia nas funções da classe pai "Devise::RegistrationsController"
+# Essencialmente, ela gerencia o registro de administradores, de forma que
+# seja possível registrar um administrador para acessar o sistema Camaar
 
 class Admins::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  def new
-    super
-  end
-
   # POST /resource
+  # Método que possibilita o registro de Administrador.
+  # O método em quesstão efetuará uma chamada de serviço para AdminRegistrationService, que irá
+  # enviar um email confirmando o pedido de registro de usuáario.
   def create
     super do |resource|
       AdminRegistrationService.call(resource)
     end
   end
 
-  # GET /resource/edit
+  # Método proibido.
+  # O método em questão é herdado pela controladora do devise, mas proibido em nosso sistema,
+  # retornando um http status :forbidden e renderizando uma tela de erro.
   def edit
     render :'errors/forbidden', status: :forbidden
   end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  def destroy
-    super
-  end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
-
   protected
-
+  # Método que solicita o requerimento dos parâmetros de registro
   def sign_up_params
     params.require(:admin).permit(:email, :password, :password_confirmation)
   end
 
-  # def account_update_params
-  #   params.require(:admin).permit(:email, :password, :password_confirmation)
-  # end
-
-  #
-  # If you have extra params to permit, append them to the sanitizer.
+  # Método que configura os parâmetros de registro
   def configure_sign_up_params
     added_attrs = %i[email password password_confirmation remember_me]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
-  end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   added_attrs = %i[email password password_confirmation remember_me]
-  #   devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
-  # end
-
-  # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    super(resource)
-  end
-
-  # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    super(resource)
   end
 end

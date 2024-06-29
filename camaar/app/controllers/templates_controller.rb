@@ -1,14 +1,15 @@
 require "json"
-# The TemplatesController handles actions related to the management of templates.
-# This includes creating, editing, updating, showing, and deleting templates,
-# as well as checking for specific commit actions and setting instance variables
-# for use in views.
+
+# A classe TemplatesController gerencia ações relacionadas ao gerenciamento de templates.
+# Essa classe inclui a criação, edição, atualização, visualização e deleção de templates,
+# assim como possui métodos de verificação de ações específicas de commit e definição de
+# variáveis de instância a serem usadas nas views.
+
 class TemplatesController < ApplicationController
   before_action :set_admin_data
   before_action :check_for_commit
-  before_action :set_template_data, only: [:destroy, :edit, :update, :show]
+  before_action :set_template_data, only: [:destroy, :edit, :update]
   layout "admin"
-
 
   def index
   end
@@ -18,19 +19,17 @@ class TemplatesController < ApplicationController
     redirect_to edit_template_path(template)
   end
 
-  def create
-  end
-
-  def show
-
-  end
-
   def edit
   end
 
   def update
     if !questions.present?
       flash[:alert] = "O template precisa conter pelo menos uma pergunta"
+      return redirect_to edit_template_path(template, template: template_params)
+    end
+
+    if params[:template][:name].empty?
+      flash[:alert] = "Template precisa de um nome"
       return redirect_to edit_template_path(template, template: template_params)
     end
 
