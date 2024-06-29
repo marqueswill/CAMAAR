@@ -4,7 +4,7 @@ require 'capybara/poltergeist'
 require 'capybara/dsl'
 require 'selenium-webdriver'
 
-Capybara.javascript_driver = :selenium
+Capybara.javascript_driver = :selenium_chrome
 Capybara.current_driver = Capybara.javascript_driver
 Capybara.disable_animation = true
 

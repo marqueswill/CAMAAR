@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ApplicationController - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link">ActionController::Base
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-i-after_sign_in_path_for">#after_sign_in_path_for</a>
+    <li ><a href="#method-i-classes">#classes</a>
+    <li ><a href="#method-i-configure_permitted_parameters">#configure_permitted_parameters</a>
+    <li ><a href="#method-i-coordinator">#coordinator</a>
+    <li ><a href="#method-i-department">#department</a>
+    <li ><a href="#method-i-set_admin_data">#set_admin_data</a>
+    <li ><a href="#method-i-set_errors">#set_errors</a>
+    <li ><a href="#method-i-set_user_data">#set_user_data</a>
+    <li ><a href="#method-i-teachers">#teachers</a>
+    <li ><a href="#method-i-templates">#templates</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ApplicationController">
+  <h1 id="class-ApplicationController" class="class">
+    class ApplicationController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-after_sign_in_path_for" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">after_sign_in_path_for</span><span
+              class="method-args">(_resource)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="after_sign_in_path_for-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">after_sign_in_path_for</span>(<span class="ruby-identifier">_resource</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">admin_signed_in?</span> <span class="ruby-comment"># Assuming there is such a function</span>
+    <span class="ruby-comment"># admins_page_path</span>
+    <span class="ruby-identifier">templates_path</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">user_signed_in?</span>
+    <span class="ruby-string">&quot;/users/forms&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">root_path</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Protected Instance Methods</h3>
+       </header>
+
+      <div id="method-i-classes" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">classes</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="classes-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">classes</span>
+  <span class="ruby-ivar">@classes</span> = <span class="ruby-constant">SubjectClass</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">department_id:</span> <span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">department_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-configure_permitted_parameters" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">configure_permitted_parameters</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="configure_permitted_parameters-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">configure_permitted_parameters</span>
+  <span class="ruby-identifier">added_attrs</span> = <span class="ruby-node">%i[email password password_confirmation remember_me]</span>
+  <span class="ruby-identifier">devise_parameter_sanitizer</span>.<span class="ruby-identifier">permit</span> <span class="ruby-value">:sign_up</span>, <span class="ruby-value">keys:</span> <span class="ruby-identifier">added_attrs</span>
+  <span class="ruby-identifier">devise_parameter_sanitizer</span>.<span class="ruby-identifier">permit</span> <span class="ruby-value">:sign_in</span>, <span class="ruby-value">keys:</span> <span class="ruby-node">%i[email password]</span>
+  <span class="ruby-identifier">devise_parameter_sanitizer</span>.<span class="ruby-identifier">permit</span> <span class="ruby-value">:define</span>, <span class="ruby-value">keys:</span> [<span class="ruby-value">:email</span>]
+  <span class="ruby-identifier">devise_parameter_sanitizer</span>.<span class="ruby-identifier">permit</span> <span class="ruby-value">:account_update</span>, <span class="ruby-value">keys:</span> <span class="ruby-identifier">added_attrs</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-coordinator" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">coordinator</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="coordinator-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">coordinator</span>
+  <span class="ruby-ivar">@coordinator</span> = <span class="ruby-constant">Coordinator</span>.<span class="ruby-identifier">find_by</span>({ <span class="ruby-value">email:</span> <span class="ruby-identifier">current_admin</span>.<span class="ruby-identifier">email</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-department" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">department</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="department-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">department</span>
+  <span class="ruby-ivar">@department</span> = <span class="ruby-constant">Department</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">department_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_admin_data" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">set_admin_data</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="set_admin_data-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_admin_data</span>
+  <span class="ruby-identifier">coordinator</span>
+  <span class="ruby-identifier">department</span>
+  <span class="ruby-identifier">classes</span>
+  <span class="ruby-identifier">teachers</span>
+  <span class="ruby-identifier">templates</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_errors" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">set_errors</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="set_errors-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_errors</span>
+  <span class="ruby-ivar">@errors</span> = { <span class="ruby-value">primary:</span> [],
+              <span class="ruby-value">secondary:</span> [],
+              <span class="ruby-value">sucess:</span> [],
+              <span class="ruby-value">danger:</span> [],
+              <span class="ruby-value">warning:</span> [],
+              <span class="ruby-value">info:</span> [],
+              <span class="ruby-value">light:</span> [],
+              <span class="ruby-value">dark:</span> [] }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_user_data" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">set_user_data</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="set_user_data-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_user_data</span>
+  <span class="ruby-identifier">student</span> = <span class="ruby-constant">Student</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">email:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">email</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">student</span>
+    <span class="ruby-ivar">@student</span> = <span class="ruby-identifier">student</span>
+    <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">occupation</span> = <span class="ruby-identifier">student</span>.<span class="ruby-identifier">occupation</span>
+    <span class="ruby-comment"># current_user.name = student.name</span>
+    <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">student</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">capitalize</span>
+    <span class="ruby-ivar">@department</span> = <span class="ruby-constant">Department</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">initials:</span> <span class="ruby-identifier">student</span>.<span class="ruby-identifier">course</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">last</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">student</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@teacher</span> = <span class="ruby-constant">Teacher</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">email:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">email</span>)
+    <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">occupation</span> = <span class="ruby-ivar">@teacher</span>.<span class="ruby-identifier">occupation</span>
+    <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">name</span> = <span class="ruby-ivar">@teacher</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">capitalize</span>
+    <span class="ruby-ivar">@department</span> = <span class="ruby-constant">Department</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@teacher</span>.<span class="ruby-identifier">department_id</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@teacher</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-teachers" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">teachers</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="teachers-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">teachers</span>
+  <span class="ruby-ivar">@teachers</span> = <span class="ruby-constant">Teacher</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">department_id:</span> <span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">department_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-templates" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">templates</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="templates-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">templates</span>
+  <span class="ruby-ivar">@templates</span> = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">coordinator_id:</span> <span class="ruby-identifier">coordinator</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@errors</span> = []
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@templates</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@errors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Não foram encontrados templates&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.7.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

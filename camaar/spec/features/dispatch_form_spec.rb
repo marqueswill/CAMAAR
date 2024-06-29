@@ -31,7 +31,7 @@ feature 'Dispatch forms' do
       fill_in 'email', with: admin.email
       fill_in 'password', with: admin.password
       click_button 'Confirmar'
-
+      expect(page).to have_content 'Envio'
       click_link 'Envio'
       expect(page).to have_content('Opções para Envio')
       select 'Template1', from: 'student_template'
@@ -68,7 +68,7 @@ feature 'Dispatch forms' do
       fill_in 'email', with: admin.email
       fill_in 'password', with: admin.password
       click_button 'Confirmar'
-
+      expect(page).to have_content 'Envio'
       click_link 'Envio'
       expect(page).to have_content('Opções para Envio')
       select 'Template1', from: 'student_template'
