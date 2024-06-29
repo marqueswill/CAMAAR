@@ -1,8 +1,8 @@
+# A classe SummaryController advém da classe AdminsController gerencia as principais ações relacionadas
+# à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores
+
 class SummaryController < AdminsController
-  layout 'admin'
-  before_action :authenticate_admin!
-  before_action :set_admin_data
-  before_action :load
+
   # Método que funciona como um "setup" dos parâmetros relacionados ao resumo das respostas de um formulário, configurando
   # os atributos necessários para a interação MVC.
   def summary
