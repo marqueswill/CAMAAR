@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
     match 'results/:id', to: 'summary#summary', via: 'get', as: 'form_summary'
-    match '/results', to: 'admins#results', via: 'get', as: 'results'
+    match '/results', to: 'results#results', via: 'get', as: 'results'
 
     # resources :subject_classes, only: [:index]
     match '/classes', to: 'subject_classes#index', via: 'get'
@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     match '/import', to: 'admins#importdata', via: 'get', as: 'admins_import'
     match '/import', to: 'admins#import', via: 'post', as: 'admins_import_post'
 
-    match '/dispatch', to: 'admins#envio', via: 'get'
-    match '/dispatch', to: 'admins#envio', via: 'post', as: 'admins_envio_post'
+    match '/dispatch', to: 'dispatch#envio', via: 'get'
+    match '/dispatch', to: 'dispatch#envio', via: 'post', as: 'admins_envio_post'
   end
 
   devise_scope :user do
