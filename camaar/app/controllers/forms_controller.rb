@@ -1,80 +1,80 @@
 class FormsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_data
+  before_action :initialize_data
   layout "user"
 
   def index
-    @filter = params[:filter] || "pending"
-    @errors = []
-
-    occupation = current_user.occupation
-    case occupation
-    when "discente"
-      @enrollments = Enrollment.where(student_id: @student.id)
-      if @enrollments.empty?
-        @errors << "Parece que você não está matriculado em nenhum disciplina."
-      else
-        @subject_classes = SubjectClass.where({ id: @enrollments.pluck(:subject_class_id) })
-      end
-    when "docente"
-      @subject_classes = SubjectClass.where(teacher_id: @teacher.id)
-    end
-
-    if @subject_classes.blank?
-      @forms = []
-      @errors << "Usuário não está associado a nenhuma turma"
-    else
-      @forms = Form.where(subject_class_id: @subject_classes.pluck(:id), role: occupation)
-
-      @pending_forms = []
-      @answered_forms = []
-
-      @forms.each do |form|
-        @form_questions = FormQuestion.where(form_id: form.id)
-
-        case occupation
-        when "discente"
-          answers = StudentAnswer.where(form_question_id: @form_questions.pluck(:id), student_id: @student.id)
-        when "docente"
-          answers = TeacherAnswer.where(form_question_id: @form_questions.pluck(:id), teacher_id: @teacher.id)
-        end
-
-        if answers.any?
-          @answered_forms << form
-        else
-          @pending_forms << form
-        end
-
-        @forms = if @filter == "pending"
-            @pending_forms
-          else
-            @answered_forms
-          end
-      end
-    end
+    @forms = filtered_forms
   end
 
   def edit
-    @form = Form.find_by_id(params[:id])
-    @form_questions = FormQuestion.where(form_id: @form.id)
-
+    @form = Form.find(params[:id])
+    @form_questions = @form.form_question
   end
 
   def update; end
 
   def show
-    @form = Form.find_by_id(params[:id])
-    @form_questions = FormQuestion.where(form_id: @form.id)
+    @form = Form.find(params[:id])
+    @form_questions = @form.form_question
+    @questions_and_answers = set_questions_and_answers
+  end
 
-    @questions_and_answers = []
-    @form_questions.each do |question|
-      if current_user.occupation == "discente"
-        answer = StudentAnswer.find_by({ student_id: @student.id, form_question_id: question.id })
-        @questions_and_answers << [question, answer]
+  private
+
+  attr_reader :user_service, :filter
+
+  def initialize_data
+    @user_service = user_service_for_current_user
+    @filter = params[:filter] || "pending"
+  end
+
+  def user_service_for_current_user
+    if current_user.discente?
+      DiscenteService.new(current_user)
+    elsif current_user.docente?
+      DocenteService.new(current_user)
+    else
+      raise "Tipo de usuário não suportado"
+    end
+  end
+
+  def filtered_forms
+    forms = user_service.forms
+    return [] if forms.empty?
+
+    categorized_forms = categorize_forms(forms)
+    filter == "pending" ? categorized_forms[:pending] : categorized_forms[:answered]
+  end
+
+  def categorize_forms(forms)
+    forms.each_with_object(pending: [], answered: []) do |form, result|
+      if form_answered?(form)
+        puts "Form #{form.id} is answered"
+        result[:answered] << form
       else
-        answer = TeacherAnswer.find_by({ teacher_id: @teacher.id, form_question_id: question.id })
-        @questions_and_answers << [question, answer]
+        puts "Form #{form.id} is pending"
+        result[:pending] << form
       end
     end
+  end
+  
+  def set_questions_and_answers
+    @form_questions.map do |question|
+      answer = user_service.find_answer(question)
+      [question, answer]
+    end
+  end
+
+  def form_answered?(form)
+    answered = form.form_question.all? do |question|
+      puts "VASCO: #{question}"
+      answer = user_service.find_answer(question)
+      puts "Question #{question.id} answer: #{answer.present?}"
+      answer.present?
+    end
+    puts "Form #{form.id} overall answered status: #{answered}"
+    answered
   end
 end

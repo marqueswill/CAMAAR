@@ -56,6 +56,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
+  def set_errors
+    @errors = { primary: [],
+                secondary: [],
+                sucess: [],
+                danger: [],
+                warning: [],
+                info: [],
+                light: [],
+                dark: [] }
+  end
+
   def set_user_data
     student = Student.find_by(email: current_user.email)
     if student
