@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_181536) do
   create_table "form_questions", force: :cascade do |t|
     t.string "title"
     t.string "question_type"
+    t.integer "options_number", default: 0
     t.json "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -147,6 +148,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_181536) do
   create_table "template_questions", force: :cascade do |t|
     t.string "title"
     t.string "question_type"
+    t.integer "options_number", default: 0
     t.json "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

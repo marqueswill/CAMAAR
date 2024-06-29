@@ -7,6 +7,8 @@
             <div class="form-group form-inline">
               <%= f.label :title, "Título:" , class: "mr-2"%>
               <%= f.text_field :title, id: "question_title", class:"form-control form-control-sm",value: @title %>
+                <% empty_field = (flash[:alert] and flash[:alert].include? ("Title can't be blank")) %>
+              <p class="text-danger"><%= "Questão precisa de um título" if empty_field%></p>
             </div>
             <div>
               <%= f.label :question_type, "Tipo de questão:" %>
@@ -20,8 +22,11 @@
               <div id="options_fields">
                 <% 5.times do |i| %>
                   <div style="displayW: none;" id="option<%= i %>_field">
+                    <br/>
                     <%= f.label "option#{i+1}", "Opção #{i+1}" %>
                     <%= f.text_field :options, class:"form-control",id: "option#{i+1}", name: "options[]", value: @options[i] %>
+                    <% empty_field = (flash[:alert] and flash[:alert].include? ("option_#{i+1}")) %>
+                    <p class="text-danger"><%= "Campo obrigatório" if empty_field%></p>
                   </div>
                 <% end %>
               </div>
@@ -33,19 +38,6 @@
             </div>
           <% end %>
           <br>
-          <% flash.each do |type, messages| %>
-            <% css_class = case type.to_sym
-                when :notice then 'alert alert-success'
-                when :alert then 'alert alert-danger'
-                when :error then 'alert alert-danger'
-                else 'alert alert-warning'
-                end %>
-            <% messages.each do |m| %>
-              <p class="<%= css_class %>">
-                <%= m %>
-              </p>
-            <% end %>
-          <% end %>
         </div>
       </div>
     </div>
