@@ -12,9 +12,26 @@ Rails.application.routes.draw do
   end
 
   scope 'admins' do
-    resources :templates do
-      resources :template_questions
-    end
+
+    match '/templates', to: 'template#index', via: 'get', as: 'templates'
+    match '/templates', to: 'templates#create', via: 'post'
+    match '/templates/new', to: 'template#new', via: 'get', as: 'new_template'
+    match '/templates/:id/edit', to: 'template#edit', via: 'get', as: 'edit_template'
+    match '/templates/:id', to: 'templates#show', via: 'get', as: 'template'
+    match '/templates/:id', to: 'template#update', via: 'patch'
+    match '/templates/:id', to: 'template#update', via: 'put'
+    match '/templates/:id', to: 'template#destroy', via: 'delete'
+
+
+
+    match '/templates/:template_id/template_questions', to: 'template_questions#index', via: 'get', as: 'template_template_questions'
+    match '/templates/:template_id/template_questions/new', to: 'questions#new', via: 'get', as: 'new_template_template_question'
+    match '/templates/:template_id/template_questions/:id', to: 'template_questions#show', via: 'get', as: 'template_template_question'
+    match '/templates/:template_id/template_questions/:id/edit', to: 'questions#edit', via: 'get', as: 'edit_template_template_question'
+    match '/templates/:template_id/template_questions/:id', to: 'questions#destroy', via: 'delete'
+    match '/templates/:template_id/template_questions', to: 'questions#create', via: 'post'
+    match '/templates/:template_id/template_questions/:id', to: 'questions#update', via: 'patch'
+    match '/templates/:template_id/template_questions/:id', to: 'questions#update', via: 'put'
 
     match 'results/:id', to: 'summary#summary', via: 'get', as: 'form_summary'
     match '/results', to: 'results#results', via: 'get', as: 'results'

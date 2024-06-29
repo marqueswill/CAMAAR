@@ -11,40 +11,6 @@ class TemplateQuestionsController < ApplicationController
 
   layout "admin"
 
-  def edit
-  end
-
-  def update
-    messages = []
-    question = template_question
-    if question.update(updated_data) and messages.empty?
-      redirect_to edit_template_path(template)
-    else
-      flash[:alert] = messages.concat question.errors.full_messages
-      redirect_to edit_template_template_question_path(template, template_question, params: template_question_params)
-    end
-  end
-
-  def destroy
-    if template_question.destroy
-      redirect_to edit_template_path(template)
-    end
-  end
-
-  def new
-  end
-
-  def create
-    question, messages = Question.new.create(template, question_type, title, options, options_number)
-
-    if question.save and messages.empty?
-      redirect_to edit_template_path(template)
-    else
-      flash[:alert] = messages.concat question.errors.full_messages
-      redirect_to new_template_template_question_path(params: template_question_params)
-    end
-  end
-
   protected
 
   def set_template_question_data
