@@ -15,54 +15,15 @@ class AnswersController < ApplicationController
 
   def validate_answers
     @form = Form.find_by_id(params[:form_id])
-
-    questions = FormQuestion.where(form_id: @form.id)
     answers_params = params[:answers]
+
     if answers_params.present?
-      questions.each do |question|
-        answ = answers_params[(question.id).to_s]
-        if not answ or answ.empty?
+      answers_params.each do |id, answ|
+        if answ.empty?
           flash[:error] = "Responda todas questões."
           redirect_to edit_form_path(@form) and return
         end
       end
-    end
-
-    @errors = []
-
-    if params[:commit] and params[:commit] == "Enviar"
-      case occupation
-      when "discente"
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          StudentAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            student_id: @student.id,
-          )
-        end
-      when "docente"
-        answers_params = params[:answers]
-
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          TeacherAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            teacher_id: current_user.id,
-          )
-        end
-      end
-
-      redirect_to forms_path
-    else
-      flash[:warning] = @errors
-      redirect_to edit_form_path(id: @form.id)
-      # redirect_to "/users/forms/#{}/edit/"
     end
   end
 
