@@ -57,7 +57,7 @@ class FormsController < ApplicationController
       end
     end
   end
-
+  
   def set_questions_and_answers
     @form_questions.map do |question|
       answer = user_service.find_answer(question)

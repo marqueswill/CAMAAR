@@ -14,12 +14,12 @@ class DiscenteService
     end
 
     def get_answers(form_questions)
-      student = Student.find_by(user_id: @user.id)
+      student = Student.find_by(email: @user.email)
       StudentAnswer.where(form_question_id: form_questions.pluck(:id), student_id: student.id)
     end
 
     def find_answer(question)
-      student = Student.find_by(user_id: @user.id)
+      student = Student.find_by(email: @user.email)
       StudentAnswer.find_by(form_question_id: question.id, student_id: student.id)
     end
   end
