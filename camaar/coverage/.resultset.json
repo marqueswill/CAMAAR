@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/user.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -9,114 +9,114 @@
           1,
           null,
           null,
+          null,
+          null,
+          null,
+          1,
+          23,
+          null,
+          null,
+          1,
+          9,
+          null,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/admin.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/dispatch.rb": {
+        "lines": [
+          1,
+          1,
+          5,
+          5,
+          5,
+          null,
+          5,
+          null,
+          null,
+          1,
+          12,
+          5,
+          null,
+          7,
           null,
           null,
           null,
           1,
           5,
+          5,
+          0,
+          null,
+          5,
+          null,
           null,
           null,
           1,
+          null,
+          9,
+          null,
+          9,
+          null,
+          9,
+          null,
+          9,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          9,
+          null,
           4,
           null,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/admin.rb": {
-        "lines": [
-          1,
+          5,
           null,
+          0,
           null,
-          1,
-          null,
+          9,
           null,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/lib/dispatch.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          4,
-          1,
-          null,
-          3,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          0,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          1,
-          null,
-          0,
-          null,
-          1,
-          null,
-          0,
-          null,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/admins_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins_controller.rb": {
         "lines": [
           1,
           1,
@@ -135,33 +135,33 @@
           null,
           null,
           1,
-          29,
-          29,
-          29,
+          37,
+          37,
+          37,
           null,
           null,
           null,
           null,
           1,
-          4,
-          4,
-          4,
-          4,
+          12,
+          12,
+          12,
+          12,
           null,
           null,
           null,
           null,
           null,
           1,
-          4,
-          4,
-          4,
+          12,
+          12,
+          12,
           null,
-          1,
-          1,
+          5,
+          5,
           null,
           null,
-          3,
+          7,
           null,
           null,
           null,
@@ -210,18 +210,18 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/application_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
           1,
           null,
           1,
-          38,
+          42,
           null,
           32,
-          6,
-          6,
+          10,
+          10,
           null,
           0,
           null,
@@ -230,42 +230,42 @@
           1,
           null,
           1,
-          107,
-          107,
-          107,
-          107,
-          107,
+          119,
+          119,
+          119,
+          119,
+          119,
           null,
           null,
           1,
-          125,
-          125,
-          125,
-          125,
-          125,
+          133,
+          133,
+          133,
+          133,
+          133,
           null,
           null,
           1,
-          665,
+          721,
           null,
           null,
           1,
-          125,
+          133,
           null,
           null,
           1,
-          125,
+          133,
           null,
           null,
           1,
-          125,
+          133,
           null,
           null,
           1,
-          125,
-          125,
+          133,
+          133,
           null,
-          125,
+          133,
           26,
           null,
           null,
@@ -284,109 +284,109 @@
           null,
           null,
           1,
-          5,
-          5,
+          27,
+          27,
+          17,
+          17,
+          null,
+          17,
+          17,
+          null,
+          10,
+          10,
+          10,
+          10,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/admin_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/classes_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/departments_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/errors_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/forms_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subject_classes_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subjectclasss_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/template_questions_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/templates_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/export.rb": {
+        "lines": [
           1,
           1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
           null,
           1,
-          1,
+          2,
+          2,
+          2,
+          2,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
           4,
           4,
           4,
-          4,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/admin_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/classes_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/departments_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/errors_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/forms_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/subject_classes_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/subjectclasss_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/template_questions_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/helpers/templates_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/lib/export.rb": {
-        "lines": [
-          1,
-          1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null,
-          1,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
           null,
           2,
           null,
@@ -427,7 +427,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/lib/import.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/import.rb": {
         "lines": [
           1,
           1,
@@ -470,7 +470,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/lib/question.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/question.rb": {
         "lines": [
           1,
           1,
@@ -490,7 +490,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/template_questions_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/template_questions_controller.rb": {
         "lines": [
           null,
           null,
@@ -606,7 +606,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/lib/results.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/results.rb": {
         "lines": [
           1,
           null,
@@ -625,7 +625,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/answers_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/answers_controller.rb": {
         "lines": [
           1,
           null,
@@ -633,203 +633,203 @@
           1,
           1,
           null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/classes_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/forms_controller.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          5,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          5,
-          5,
-          null,
-          null,
-          null,
-          null,
-          1,
-          5,
           1,
           4,
+          null,
           4,
           null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
+          4,
+          4,
+          4,
+          4,
           5,
           5,
+          1,
+          1,
           null,
-          0,
-          0,
+          null,
+          null,
+          null,
+          3,
+          null,
+          3,
+          3,
+          null,
+          2,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
           null,
           null,
           null,
           1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          3,
+          null,
           0,
+          0,
+          null,
           null,
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          3,
+          3,
           null,
-          null,
-          null,
-          null,
+          3,
           1,
-          0,
+          5,
+          1,
+          null,
+          4,
+          null,
+          null,
+          null,
+          2,
+          null,
+          null,
+          3,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/home_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/classes_controller.rb": {
         "lines": [
           1,
           1,
           null,
+          null,
+          null,
+          null,
           1,
+          null,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/forms_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
           null,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          15,
+          null,
+          null,
+          null,
+          1,
+          5,
+          5,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          23,
+          23,
+          null,
+          null,
+          null,
+          null,
+          1,
+          23,
+          14,
           9,
+          9,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          15,
+          15,
+          null,
+          10,
+          10,
+          null,
+          null,
+          null,
+          1,
+          10,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          3,
+          null,
+          null,
+          null,
+          null,
           1,
           8,
+          null,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/home_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          13,
+          1,
+          12,
           1,
           null,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/subject_classes_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/subject_classes_controller.rb": {
         "lines": [
           1,
           1,
@@ -866,7 +866,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/summary_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/summary_controller.rb": {
         "lines": [
           1,
           1,
@@ -912,7 +912,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/templates_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/templates_controller.rb": {
         "lines": [
           1,
           null,
@@ -1004,7 +1004,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/users_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -1048,7 +1048,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/admins/confirmations_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/confirmations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1057,7 +1057,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/admins/passwords_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/passwords_controller.rb": {
         "lines": [
           null,
           null,
@@ -1094,7 +1094,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/admins/registrations_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/registrations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1135,7 +1135,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/admins/sessions_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -1153,7 +1153,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/users/confirmations_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/confirmations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1161,7 +1161,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/users/passwords_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/passwords_controller.rb": {
         "lines": [
           null,
           null,
@@ -1193,7 +1193,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/users/registrations_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/registrations_controller.rb": {
         "lines": [
           null,
           null,
@@ -1234,7 +1234,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/controllers/users/sessions_controller.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/sessions_controller.rb": {
         "lines": [
           null,
           null,
@@ -1248,13 +1248,13 @@
           null,
           null,
           1,
-          6,
-          6,
+          10,
+          10,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/mailers/admins_mailer.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/admins_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1264,7 +1264,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/mailers/application_mailer.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/application_mailer.rb": {
         "lines": [
           1,
           1,
@@ -1272,7 +1272,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/mailers/users_mailer.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/users_mailer.rb": {
         "lines": [
           1,
           null,
@@ -1285,7 +1285,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/coordinator.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/coordinator.rb": {
         "lines": [
           1,
           1,
@@ -1294,14 +1294,14 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/department.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/department.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/enrollment.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/enrollment.rb": {
         "lines": [
           1,
           1,
@@ -1309,7 +1309,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/form.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form.rb": {
         "lines": [
           1,
           null,
@@ -1319,7 +1319,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/form_question.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form_question.rb": {
         "lines": [
           1,
           1,
@@ -1328,7 +1328,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/student.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1339,7 +1339,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/student_answer.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student_answer.rb": {
         "lines": [
           1,
           1,
@@ -1347,7 +1347,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/subject_class.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/subject_class.rb": {
         "lines": [
           1,
           1,
@@ -1358,7 +1358,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/teacher.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher.rb": {
         "lines": [
           1,
           1,
@@ -1366,7 +1366,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/teacher_answer.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher_answer.rb": {
         "lines": [
           1,
           1,
@@ -1374,7 +1374,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/template.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template.rb": {
         "lines": [
           1,
           1,
@@ -1383,7 +1383,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/models/template_question.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template_question.rb": {
         "lines": [
           1,
           1,
@@ -1394,7 +1394,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/admin_registration_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/admin_registration_service.rb": {
         "lines": [
           1,
           1,
@@ -1405,42 +1405,42 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/discente_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/discente_service.rb": {
         "lines": [
           1,
           1,
-          1,
+          14,
           null,
           null,
           1,
-          1,
-          1,
+          8,
+          8,
           null,
-          1,
-          1,
+          8,
+          8,
           null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
+          8,
           null,
           null,
           1,
           0,
           0,
+          null,
+          null,
+          1,
+          13,
+          13,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/dispatch_template_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/dispatch_template_service.rb": {
         "lines": [
           1,
           1,
-          1,
-          1,
-          1,
+          5,
+          5,
+          5,
           null,
           null,
           null,
@@ -1450,9 +1450,9 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          4,
+          4,
+          4,
           null,
           null,
           null,
@@ -1462,46 +1462,46 @@
           null,
           null,
           1,
-          1,
+          9,
           null,
-          0,
+          4,
           null,
-          1,
+          5,
           null,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/docente_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/docente_service.rb": {
         "lines": [
           1,
           1,
-          4,
+          9,
           null,
           null,
           1,
-          4,
-          4,
-          4,
+          7,
+          7,
+          7,
           4,
           null,
-          0,
+          3,
           null,
-          null,
-          null,
-          1,
-          0,
-          0,
           null,
           null,
           1,
           0,
           0,
+          null,
+          null,
+          1,
+          4,
+          4,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/export_csv_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_csv_service.rb": {
         "lines": [
           null,
           null,
@@ -1561,7 +1561,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/export_png_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_png_service.rb": {
         "lines": [
           1,
           1,
@@ -1614,26 +1614,26 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/form_categorizer_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/form_categorizer_service.rb": {
         "lines": [
           1,
           1,
-          0,
-          0,
-          0,
+          10,
+          14,
+          6,
           null,
-          0,
+          8,
           null,
           null,
           null,
           null,
           1,
-          0,
+          28,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/import_classes_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_classes_service.rb": {
         "lines": [
           1,
           1,
@@ -1664,7 +1664,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/import_departments_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_departments_service.rb": {
         "lines": [
           1,
           1,
@@ -1679,7 +1679,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/import_members_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_members_service.rb": {
         "lines": [
           1,
           1,
@@ -1757,7 +1757,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/question_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/question_service.rb": {
         "lines": [
           1,
           1,
@@ -1790,7 +1790,7 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/results_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/results_service.rb": {
         "lines": [
           1,
           1,
@@ -1813,33 +1813,33 @@
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/setup_form_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/setup_form_service.rb": {
         "lines": [
           1,
           1,
+          5,
+          5,
+          null,
+          null,
+          null,
+          null,
+          5,
+          null,
+          null,
           1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
+          4,
+          4,
           null,
           null,
           null,
           null,
           null,
-          0,
+          4,
           null,
           null
         ]
       },
-      "/home/marcos/Documents/UnB/EngSoft/CAMAAR/camaar/app/services/summary_service.rb": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/summary_service.rb": {
         "lines": [
           1,
           1,
@@ -1878,6 +1878,2043 @@
         ]
       }
     },
-    "timestamp": 1719678918
+    "timestamp": 1719682827
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/confirmations_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/passwords_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/registrations_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins/sessions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/admins_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/answers_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/classes_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/forms_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/home_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/subject_classes_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/summary_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/template_questions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/templates_controller.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/confirmations_controller.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/passwords_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/registrations_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users/sessions_controller.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/users_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/admin_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/application_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/classes_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/departments_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/errors_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/forms_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subject_classes_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/subjectclasss_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/template_questions_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/helpers/templates_helper.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/admins_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/mailers/users_mailer.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/admin.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/coordinator.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/department.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/enrollment.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form_question.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student_answer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/subject_class.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher_answer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template_question.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/models/user.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/admin_registration_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/discente_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/dispatch_template_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/docente_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_csv_service.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_png_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/form_categorizer_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_classes_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_departments_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_members_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/question_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/results_service.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/setup_form_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/summary_service.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/custom_failure.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/dispatch.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/export.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/import.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/question.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/lib/results.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1719682177
   }
 }

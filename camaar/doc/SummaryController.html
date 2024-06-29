@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class SummaryController - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link"><a href="AdminsController.html">AdminsController</a>
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-i-answered_number">#answered_number</a>
+    <li ><a href="#method-i-form">#form</a>
+    <li ><a href="#method-i-form_questions">#form_questions</a>
+    <li ><a href="#method-i-summary">#summary</a>
+    <li ><a href="#method-i-summary-3F">#summary?</a>
+    <li ><a href="#method-i-total_number">#total_number</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-SummaryController">
+  <h1 id="class-SummaryController" class="class">
+    class SummaryController
+  </h1>
+
+  <section class="description">
+    
+<p>A classe <a href="SummaryController.html"><code>SummaryController</code></a> advém da classe <a href="AdminsController.html"><code>AdminsController</code></a> gerencia as principais ações relacionadas à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-answered_number" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">answered_number</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera o total quantitativo dos alunos/professores que responderam o respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="answered_number-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">answered_number</span>
+  <span class="ruby-ivar">@answered_number</span> = <span class="ruby-constant">StudentAnswer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_question_id:</span> <span class="ruby-identifier">form_questions</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">id</span>).<span class="ruby-identifier">length</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-form" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">form</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera o respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="form-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">form</span>
+  <span class="ruby-ivar">@form</span> = <span class="ruby-constant">Form</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-form_questions" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">form_questions</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera as questões do respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="form_questions-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">form_questions</span>
+  <span class="ruby-ivar">@form_questions</span> = <span class="ruby-constant">FormQuestion</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">form_id:</span> <span class="ruby-identifier">form</span>.<span class="ruby-identifier">id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-summary" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">summary</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que funciona como um “setup” dos parâmetros relacionados ao resumo das respostas de um formulário, configurando os atributos necessários para a interação MVC.</p>
+
+          <div class="method-source-code" id="summary-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">summary</span>
+  <span class="ruby-identifier">form</span>
+  <span class="ruby-identifier">form_questions</span>
+  <span class="ruby-identifier">summary?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-summary-3F" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">summary?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que executa métodos essenciais para receber o número de respostas do formulário e o número de questões, além de possuir uma instância de objeto da classe Results que é responsável por gerar um resumo das questões respondidas do formulário em questão</p>
+
+          <div class="method-source-code" id="summary-3F-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">summary?</span>
+  <span class="ruby-identifier">total_number</span>
+  <span class="ruby-identifier">answered_number</span>
+  <span class="ruby-ivar">@form_summary</span> = <span class="ruby-constant">Results</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">generate_summary</span>(<span class="ruby-identifier">form_questions</span>, <span class="ruby-identifier">form</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-total_number" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">total_number</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Método que recupera o total quantitativo dos alunos/professores que podem responder o respectivo formulário acessado</p>
+
+          <div class="method-source-code" id="total_number-source">
+            <pre><span class="ruby-comment"># File app/controllers/summary_controller.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">total_number</span>
+  <span class="ruby-ivar">@total_number</span> = <span class="ruby-identifier">form</span>.<span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;discente&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Enrollment</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">subject_class_id:</span> <span class="ruby-identifier">form</span>.<span class="ruby-identifier">subject_class_id</span>).<span class="ruby-identifier">length</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.7.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
