@@ -51,15 +51,13 @@ class FormsController < ApplicationController
   def categorize_forms(forms)
     forms.each_with_object(pending: [], answered: []) do |form, result|
       if form_answered?(form)
-        puts "Form #{form.id} is answered"
         result[:answered] << form
       else
-        puts "Form #{form.id} is pending"
         result[:pending] << form
       end
     end
   end
-  
+
   def set_questions_and_answers
     @form_questions.map do |question|
       answer = user_service.find_answer(question)
@@ -69,12 +67,9 @@ class FormsController < ApplicationController
 
   def form_answered?(form)
     answered = form.form_question.all? do |question|
-      puts "VASCO: #{question}"
       answer = user_service.find_answer(question)
-      puts "Question #{question.id} answer: #{answer.present?}"
       answer.present?
     end
-    puts "Form #{form.id} overall answered status: #{answered}"
     answered
   end
 end

@@ -4,8 +4,8 @@ class DocenteService
     end
 
     def forms
-      teacher = Teacher.find_by(user_id: @user.id)
-      subject_classes = SubjectClass.find_by(teacher_id: teacher.id)
+      teacher = Teacher.find_by(email: @user.email)
+      subject_classes = SubjectClass.where(teacher_id: teacher.id)
       if subject_classes.empty?
         []
       else
