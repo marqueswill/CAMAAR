@@ -1,7 +1,7 @@
 require 'rails_helper'
-RSpec.describe QuestionsController, type: :controller do
+RSpec.describe TemplateQuestionsController, type: :controller do
   let(:admin) { create(:admin, :admin1) }
-  @controller = QuestionsController.new
+  @controller = TemplateQuestionsController.new
   before do
     allow(controller).to receive(:authenticate_admin!).and_return(true)
     allow(controller).to receive(:current_admin).and_return(admin)
