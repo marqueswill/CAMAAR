@@ -3,29 +3,27 @@
 
 class SubjectClassesController < AdminsController
   def index
-    @errors = []
     bool, msg = index?
 
-    if bool
-      render :'errors/forbidden', status: :forbidden
-      @errors << msg
-      return
+    if bool && !flash[:warning]
+      flash[:warning] = msg
+      redirect_to "/admins/classes"
     end
-
-    return unless classes.empty?
-
-    @errors << 'O departamento não possui turmas'
   end
 
   def index?
     unless admin
-      return [true,'Admin não encontrado']
+      return [true, "Admin não encontrado"]
     end
 
     unless coordinator
-      return [true,'Coordenador não encontrado']
+      return [true, "Coordenador não encontrado"]
     end
-    [false,'']
-  end
 
+    unless classes.present?
+      return [true, "O departamento não possui turmas"]
+    end
+
+    [false, ""]
+  end
 end

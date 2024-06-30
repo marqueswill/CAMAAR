@@ -2,28 +2,15 @@
   <div class="section__content section__content--p30">
     <div class="row m-t-30">
       <div class="col-md-12">
-        <div>
-          <% if @errors.present? %>
-            <div>
-              <% @errors.each do |e| %>
-                <p class="alert alert-warning">
-                  <%= e %>
-                </p>
-              <% end %>
-            </div>
-            <div>
-              <%= link_to 'Importar turmas', "/admins/import", class:"btn btn-primary", id:"importar_turmas" %>
-            </div>
-          <% end %>
-          <% if flash %>
-            <% flash.each do |k,v| %>
-              <p class="alert alert-success">
-                <%= v %>
-              </p>
-            <% end %>
-          <% end %>
-        </div>
         <h1 style="text-align:center;"> <%= @department.name %> </h1>
+        <div>
+        </div>
+        <% if flash.present? %>
+          <%= render '/layouts/flashes' %>
+          <div>
+            <%= link_to 'Importar turmas', "/admins/import", class:"btn btn-primary", id:"importar_turmas" %>
+          </div>
+        <% end %>
       </div>
       <% if @classes.present? %>
         <div class="table-responsive m-b-40">
