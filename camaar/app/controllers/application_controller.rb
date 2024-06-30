@@ -1,3 +1,6 @@
+# A classe ApplicationControler é uma controller base do rails e gerencia as principais requisições
+# a serem herdadas pelas demais controllers
+
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :verify_authenticity_token
@@ -55,11 +58,12 @@ class ApplicationController < ActionController::Base
   end
 
   def templates
-    @templates = Template.where(coordinator_id: coordinator.id)
-    @templates ||= []
+    templates = Template.where(coordinator_id: coordinator.id)
+    templates ||= []
+    @templates = templates
     @errors = []
 
-    if @templates.empty?
+    if templates.empty?
       @errors << "Não foram encontrados templates"
     end
   end
