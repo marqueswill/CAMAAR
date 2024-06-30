@@ -22,19 +22,25 @@ class TemplatesController < TemplateController
   end
 
   def update
-    if !questions.present?
-      flash[:alert] = "O template precisa conter pelo menos uma pergunta"
-      return redirect_to edit_template_path(template, template: template_params)
-    end
-
-    if params[:template][:name].empty?
-      flash[:alert] = "Template precisa de um nome"
+    bool, symbol, msg = update?
+    if bool
+      flash[symbol.to_sym] = msg
       return redirect_to edit_template_path(template, template: template_params)
     end
 
     if template.update(template_params.merge(draft: false))
       redirect_to templates_path, success: "Template atualizado com sucesso!"
     end
+  end
+
+  def update?
+    if !questions.present?
+      return [true,'alert','O template precisa conter pelo menos uma pergunta']
+    end
+    if params[:template][:name].empty?
+      return [true,'alert','Template precisa de um nome']
+    end
+    return [false,'','']
   end
 
   def destroy

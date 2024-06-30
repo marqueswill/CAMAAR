@@ -24,13 +24,21 @@ class ApplicationController < ActionController::Base
   end
 
   def set_admin_data
-    coordinator
-    department
-    classes
-    teachers
-    templates
+    if current_admin
+      admin
+      coordinator
+    end
+    if coordinator
+      department
+      classes
+      teachers
+      templates
+    end
   end
 
+  def admin
+    @admin = current_admin
+  end
   def coordinator
     @coordinator = Coordinator.find_by({ email: current_admin.email })
   end
@@ -49,6 +57,7 @@ class ApplicationController < ActionController::Base
 
   def templates
     @templates = Template.where(coordinator_id: coordinator.id)
+    @templates ||= []
     @errors = []
 
     if @templates.empty?
