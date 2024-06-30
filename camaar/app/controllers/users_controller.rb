@@ -1,5 +1,8 @@
 require 'json'
 
+# A classe UsersController gerencia as principais ações relacionadas às funcionalidades do usuário.
+# Essa classe inclui a possibilidade de responder formulários e visualizar suas respostas.
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_data
@@ -12,29 +15,15 @@ class UsersController < ApplicationController
   def create; end
 
   def show
-    # @templates = Template.where(coordinator_id: @coordinator.id)
     check_for_commit
   end
 
-  def edit
-    # @templates = Template.where(coordinator_id: @coordinator.id)
-  end
+  def edit;  end
 
   def update; end
 
   def page; end
 
-  def destroy
-    # @templates = Template.where(coordinator_id: @coordinator.id)
-    # template = @template.destroy
+  def destroy; end
 
-    # if template
-    # redirect_to templates_path
-    # end
-  end
-
-  # def require_user
-  #   @user = User.find_by_id(params[:id])
-  #   redirect_to root_url if @user.nil?
-  # end
 end

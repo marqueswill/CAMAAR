@@ -2,6 +2,7 @@
 # Essa classe contém os métodos públicos responsáveis por mostrar e editar os formulários.
 # Também contém métodos privados que são responsáveis por realizar as partes mais lógicas do
 # código, como identificar o tipo de usuário, identificar as questões e as respostas de um formulário.
+
 class FormsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_data
@@ -26,8 +27,8 @@ class FormsController < ApplicationController
   def show
     form = find_form
     form_questions = form.form_question
-    render :show, locals: { 
-      form: form, 
+    render :show, locals: {
+      form: form,
       form_questions: form_questions,
       questions_and_answers: set_questions_and_answers(form_questions)
     }
@@ -69,7 +70,7 @@ class FormsController < ApplicationController
   def categorize_forms(forms)
     FormCategorizerService.categorize(forms, user_service)
   end
-  
+
   # Define as questões e respostas para um formulário específico
   def set_questions_and_answers(form_questions)
     form_questions.map do |question|

@@ -10,7 +10,8 @@ class Admins::PasswordsController < Devise::PasswordsController
     self.resource = resource_class.reset_password_by_token(resource_params)
 
     if resource.errors.empty?
-      admin_password_service(resource)
+      AdminPasswordService.call(resource)
+      admin_reseting_service(resource)
     else
       respond_with resource
     end
@@ -18,12 +19,6 @@ class Admins::PasswordsController < Devise::PasswordsController
 
   protected
 
-  # Método que possibilita a confirmação de conta caso haja algum erro durante a troca de senha.
-  def admin_password_service(resource)
-    resource.unlock_access! if unlockable?(resource)
-    resource.send_confirmation_instructions unless resource.confirmed?
-    admin_reseting_service(resource)
-  end
   # método que possibilita a visualização de flash alerts caso seja efetuada a troca de senha/autenticação
   def admin_reseting_service(resource)
     flash_message = resource.active_for_authentication? ? :updated : :updated_not_active

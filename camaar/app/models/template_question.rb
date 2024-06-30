@@ -1,3 +1,6 @@
+# A model FormQuestion se trata de uma entidade que representa
+# questões de um template do sistema Camaar no banco de dados.
+
 class TemplateQuestion < ApplicationRecord
   has_one :template
 
