@@ -1,3 +1,6 @@
+# A classe HomeController é uma controller base do rails e gerencia as requisições
+# na raiz do projeto ("/")
+
 class HomeController < ApplicationController
   before_action :logout, only: :index
 

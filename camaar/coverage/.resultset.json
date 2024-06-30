@@ -29,6 +29,8 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/application_record.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null
@@ -645,6 +647,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/classes_controller.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           null,
@@ -689,6 +694,7 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/forms_controller.rb": {
         "lines": [
+          null,
           null,
           null,
           null,
@@ -778,6 +784,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/home_controller.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           null,
@@ -1032,6 +1041,9 @@
         "lines": [
           1,
           null,
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1044,30 +1056,16 @@
           1,
           null,
           1,
-          null,
           0,
           null,
           null,
           1,
           null,
-          null,
-          null,
           1,
           null,
           1,
           null,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null
         ]
@@ -1096,17 +1094,12 @@
           null,
           1,
           1,
+          1,
           null,
           0,
           null,
           null,
           null,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
           1,
           null,
           null,
@@ -1333,6 +1326,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/enrollment.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1341,8 +1337,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form.rb": {
         "lines": [
-          1,
           null,
+          null,
+          1,
           1,
           1,
           1,
@@ -1351,6 +1348,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/form_question.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1375,6 +1375,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/student_answer.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1383,6 +1386,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/subject_class.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1394,6 +1400,10 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher.rb": {
         "lines": [
+          null,
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1402,6 +1412,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/teacher_answer.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -1410,6 +1423,8 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -1419,12 +1434,25 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/models/template_question.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           null,
           1,
           1,
           1,
+          null
+        ]
+      },
+      "/home/jpantonow/Documents/CAMAAR/camaar/app/services/admin_password_service.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -1969,6 +1997,6 @@
         ]
       }
     },
-    "timestamp": 1719709862
+    "timestamp": 1719747023
   }
 }
