@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   def after_sign_in_path_for(_resource)
-    if admin_signed_in? # Assuming there is such a function
-      # admins_page_path
+    if admin_signed_in?
       templates_path
     elsif user_signed_in?
       "/users/forms"
@@ -79,19 +78,28 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user_data
-    email = current_user.email
-    student = Student.find_by(email: email)
+    student?
+    teacher?
+  end
+
+  def teacher?
+    teacher = Teacher.find_by(email: current_user.email)
+    if teacher
+      @teacher = teacher
+      current_user.occupation = teacher.occupation
+      current_user.name = teacher.name.split.first.capitalize
+      @department = Department.find_by_id(teacher.department_id) if teacher
+    end
+  end
+
+  def student?
+    student = Student.find_by(email: current_user.email)
     if student
       @student = student
       current_user.occupation = student.occupation
-      # current_user.name = student.name
       current_user.name = student.name.split.first.capitalize
-      @department = Department.find_by(initials: student.course.split("/").last) if student
-    else
-      @teacher = Teacher.find_by(email: email)
-      current_user.occupation = @teacher.occupation
-      current_user.name = @teacher.name.split.first.capitalize
-      @department = Department.find_by_id(@teacher.department_id) if @teacher
+      @department = Department.find_by(initials: student.course.split("/").last)
     end
   end
+
 end
