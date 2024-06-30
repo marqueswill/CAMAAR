@@ -1,33 +1,31 @@
-class SubjectClassesController < ApplicationController
-  layout 'admin'
+# A classe SubjectClassControllers gerencia as principais ações do administrador relacionadas às classes do departamento.
+# Essa classe inclui a visualização de classes do departamento, além de renderizar erros caso não haja autenticação.
 
+class SubjectClassesController < AdminsController
   def index
     @errors = []
-    @admin = current_admin
+    bool, msg = index?
 
-    unless @admin
+    if bool
       render :'errors/forbidden', status: :forbidden
-      @errors << 'Admin não encontrado'
+      @errors << msg
       return
     end
 
-    @coordinator = Coordinator.find_by(admin_id: @admin.id)
-    unless @coordinator
-      render :'errors/forbidden', status: :forbidden
-      @errors << 'Coordenador não encontrado'
-      return
-    end
-
-    @department = Department.find_by(id: @coordinator.department_id)
-    # unless @department
-    #   @errors << 'Departamento não encontrado'
-    #   return
-    # end
-
-    @subject_classes = SubjectClass.where(department_id: @department.id)
-
-    return unless @subject_classes.empty?
+    return unless classes.empty?
 
     @errors << 'O departamento não possui turmas'
   end
+
+  def index?
+    unless admin
+      return [true,'Admin não encontrado']
+    end
+
+    unless coordinator
+      return [true,'Coordenador não encontrado']
+    end
+    [false,'']
+  end
+
 end

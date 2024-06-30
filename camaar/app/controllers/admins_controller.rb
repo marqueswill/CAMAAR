@@ -15,9 +15,11 @@ class AdminsController < ApplicationController
 
   # Carrega os templates e as classes do departamento
   def load
-    coord_id = coordinator.id
+    coord_id = coordinator.id if coordinator
+    if coord_id
     @templates = Template.where(coordinator_id: coord_id, draft: false)
     @forms = Form.where(coordinator_id: coord_id)
+    end
   end
 
   # Método que recebe uma requisição para importar algum dado a partir de um json. Caso haja sucesso ou erro, serão printadas

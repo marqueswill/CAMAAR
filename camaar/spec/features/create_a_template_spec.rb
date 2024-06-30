@@ -86,12 +86,11 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       fill_in 'title', with: 'Você torce pro maior do sul? (Grêmio)?'
       click_button 'Salvar'
       expect(page).to have_content 'Questão 1'
-      fill_in 'template[name]', with: 'test_temp'
       click_button 'Salvar'
 
-      expect(Template.where(name: 'test_temp').count).to eq(1)
+      expect(Template.where(name: template.name).count).to eq(1) #pay attention to this method sometimes it breaks
 
-      template = Template.find_by(name: 'test_temp')
+      template = Template.find_by(name: template.name)
 
       expect(TemplateQuestion.find_by(template_id: template.id).question_type).to eq('text')
     end
