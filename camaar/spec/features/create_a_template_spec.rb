@@ -41,7 +41,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
 
       fill_in 'template[name]', with: 'test_temp2'
       click_button 'Salvar'
-
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
       expect(Template.where(name: 'test_temp2').count).to eq(1)
 
       template = Template.find_by(name: 'test_temp2')
@@ -66,6 +66,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       expect(page).to have_content 'Questão 1'
       fill_in 'template[name]', with: 'test_temp'
       click_button 'Salvar'
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
 
       expect(Template.where(name: 'test_temp').count).to eq(1)
 
@@ -87,6 +88,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       click_button 'Salvar'
       expect(page).to have_content 'Questão 1'
       click_button 'Salvar'
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
 
       expect(Template.where(name: template.name).count).to eq(1) # pay attention to this method sometimes it breaks
 
@@ -104,6 +106,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       click_button 'Cancelar'
       expect(page).to have_content 'Questão 1'
       click_button 'Salvar'
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
 
       expect(Template.where(name: template.name).count).to eq(1)
 

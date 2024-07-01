@@ -39,7 +39,7 @@ RSpec.feature 'Delete a template', type: :feature, js: true do
 
       fill_in 'template[name]', with: 'test_temp2'
       click_button 'Salvar'
-
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
       expect(Template.where(name: 'test_temp2').count).to eq(1)
       click_button 'delete_test_temp2'
       expect(Template.where(name: 'test_temp2').count).to eq(0)
@@ -77,7 +77,7 @@ RSpec.feature 'Delete a template', type: :feature, js: true do
 
       fill_in 'template[name]', with: 'test_temp'
       click_button 'Salvar'
-
+      expect(page).to have_content 'ADICIONAR TEMPLATE'
       expect(Template.where(name: 'test_temp').count).to eq(1)
 
       template = Template.find_by(name: 'test_temp')
