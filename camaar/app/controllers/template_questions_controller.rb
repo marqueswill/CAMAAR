@@ -7,7 +7,6 @@ class TemplateQuestionsController < QuestionsController
   before_action :set_admin_data
   before_action :check_for_commit
   before_action :set_template_question_data
-  before_action :set_errors
 
   def edit
   end

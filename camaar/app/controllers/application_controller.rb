@@ -79,16 +79,7 @@ class ApplicationController < ActionController::Base
     @errors << 'Não foram encontrados templates'
   end
 
-  def set_errors
-    @errors = { primary: [],
-                secondary: [],
-                sucess: [],
-                danger: [],
-                warning: [],
-                info: [],
-                light: [],
-                dark: [] }
-  end
+  
 
   # Método que define os dados de um usuário logado de acordo com o tipo de usuário.
   def set_user_data
