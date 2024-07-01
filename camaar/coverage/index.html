@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-07-01T10:11:55-03:00">2024-07-01T10:11:55-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-07-01T10:33:47-03:00">2024-07-01T10:33:47-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         9.81
+         9.82
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>838</b> relevant lines,
-    <span class="green"><b>802</b> lines covered</span> and
+    <b>837</b> relevant lines,
+    <span class="green"><b>801</b> lines covered</span> and
     <span class="red"><b>36</b> lines missed. </span>
     (<span class="green">
   95.7%
@@ -138,12 +138,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#473f6e4371a3e997d709a31c1a5da7e5b827348e" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.36 %</td>
-            <td class="cell--number">109</td>
-            <td class="cell--number">61</td>
+            <td class="green strong cell--number t-file__coverage">98.33 %</td>
+            <td class="cell--number">120</td>
             <td class="cell--number">60</td>
+            <td class="cell--number">59</td>
             <td class="cell--number">1</td>
-            <td class="cell--number">71.07</td>
+            <td class="cell--number">72.23</td>
             
           </tr>
         
@@ -885,14 +885,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  97.01%
+  97.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         16.05
+         16.09
        </span>
     </span> hits/line
     )
@@ -905,11 +905,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>401</b> relevant lines,
-    <span class="green"><b>389</b> lines covered</span> and
+    <b>400</b> relevant lines,
+    <span class="green"><b>388</b> lines covered</span> and
     <span class="red"><b>12</b> lines missed. </span>
     (<span class="green">
-  97.01%
+  97.0%
 </span>
 )
   </div>
@@ -1000,12 +1000,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#473f6e4371a3e997d709a31c1a5da7e5b827348e" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.36 %</td>
-            <td class="cell--number">109</td>
-            <td class="cell--number">61</td>
+            <td class="green strong cell--number t-file__coverage">98.33 %</td>
+            <td class="cell--number">120</td>
             <td class="cell--number">60</td>
+            <td class="cell--number">59</td>
             <td class="cell--number">1</td>
-            <td class="cell--number">71.07</td>
+            <td class="cell--number">72.23</td>
             
           </tr>
         
@@ -4163,7 +4163,7 @@
     <h3>app/controllers/application_controller.rb</h3>
     <h4>
       <span class="green">
-  98.36%
+  98.33%
 </span>
 
       lines covered
@@ -4172,8 +4172,8 @@
     
 
     <div class="t-line-summary">
-      <b>61</b> relevant lines.
-      <span class="green"><b>60</b> lines covered</span> and
+      <b>60</b> relevant lines.
+      <span class="green"><b>59</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
 
@@ -4191,7 +4191,7 @@
 
             
 
-            <code class="ruby"># A classe ApplicationControler é uma controller base do rails e gerencia as principais requisições</code>
+            <code class="ruby"># A classe AplicationController é a classe responsável por gerenciar dados do usuário logado.</code>
           </li>
         </div>
       
@@ -4202,7 +4202,7 @@
 
             
 
-            <code class="ruby"># a serem herdadas pelas demais controllers</code>
+            <code class="ruby"># De acordo com o tipo de usuário logado, a ApplicationController busca os dados do usuário e os disponibiliza para as views.</code>
           </li>
         </div>
       
@@ -4213,18 +4213,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby"># É uma controller base do rails e gerencia as principais requisições a serem herdadas pelas demais controllers.</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="4">
+            
             
 
             
 
-            <code class="ruby">class ApplicationController &lt; ActionController::Base</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4235,7 +4235,7 @@
 
             
 
-            <code class="ruby">  before_action :configure_permitted_parameters, if: :devise_controller?</code>
+            <code class="ruby">class ApplicationController &lt; ActionController::Base</code>
           </li>
         </div>
       
@@ -4246,12 +4246,23 @@
 
             
 
+            <code class="ruby">  before_action :configure_permitted_parameters, if: :devise_controller?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">  skip_before_action :verify_authenticity_token</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
@@ -4262,7 +4273,51 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="8">
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">  # Método que define o caminho para onde o usuário será redirecionado após o login.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">  # Caso o usuário seja um administrador, ele será redirecionado para a página de templates.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">  # Caso o usuário seja um aluno, ele será redirecionado para a página de formulários.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
             <span class="hits">1</span>
             
 
@@ -4273,7 +4328,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="42" data-linenumber="9">
+          <li class="covered" data-hits="42" data-linenumber="14">
             <span class="hits">42</span>
             
 
@@ -4284,7 +4339,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="32" data-linenumber="10">
+          <li class="covered" data-hits="32" data-linenumber="15">
             <span class="hits">32</span>
             
 
@@ -4295,7 +4350,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="11">
+          <li class="covered" data-hits="10" data-linenumber="16">
             <span class="hits">10</span>
             
 
@@ -4306,18 +4361,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="12">
+          <li class="covered" data-hits="10" data-linenumber="17">
             <span class="hits">10</span>
             
 
             
 
-            <code class="ruby">      &quot;/users/forms&quot;</code>
+            <code class="ruby">      &#39;/users/forms&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="18">
             
             
 
@@ -4328,7 +4383,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="14">
+          <li class="missed" data-hits="0" data-linenumber="19">
             
             
 
@@ -4339,7 +4394,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
@@ -4350,7 +4405,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="21">
             
             
 
@@ -4361,7 +4416,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
@@ -4372,29 +4427,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="18">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  protected</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
+          <li class="covered" data-hits="1" data-linenumber="23">
             <span class="hits">1</span>
             
 
@@ -4405,7 +4438,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="119" data-linenumber="21">
+          <li class="covered" data-hits="119" data-linenumber="24">
             <span class="hits">119</span>
             
 
@@ -4416,7 +4449,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="119" data-linenumber="22">
+          <li class="covered" data-hits="119" data-linenumber="25">
             <span class="hits">119</span>
             
 
@@ -4427,7 +4460,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="119" data-linenumber="23">
+          <li class="covered" data-hits="119" data-linenumber="26">
             <span class="hits">119</span>
             
 
@@ -4438,7 +4471,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="119" data-linenumber="24">
+          <li class="covered" data-hits="119" data-linenumber="27">
             <span class="hits">119</span>
             
 
@@ -4449,7 +4482,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="119" data-linenumber="25">
+          <li class="covered" data-hits="119" data-linenumber="28">
             <span class="hits">119</span>
             
 
@@ -4460,7 +4493,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -4471,7 +4504,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="27">
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -4482,7 +4515,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">  # Método que define os dados de um administrador logado.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="32">
             <span class="hits">1</span>
             
 
@@ -4493,7 +4537,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="139" data-linenumber="29">
+          <li class="covered" data-hits="139" data-linenumber="33">
             <span class="hits">139</span>
             
 
@@ -4504,7 +4548,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="139" data-linenumber="30">
+          <li class="covered" data-hits="139" data-linenumber="34">
             <span class="hits">139</span>
             
 
@@ -4515,7 +4559,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="139" data-linenumber="31">
+          <li class="covered" data-hits="139" data-linenumber="35">
             <span class="hits">139</span>
             
 
@@ -4526,7 +4570,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
@@ -4537,57 +4581,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="139" data-linenumber="33">
+          <li class="covered" data-hits="139" data-linenumber="37">
             <span class="hits">139</span>
             
 
             
 
-            <code class="ruby">    if coordinator</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="138" data-linenumber="34">
-            <span class="hits">138</span>
-            
-
-            
-
-            <code class="ruby">      department</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="138" data-linenumber="35">
-            <span class="hits">138</span>
-            
-
-            
-
-            <code class="ruby">      classes</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="138" data-linenumber="36">
-            <span class="hits">138</span>
-            
-
-            
-
-            <code class="ruby">      teachers</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="138" data-linenumber="37">
-            <span class="hits">138</span>
-            
-
-            
-
-            <code class="ruby">      templates</code>
+            <code class="ruby">    return unless coordinator</code>
           </li>
         </div>
       
@@ -4598,51 +4598,51 @@
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="41">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="138" data-linenumber="39">
+            <span class="hits">138</span>
             
 
             
 
-            <code class="ruby">  def admin</code>
+            <code class="ruby">    department</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="145" data-linenumber="42">
-            <span class="hits">145</span>
+          <li class="covered" data-hits="138" data-linenumber="40">
+            <span class="hits">138</span>
             
 
             
 
-            <code class="ruby">    @admin = current_admin</code>
+            <code class="ruby">    classes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="138" data-linenumber="41">
+            <span class="hits">138</span>
+            
+
+            
+
+            <code class="ruby">    teachers</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="138" data-linenumber="42">
+            <span class="hits">138</span>
+            
+
+            
+
+            <code class="ruby">    templates</code>
           </li>
         </div>
       
@@ -4658,40 +4658,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def coordinator</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="945" data-linenumber="45">
-            <span class="hits">945</span>
-            
-
-            
-
-            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="46">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
@@ -4702,24 +4669,57 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">  # Método auxiliar que define qual administrador está logado.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def department</code>
+            <code class="ruby">  def admin</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="138" data-linenumber="49">
-            <span class="hits">138</span>
+          <li class="covered" data-hits="145" data-linenumber="47">
+            <span class="hits">145</span>
             
 
             
 
-            <code class="ruby">    @department = Department.find_by_id(coordinator.department_id)</code>
+            <code class="ruby">    @admin = current_admin</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4730,40 +4730,40 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  # Método auxiliar que define qual coordenador está logado.</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
+          <li class="covered" data-hits="1" data-linenumber="51">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def classes</code>
+            <code class="ruby">  def coordinator</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="143" data-linenumber="53">
-            <span class="hits">143</span>
+          <li class="covered" data-hits="945" data-linenumber="52">
+            <span class="hits">945</span>
             
 
             
 
-            <code class="ruby">    @classes = SubjectClass.where(department_id: coordinator.department_id)</code>
+            <code class="ruby">    @coordinator = Coordinator.find_by({ email: current_admin.email })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4774,7 +4774,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4785,7 +4785,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # Método auxiliar que define o departamento do coordenador logado.</code>
           </li>
         </div>
       
@@ -4796,7 +4796,7 @@
 
             
 
-            <code class="ruby">  def teachers</code>
+            <code class="ruby">  def department</code>
           </li>
         </div>
       
@@ -4807,7 +4807,7 @@
 
             
 
-            <code class="ruby">    @teachers = Teacher.where(department_id: coordinator.department_id)</code>
+            <code class="ruby">    @department = Department.find_by_id(coordinator.department_id)</code>
           </li>
         </div>
       
@@ -4834,57 +4834,57 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  # Método auxiliar que define as classes do departamento do coordenador logado.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def templates</code>
+            <code class="ruby">  def classes</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="138" data-linenumber="61">
-            <span class="hits">138</span>
+          <li class="covered" data-hits="143" data-linenumber="62">
+            <span class="hits">143</span>
             
 
             
 
-            <code class="ruby">    templates = Template.where(coordinator_id: coordinator.id)</code>
+            <code class="ruby">    @classes = SubjectClass.where(department_id: coordinator.department_id)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="138" data-linenumber="62">
-            <span class="hits">138</span>
+          <li class="never" data-hits="" data-linenumber="63">
+            
             
 
             
 
-            <code class="ruby">    templates ||= []</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="138" data-linenumber="63">
-            <span class="hits">138</span>
+          <li class="never" data-hits="" data-linenumber="64">
+            
             
 
             
 
-            <code class="ruby">    @templates = templates</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="138" data-linenumber="64">
-            <span class="hits">138</span>
-            
-
-            
-
-            <code class="ruby">    @errors = []</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4895,29 +4895,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # Método auxiliar que define os professores do departamento do coordenador logado.</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="138" data-linenumber="66">
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def teachers</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="138" data-linenumber="67">
             <span class="hits">138</span>
             
 
             
 
-            <code class="ruby">    if templates.empty?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="31" data-linenumber="67">
-            <span class="hits">31</span>
-            
-
-            
-
-            <code class="ruby">      @errors &lt;&lt; &quot;Não foram encontrados templates&quot;</code>
+            <code class="ruby">    @teachers = Teacher.where(department_id: coordinator.department_id)</code>
           </li>
         </div>
       
@@ -4928,7 +4928,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4939,7 +4939,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4950,62 +4950,62 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  # Método auxiliar que define os templates do coordenador logado.</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="73">
+          <li class="covered" data-hits="1" data-linenumber="71">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def set_errors</code>
+            <code class="ruby">  def templates</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="74">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="138" data-linenumber="72">
+            <span class="hits">138</span>
             
 
             
 
-            <code class="ruby">    @errors = { primary: [],</code>
+            <code class="ruby">    templates = Template.where(coordinator_id: coordinator.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="75">
+          <li class="covered" data-hits="138" data-linenumber="73">
+            <span class="hits">138</span>
             
+
+            
+
+            <code class="ruby">    templates ||= []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="138" data-linenumber="74">
+            <span class="hits">138</span>
             
 
             
 
-            <code class="ruby">                secondary: [],</code>
+            <code class="ruby">    @templates = templates</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="138" data-linenumber="75">
+            <span class="hits">138</span>
+            
+
+            
+
+            <code class="ruby">    @errors = []</code>
           </li>
         </div>
       
@@ -5016,18 +5016,18 @@
 
             
 
-            <code class="ruby">                sucess: [],</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
+          <li class="covered" data-hits="138" data-linenumber="77">
+            <span class="hits">138</span>
             
 
-            <code class="ruby">                danger: [],</code>
+            
+
+            <code class="ruby">    return unless templates.empty?</code>
           </li>
         </div>
       
@@ -5038,18 +5038,18 @@
 
             
 
-            <code class="ruby">                warning: [],</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="79">
-            
-            
-
+          <li class="covered" data-hits="31" data-linenumber="79">
+            <span class="hits">31</span>
             
 
-            <code class="ruby">                info: [],</code>
+            
+
+            <code class="ruby">    @errors &lt;&lt; &#39;Não foram encontrados templates&#39;</code>
           </li>
         </div>
       
@@ -5060,7 +5060,7 @@
 
             
 
-            <code class="ruby">                light: [],</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -5071,62 +5071,62 @@
 
             
 
-            <code class="ruby">                dark: [] }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="82">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="83">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
+          <li class="covered" data-hits="1" data-linenumber="82">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def set_user_data</code>
+            <code class="ruby">  def set_errors</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="27" data-linenumber="85">
-            <span class="hits">27</span>
+          <li class="covered" data-hits="21" data-linenumber="83">
+            <span class="hits">21</span>
             
 
             
 
-            <code class="ruby">    student?</code>
+            <code class="ruby">    @errors = { primary: [],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="27" data-linenumber="86">
-            <span class="hits">27</span>
+          <li class="never" data-hits="" data-linenumber="84">
+            
             
 
             
 
-            <code class="ruby">    teacher?</code>
+            <code class="ruby">                secondary: [],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby">                sucess: [],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
+            
+            
+
+            
+
+            <code class="ruby">                danger: [],</code>
           </li>
         </div>
       
@@ -5137,7 +5137,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">                warning: [],</code>
           </li>
         </div>
       
@@ -5148,95 +5148,95 @@
 
             
 
+            <code class="ruby">                info: [],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby">                light: [],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="90">
+            
+            
+
+            
+
+            <code class="ruby">                dark: [] }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="91">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="92">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="93">
+            
+            
+
+            
+
+            <code class="ruby">  # Método que define os dados de um usuário logado de acordo com o tipo de usuário.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="94">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def teacher?</code>
+            <code class="ruby">  def set_user_data</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="27" data-linenumber="90">
+          <li class="covered" data-hits="27" data-linenumber="95">
             <span class="hits">27</span>
             
 
             
 
-            <code class="ruby">    teacher = Teacher.find_by(email: current_user.email)</code>
+            <code class="ruby">    student?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="27" data-linenumber="91">
+          <li class="covered" data-hits="27" data-linenumber="96">
             <span class="hits">27</span>
             
 
             
 
-            <code class="ruby">    if teacher</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="92">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      @teacher = teacher</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="93">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      current_user.occupation = teacher.occupation</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="94">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      current_user.name = teacher.name.split.first.capitalize</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="95">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">      @department = Department.find_by_id(teacher.department_id) if teacher</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="96">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">    teacher?</code>
           </li>
         </div>
       
@@ -5263,24 +5263,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">  # Método auxiliar que define os dados de um professor logado.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="100">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def student?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="27" data-linenumber="100">
-            <span class="hits">27</span>
-            
-
-            
-
-            <code class="ruby">    student = Student.find_by(email: current_user.email)</code>
+            <code class="ruby">  def teacher?</code>
           </li>
         </div>
       
@@ -5291,78 +5291,23 @@
 
             
 
-            <code class="ruby">    if student</code>
+            <code class="ruby">    teacher = Teacher.find_by(email: current_user.email)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="102">
-            <span class="hits">17</span>
+          <li class="covered" data-hits="27" data-linenumber="102">
+            <span class="hits">27</span>
             
 
             
 
-            <code class="ruby">      @student = student</code>
+            <code class="ruby">    return unless teacher</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="103">
-            <span class="hits">17</span>
-            
-
-            
-
-            <code class="ruby">      current_user.occupation = student.occupation</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="17" data-linenumber="104">
-            <span class="hits">17</span>
-            
-
-            
-
-            <code class="ruby">      current_user.name = student.name.split.first.capitalize</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="17" data-linenumber="105">
-            <span class="hits">17</span>
-            
-
-            
-
-            <code class="ruby">      @department = Department.find_by(initials: student.course.split(&quot;/&quot;).last)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="106">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="107">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="108">
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
@@ -5373,7 +5318,183 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="10" data-linenumber="104">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    @teacher = teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="105">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    current_user.occupation = teacher.occupation</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="106">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    current_user.name = teacher.name.split.first.capitalize</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="10" data-linenumber="107">
+            <span class="hits">10</span>
+            
+
+            
+
+            <code class="ruby">    @department = Department.find_by_id(teacher.department_id) if teacher</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby">  # Método auxiliar que define os dados de um aluno logado.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="111">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def student?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="27" data-linenumber="112">
+            <span class="hits">27</span>
+            
+
+            
+
+            <code class="ruby">    student = Student.find_by(email: current_user.email)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="27" data-linenumber="113">
+            <span class="hits">27</span>
+            
+
+            
+
+            <code class="ruby">    return unless student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="17" data-linenumber="115">
+            <span class="hits">17</span>
+            
+
+            
+
+            <code class="ruby">    @student = student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="17" data-linenumber="116">
+            <span class="hits">17</span>
+            
+
+            
+
+            <code class="ruby">    current_user.occupation = student.occupation</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="17" data-linenumber="117">
+            <span class="hits">17</span>
+            
+
+            
+
+            <code class="ruby">    current_user.name = student.name.split.first.capitalize</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="17" data-linenumber="118">
+            <span class="hits">17</span>
+            
+
+            
+
+            <code class="ruby">    @department = Department.find_by(initials: student.course.split(&#39;/&#39;).last)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
             
             
 
