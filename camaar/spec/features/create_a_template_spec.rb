@@ -88,7 +88,7 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       expect(page).to have_content 'Questão 1'
       click_button 'Salvar'
 
-      expect(Template.where(name: template.name).count).to eq(1) #pay attention to this method sometimes it breaks
+      expect(Template.where(name: template.name).count).to eq(1) # pay attention to this method sometimes it breaks
 
       template = Template.find_by(name: template.name)
 
