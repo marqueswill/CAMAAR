@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if admin_signed_in?
       templates_path
     elsif user_signed_in?
-      "/users/forms"
+      '/users/forms'
     else
       root_path
     end
@@ -34,19 +34,19 @@ class ApplicationController < ActionController::Base
       admin
       coordinator
     end
-    if coordinator
-      department
-      classes
-      teachers
-      templates
-    end
+    return unless coordinator
+
+    department
+    classes
+    teachers
+    templates
   end
 
   # Método auxiliar que define qual administrador está logado.
   def admin
     @admin = current_admin
   end
-  
+
   # Método auxiliar que define qual coordenador está logado.
   def coordinator
     @coordinator = Coordinator.find_by({ email: current_admin.email })
@@ -54,17 +54,17 @@ class ApplicationController < ActionController::Base
 
   # Método auxiliar que define o departamento do coordenador logado.
   def department
-    @department = Department.find_by_id(@coordinator.department_id)
+    @department = Department.find_by_id(coordinator.department_id)
   end
 
   # Método auxiliar que define as classes do departamento do coordenador logado.
   def classes
-    @classes = SubjectClass.where(department_id: @coordinator.department_id)
+    @classes = SubjectClass.where(department_id: coordinator.department_id)
   end
 
   # Método auxiliar que define os professores do departamento do coordenador logado.
   def teachers
-    @teachers = Teacher.where(department_id: @coordinator.department_id)
+    @teachers = Teacher.where(department_id: coordinator.department_id)
   end
 
   # Método auxiliar que define os templates do coordenador logado.
@@ -74,13 +74,11 @@ class ApplicationController < ActionController::Base
     @templates = templates
     errors = []
 
-    if templates.empty?
-      errors << "Não foram encontrados templates"
-      @errors = errors
-    end
+    return unless templates.empty?
+
+    errors << 'Não foram encontrados templates'
+    @errors = errors
   end
-
-
 
   def set_errors
     @errors = { primary: [],
@@ -98,26 +96,26 @@ class ApplicationController < ActionController::Base
     student?
     teacher?
   end
-  
+
   # Método auxiliar que define os dados de um professor logado.
   def teacher?
     teacher = Teacher.find_by(email: current_user.email)
-    if teacher
-      @teacher = teacher
-      current_user.occupation = teacher.occupation
-      current_user.name = teacher.name.split.first.capitalize
-      @department = Department.find_by_id(teacher.department_id) if teacher
-    end
+    return unless teacher
+
+    @teacher = teacher
+    current_user.occupation = teacher.occupation
+    current_user.name = teacher.name.split.first.capitalize
+    @department = Department.find_by_id(teacher.department_id) if teacher
   end
 
   # Método auxiliar que define os dados de um aluno logado.
   def student?
     student = Student.find_by(email: current_user.email)
-    if student
-      @student = student
-      current_user.occupation = student.occupation
-      current_user.name = student.name.split.first.capitalize
-      @department = Department.find_by(initials: student.course.split("/").last)
-    end
+    return unless student
+
+    @student = student
+    current_user.occupation = student.occupation
+    current_user.name = student.name.split.first.capitalize
+    @department = Department.find_by(initials: student.course.split('/').last)
   end
 end
