@@ -7,7 +7,7 @@
             <div class="form-group form-inline">
               <%= f.label :title, "Título:" , class: "mr-2"%>
               <%= f.text_field :title, id: "question_title", class:"form-control form-control-sm",value: @title %>
-              <% empty_field = flash[:alert].include? ("Title Questão precisa de um título") %>
+                <% empty_field = (flash[:alert] and flash[:alert].include? ("Title can't be blank")) %>
               <p class="text-danger"><%= "Questão precisa de um título" if empty_field%></p>
             </div>
             <div>
@@ -25,7 +25,7 @@
                     <br/>
                     <%= f.label "option#{i+1}", "Opção #{i+1}" %>
                     <%= f.text_field :options, class:"form-control",id: "option#{i+1}", name: "options[]", value: @options[i] %>
-                    <% empty_field = flash[:alert].include? ("option_#{i+1}") %>
+                    <% empty_field = (flash[:alert] and flash[:alert].include? ("option_#{i+1}")) %>
                     <p class="text-danger"><%= "Campo obrigatório" if empty_field%></p>
                   </div>
                 <% end %>

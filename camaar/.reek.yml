@@ -4,3 +4,7 @@ detectors:
     enabled: false
     max_instance_variables: 10
 
+  TooManyStatements:
+    enabled: true
+
+    max_statements: 10

@@ -4,9 +4,9 @@ RSpec.describe SubjectClassesController, type: :controller do
   let(:user) { create(:user, :user1) }
 
   describe 'user cant see subject classes' do
-    it 'allows to access :index route' do
+    it 'doesnt allow to access :index route' do
       get :index
-      expect(response).to have_http_status(:forbidden)
+      expect(response).to have_http_status(302)
     end
   end
 

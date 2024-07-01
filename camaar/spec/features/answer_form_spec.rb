@@ -27,6 +27,7 @@ feature 'Answer forms', js: true do
     fill_in 'email', with: admin.email
     fill_in 'password', with: admin.password
     click_button 'Confirmar'
+    expect(page).to have_content 'Envio'
     click_link 'Envio'
     select 'Template1', from: 'student_template'
     select 'Template2', from: 'teacher_template'

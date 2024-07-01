@@ -1,80 +1,45 @@
 require "csv"
 
+# A classe AnswersController gerencia as funcionalidas referentes às respostas dos formulários.
+# Essa classe contém os métodos públicos responsáveis por responder os formulários de usuáriios, sejam
+# alunos ou professores. Ela processa e salva as respostas enviadas via requisição POST na forma de um
+# formulário HTML.
+# Também contém métodos protegidos e instâncias de classes auxiliares que são responsáveis por realizar as partes mais lógicas do código.
+
 class AnswersController < ApplicationController
   before_action :set_user_data
+  before_action :validate_answers, only: :create
   layout "user"
 
+  # Método para o qual o recurso 'answers' é mapeado diretamente. Através de serviços e métodos
+  # auxiliares, é capaz de registrar as respostas aos formulários no banco
   def create
-    occupation = current_user.occupation
-
-    @form = Form.find_by_id(params[:form_id])
-
-    questions = FormQuestion.where(form_id: @form.id)
-    answers_params = params[:answers]
-    if answers_params.present?
-      questions.each do |question|
-        answ = answers_params[(question.id).to_s]
-        if not answ or answ.empty?
-          flash[:error] = "Responda todas questões."
-          redirect_to edit_form_path(@form) and return
-        end
-      end
-    end
-
-    @errors = []
-
-    if params[:commit] and params[:commit] == "Enviar"
-      case occupation
-      when "discente"
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          StudentAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            student_id: @student.id,
-          )
-        end
-      when "docente"
-        answers_params = params[:answers]
-
-        answers_params.each do |question_id, answer|
-          @form_question = FormQuestion.find(question_id.to_i)
-          next unless @form_question
-
-          TeacherAnswer.create(
-            answers: create_answer_body(answer),
-            form_question_id: question_id,
-            teacher_id: current_user.id,
-          )
-        end
-      end
-
-      redirect_to forms_path
-    else
+    form = Form.find_by_id(params[:form_id])
+    @form = form if form
+    path, warn = Answers.new.submit_answers(params[:answers], params[:commit], current_user, form)
+    if warn
       flash[:warning] = @errors
-      redirect_to edit_form_path(id: @form.id)
-      # redirect_to "/users/forms/#{}/edit/"
     end
+    redirect_to path
   end
 
-  def create_answer_body(answer)
-    question_body = JSON.parse(@form_question.body)
-    answer_body = { "answers" => {} }
+  protected
 
-    if @form_question.question_type == "multiple_choice"
-      question_body["options"].each do |option_number, value|
-        if option_number == answer
-          answer_body["answers"][option_number.to_s] = true
-        else
-          answer_body["answers"][option_number.to_s] = false
+  # Método que toma as respostas das perguntas e verifica se foram respondidas. Caso não tenham
+  # sido, é enviado um flash exigindo que o usuário responda e redireciona pra view edit, que é
+  # responsável por gerar a UI em que o usuário deve responder o formulário
+  def validate_answers
+    form = Form.find_by_id(params[:form_id])
+    answers_params = params[:answers]
+
+    if answers_params.present?
+      answers_params.each do |id, answ|
+        if answ.empty?
+          flash[:error] = "Responda todas questões."
+          redirect_to edit_form_path(form) and return
         end
       end
-    else
-      answer_body["answers"] = answer
     end
-
-    return answer_body.to_json
   end
+
 end
