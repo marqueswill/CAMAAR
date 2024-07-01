@@ -3,12 +3,20 @@ O projeto foi desenvolvido sumariamente em ambiente linux, tendo sido testados o
 
 - 6.8.9-arch1-2
 - 6.6.9-1kali1
+- 22.04.1-Ubuntu
 
-Além disso, para a execução dos testes com rspec, é necessário que o navegador Firefox esteja devidamente instalado, dado ao fato de que o webdriver utilizado - selenium - utiliza o browser firefox em nosso ambiente de testes.
+Além disso, para a execução dos testes com rspec, é necessário que o navegador Chrome esteja devidamente instalado, dado ao fato de que o webdriver utilizado - selenium - utiliza o browser chrome em nosso ambiente de testes.
+
+Para executar os testes do rspec utilizando o firefox vá em `camaar/spec/spec_helper` e substitua `Capybara.javascript_driver = :selenium_chrome` pelo seguinte
+```
+Capybara.javascript_driver = :selenium
+```
 
 As versões do ruby testadas com êxito foram ruby 3.3.0 e ruby 3.3.1. Você mode alterar sua versão a partir das seguintes bibliotecas:
 - [RVM](https://rvm.io/)
 - [rbenv](https://github.com/rbenv/rbenv)
+
+
 
 ## Setup ##
 Abra o terminal e clone o repositório do projeto:
