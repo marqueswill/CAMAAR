@@ -17,7 +17,7 @@ class AdminsController < ApplicationController
   def load
     coord_id = coordinator.id if coordinator
     if coord_id
-    @templates = Template.where(coordinator_id: coord_id, draft: false)
+    @templates = Template.where(coordinator_id: coord_id)
     @forms = Form.where(coordinator_id: coord_id)
     end
   end
