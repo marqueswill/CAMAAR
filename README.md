@@ -38,6 +38,10 @@ rails server
 E acesse o site a partir do ```localhost:3000```
 
 ## Testing ##
+### Rdoc
+```
+rdoc app
+```
 
 ### Rspec
 
@@ -51,6 +55,16 @@ bundle exec cucumber features/
 ```
 
 O ambiente de testes foi configurado utilizando a gem 'simplecov', de maneira a integrar o Rspec com o Cucumber. Você pode visualizar a cobertura dos testes abrindo o arquivo ``` camaar/coverage/index.html ``` no seu navegador
+
+### Rubycritic
+```
+bundle exec rubycritic 
+```
+
+### Cycromatic
+```
+bundle exec cycromatic app/
+```
 
 ## Guia de uso
 [Vìdeo exemplo](https://youtu.be/bIlr8v9HpNo)
