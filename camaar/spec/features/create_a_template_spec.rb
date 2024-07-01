@@ -149,7 +149,6 @@ RSpec.feature 'Create a template', type: :feature, js: true do
       expect(page).to have_content 'Cancelar'
 
       select('Texto', from: 'question_type')
-
       click_button 'Adicionar'
       expect(page).to have_content 'Questão precisa de um título'
     end
