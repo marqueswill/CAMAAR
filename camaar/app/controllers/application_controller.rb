@@ -72,12 +72,11 @@ class ApplicationController < ActionController::Base
     templates = Template.where(coordinator_id: coordinator.id)
     templates ||= []
     @templates = templates
-    errors = []
+    @errors = []
 
     return unless templates.empty?
 
-    errors << 'Não foram encontrados templates'
-    @errors = errors
+    @errors << 'Não foram encontrados templates'
   end
 
   def set_errors
