@@ -1,3 +1,7 @@
+# Classe que representa um serviço da AdminsController de exportar gráficos em png.
+# Efetua as operações de exportação de estatísticas referentes a respostas de formulários de
+# alunos e professores.
+
 class ExportPngService
   def self.call(filename, graph)
     file_path = File.join('export', filename)
@@ -10,29 +14,33 @@ class ExportPngService
     number_of_students = enrollments.distinct.count(:student_id)
     num_answers = StudentAnswer.where(student_id: enrollments.distinct.pluck(:student_id)).count
     num_absents = number_of_students - num_answers
-    p = Rdata.new
-    p.add_point([num_answers, num_absents], 'Serie1')
-    p.add_point(%w[Respostas Ausências], 'Serie2')
-    generate_graph(p)
+    graph = Rdata.new
+    graph.add_point([num_answers, num_absents], 'Serie1')
+    graph.add_point(%w[Respostas Ausências], 'Serie2')
+    generate_graph(graph)
   end
 
-  def self.generate_graph(p)
-    p.add_all_series
-    p.set_abscise_label_serie('Serie2')
+  def self.generate_graph(graph)
+    graph.add_all_series
+    graph.set_abscise_label_serie('Serie2')
 
-    ch = Rchart.new(300, 200)
-    ch.set_font_properties('tahoma.ttf', 8)
+    chart = Rchart.new(300, 200)
+    chart.set_font_properties('tahoma.ttf', 8)
 
-    ch.draw_filled_rounded_rectangle(7, 7, 293, 193, 5, 240, 240, 240)
-    ch.draw_rounded_rectangle(5, 5, 295, 195, 5, 230, 230, 230)
+    chart.draw_filled_rounded_rectangle(7, 7, 293, 193, 5, 240, 240, 240)
+    chart.draw_rounded_rectangle(5, 5, 295, 195, 5, 230, 230, 230)
 
-    ch.antialias_quality = 0
-    ch.set_shadow_properties(2, 2, 200, 200, 200)
-    ch.draw_flat_pie_graph_with_shadow(p.get_data, p.get_data_description, 120, 100, 60, Rchart::PIE_PERCENTAGE, 8)
-    ch.clear_shadow
+    chart.antialias_quality = 0
+    chart.set_shadow_properties(2, 2, 200, 200, 200)
 
-    ch.draw_pie_legend(210, 35, p.get_data, p.get_data_description, 250, 250, 250)
-    ch
+    graph_data = graph.get_data
+    graph_description = graph.get_data_description
+
+    chart.draw_flat_pie_graph_with_shadow(graph_data, graph_description, 120, 100, 60, Rchart::PIE_PERCENTAGE, 8)
+    chart.clear_shadow
+
+    chart.draw_pie_legend(210, 35, graph_data, graph_description, 250, 250, 250)
+    chart
   end
 
   def self.generate_student_graph(form)
@@ -40,10 +48,10 @@ class ExportPngService
     text_questions = form_questions.where(question_type: 'text').count
     multiple_choice_questions = form_questions.where(question_type: 'multiple_choice').count
 
-    p = Rdata.new
-    p.add_point([text_questions, multiple_choice_questions], 'Serie1')
-    p.add_point(%w[Texto Múltipla-Escolha], 'Serie2')
+    graph = Rdata.new
+    graph.add_point([text_questions, multiple_choice_questions], 'Serie1')
+    graph.add_point(%w[Texto Múltipla-Escolha], 'Serie2')
 
-    generate_graph(p)
+    generate_graph(graph)
   end
 end

@@ -1,3 +1,6 @@
+# Classe que representa uma instância de classe que existe na família de AdminsController para exportar estatísticas e gráficos.
+# Efetua as chamadas de serviços para exportar as respostas em CSV e exportar gráficos.
+
 class Export < AdminsController
   def fill_csv(form_id, form_name, csv_data)
     file_path = Rails.root.join('export', "#{form_id}_#{form_name}_results.csv")

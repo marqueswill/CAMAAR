@@ -385,6 +385,9 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/lib/export.rb": {
         "lines": [
+          null,
+          null,
+          null,
           1,
           1,
           2,
@@ -1696,6 +1699,10 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/services/export_png_service.rb": {
         "lines": [
+          null,
+          null,
+          null,
+          null,
           1,
           1,
           2,
@@ -1726,6 +1733,10 @@
           null,
           2,
           2,
+          null,
+          2,
+          2,
+          null,
           2,
           2,
           null,
@@ -2003,10 +2014,16 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/services/summary_service.rb": {
         "lines": [
+          null,
+          null,
+          null,
+          null,
           1,
           1,
           5,
           5,
+          5,
+          null,
           5,
           3,
           null,
@@ -2024,6 +2041,8 @@
           null,
           1,
           1,
+          1,
+          5,
           5,
           null,
           null,
@@ -2040,7 +2059,7 @@
         ]
       }
     },
-    "timestamp": 1719927820
+    "timestamp": 1719930300
   },
   "Cucumber Features": {
     "coverage": {
