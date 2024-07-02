@@ -5,8 +5,8 @@
 class ExportCsvService
   def self.call(table)
     head = ['Questão']
-    (table[0].length - 1).times do |i|
-      head << "Resposta #{i + 1}"
+    (table[0].length - 1).times do |item|
+      head << "Resposta #{item + 1}"
     end
     table.unshift(head)
 
@@ -28,10 +28,11 @@ class ExportCsvService
 
   def self.fill_table(table, form, form_questions)
     form_questions.each do |question|
+      form_question_id = question.id
       answers = if form.role == 'discente'
-                  StudentAnswer.where(form_question_id: question.id)
+                  StudentAnswer.where(form_question_id:)
                 else
-                  TeacherAnswer.where(form_question_id: question.id)
+                  TeacherAnswer.where(form_question_id:)
                 end
 
       line = [question.title]
