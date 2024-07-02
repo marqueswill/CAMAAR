@@ -1,6 +1,5 @@
 # Classe que representa um serviço da AdminsController de importar membros.
 # Efetua as operações de importação de classes, professores e alunos.
-
 class ImportMembersService
   def self.call(members)
     members.each do |data|

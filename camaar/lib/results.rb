@@ -1,3 +1,5 @@
+# Classe que representa uma instância de classe que existe na família de ResultsController para gerar resumos
+# de respostas de formulários e retornar caso haja alguma resposta.
 class Results < AdminsController
   # Método auxiliar que verifica se houve questões respondidas por professores ou alunos, retornando um booleano
   def answers?(form_questions)
