@@ -29,7 +29,7 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/classes.json'
 
-    page.attach_file('admin_import_file',json)
+    page.attach_file('admin_import_file', json)
 
     click_button 'Importar'
 
@@ -39,13 +39,81 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/class_members.json'
 
-    page.attach_file('admin_import_file',json)
+    page.attach_file('admin_import_file', json)
 
     click_button 'Importar'
 
     email = 'mholanda@unb.br'
 
     expect(open_email(email)).to have_content 'Registrar'
+  end
+
+  scenario 'admin can import again if some of data has been already imported or registered' do
+    departament = create(:department, :departament1)
+    admin = create(:admin, :admin1)
+    coordinator = create(:coordinator, :coordinator1)
+    user = create(:user, :user5)
+    teacher = create(:teacher, :teacher1)
+
+    visit '/admins/login'
+
+    expect(page).to have_content 'Bem vindo ao'
+    expect(page).to have_content 'CAMAAR'
+    fill_in 'email', with: admin.email
+    fill_in 'password', with: admin.password
+    click_button 'Confirmar'
+
+    click_link 'Importar Dados'
+
+    expect(page).to have_content 'Opções para Importação'
+
+    select 'Turmas', from: 'select_data'
+
+    json = Rails.root + 'db/classes.json'
+
+    page.attach_file('admin_import_file', json)
+
+    click_button 'Importar'
+
+    expect(page).to have_content 'Opções para Importação'
+
+    select 'Membros', from: 'select_data'
+
+    json = Rails.root + 'db/class_members.json'
+
+    page.attach_file('admin_import_file', json)
+
+    click_button 'Importar'
+
+    email = 'mholanda@unb.br'
+
+    expect(open_email(email)).to have_content 'Registrar'
+
+    # admin sending again the emails
+    click_link 'Importar Dados'
+
+    user_stu = create(:user, :user4)
+    user_tea = create(:user, :user6)
+
+    expect(page).to have_content 'Opções para Importação'
+
+    select 'Membros', from: 'select_data'
+
+    json = Rails.root + 'db/class_members.json'
+
+    page.attach_file('admin_import_file', json)
+
+    click_button 'Importar'
+
+    expect(page).to have_content 'Opções para Importação'
+
+    select 'Turmas', from: 'select_data'
+
+    json = Rails.root + 'db/classes.json'
+
+    page.attach_file('admin_import_file', json)
+
+    click_button 'Importar'
   end
 
   scenario 'admin can import classes' do
@@ -71,7 +139,7 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/classes.json'
 
-    page.attach_file('admin_import_file',json)
+    page.attach_file('admin_import_file', json)
 
     click_button 'Importar'
 
@@ -103,8 +171,7 @@ feature 'Import Data from json' do
 
     json = Rails.root + 'db/departments.json'
 
-    page.attach_file('admin_import_file',json)
-
+    page.attach_file('admin_import_file', json)
 
     expect(page).to have_content 'Importar'
 

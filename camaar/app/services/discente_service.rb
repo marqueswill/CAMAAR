@@ -13,10 +13,10 @@ class DiscenteService
       Form.where(subject_class_id: subject_class_ids, role: 'discente')
     end
 
-    def get_answers(form_questions)
-      student = Student.find_by(email: @user.email)
-      StudentAnswer.where(form_question_id: form_questions.pluck(:id), student_id: student.id)
-    end
+    # def get_answers(form_questions)
+    #   student = Student.find_by(email: @user.email)
+    #   StudentAnswer.where(form_question_id: form_questions.pluck(:id), student_id: student.id)
+    # end
 
     def find_answer(question)
       student = Student.find_by(email: @user.email)

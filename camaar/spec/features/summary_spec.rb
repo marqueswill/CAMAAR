@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Results in graph and csv', type: :feature do
+RSpec.feature 'Results in a summary', type: :feature do
   before do
     department = create(:department, :departament1)
     admin = create(:admin, :admin1)
@@ -40,6 +40,32 @@ RSpec.feature 'Results in graph and csv', type: :feature do
     fill_in 'email', with: admin.email
     fill_in 'password', with: admin.password
     click_button 'Confirmar'
+  end
+  describe 'admin cant see summary of unanswered forms' do
+    before do
+      form = create(:form, :form1)
+      form2 = create(:form, :form3)
+      form_question = create(:form_question, :form_question1)
+      form = create(:form, :form2)
+      form_question = create(:form_question, :form_question2)
+    end
+    it 'should not see summary of text forms that were answered by students' do
+      click_link 'Resultados'
+      expect(page).to have_content 'Resultados'
+      form = build(:form, :form1)
+      form_question = build(:form_question, :form_question1)
+      expect(page).to have_content form.name
+      click_link form.name
+      expect(page).to have_content '0'
+    end
+    it 'should not see summary of forms that were answered by teachers' do
+      click_link 'Resultados'
+      expect(page).to have_content 'Resultados'
+      form = build(:form, :form2)
+      expect(page).to have_content form.name
+      click_link form.name
+      expect(page).to have_content '0'
+    end
   end
   describe 'admin can see summary of students forms' do
     before do

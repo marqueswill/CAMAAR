@@ -44,7 +44,7 @@ en:
       updated: "Sua conta foi atualizada com sucesso."
       updated_but_not_signed_in: "Sua conta foi atualizada com sucesso. Como sua senha mudou, você precisa refazer o login."
     sessions:
-      signed_in: "Login efetuado com sucesso!"
+      signed_in: "Login efetuado com sucesso"
       signed_out: "Saiu com sucesso."
       already_signed_out: "Saiu com sucesso."
     unlocks:

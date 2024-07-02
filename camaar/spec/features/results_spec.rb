@@ -52,6 +52,23 @@ RSpec.feature 'Results in graph and csv', type: :feature do
       click_link "export_graph_#{form.id}"
     end
   end
+  describe 'admin cant see csv of unanswered forms' do
+    before do
+      form = create(:form, :form1)
+      form2 = create(:form, :form3)
+      form_question = create(:form_question, :form_question1)
+      form = create(:form, :form2)
+      form_question = create(:form_question, :form_question2)
+    end
+    it 'should not export a csv with answers of questions' do
+      click_link 'Resultados'
+      expect(page).to have_content 'Resultados'
+      form = build(:form, :form1)
+      expect(page).to have_content form.name
+      click_link "export_csv_#{form.id}"
+      expect(page).to have_content 'O formulário não possui respostas'
+    end
+  end
   describe 'admin can export a csv with answers ' do
     before do
       form = create(:form, :form1)
