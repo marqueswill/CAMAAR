@@ -10,6 +10,10 @@ class ExportCsvService
     end
     table.unshift(head)
 
+    generate_csv(table)
+  end
+
+  def self.generate_csv(table)
     CSV.generate do |csv|
       table.each do |row|
         csv << row
@@ -17,7 +21,7 @@ class ExportCsvService
     end
   end
 
-  def self.csv?(file_path,csv_data)
+  def self.csv?(file_path, csv_data)
     CSV.open(file_path, 'w') do |csv|
       csv << csv_data.headers
       csv_data.each do |row|

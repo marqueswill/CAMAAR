@@ -1,7 +1,6 @@
 # Classe que representa um serviço da AdminsController de gerar um resumo das respostas de um formulário.
 # Efetua as operações de resumo e de estatísticas referentes a respostas de formulários de
 # alunos e professores.
-
 class SummaryService
   def self.call(form_questions, form)
     resumo = {}

@@ -1,3 +1,4 @@
+# Serviço responsável por visualizar respostas de formulários de um professor
 class DocenteService
   def initialize(user)
     @user = user
