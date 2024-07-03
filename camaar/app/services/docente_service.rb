@@ -1,9 +1,11 @@
 # Serviço responsável por visualizar respostas de formulários de um professor
 class DocenteService
+  # Método para inicializar o serviço com o docente associado.
   def initialize(user)
     @user = user
   end
 
+  # Método que retorna todos os formulários relacionados às classes que um professor está vinculado.
   def forms
     teacher = Teacher.find_by(email: @user.email)
     subject_classes = SubjectClass.where(teacher_id: teacher.id)
@@ -19,6 +21,7 @@ class DocenteService
   #   TeacherAnswer.where(form_question_id: form_questions.pluck(:id), teacher_id: teacher.id)
   # end
 
+  # Método para encontrar a resposta de um professor a uma questão específica de um formulário.
   def find_answer(question)
     teacher = Teacher.find_by(email: @user.email)
     TeacherAnswer.find_by(form_question_id: question.id, teacher_id: teacher.id)

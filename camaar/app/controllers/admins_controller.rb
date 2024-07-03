@@ -10,10 +10,10 @@ class AdminsController < ApplicationController
   before_action :set_admin_data
   before_action :load
 
-  # Atributos para evitar o uso de variáveis de instância
+  # Atributos para evitar o uso de variáveis de instância.
   attr_reader :forms
 
-  # Carrega os templates e as classes do departamento
+  # Carrega os templates e as classes do departamento.
   def load
     coord_id = coordinator.id if coordinator
     return unless coord_id

@@ -7,16 +7,20 @@ class TemplateQuestionsController < QuestionsController
   before_action :check_for_commit
   before_action :set_template_question_data
 
+  # Método para exibir a página de edição de uma pergunta do template.
   def edit; end
 
+  # Método para remover uma pergunta do template.
   def destroy
     return unless template_question.destroy
 
     redirect_to edit_template_path(template)
   end
 
+  # Método para exibir a página de criação de uma nova pergunta.
   def new; end
-
+  
+  # Método para criar nova pergunta do template.
   def create
     question, messages = Question.new.create(template, question_type, title, options, options_number)
 
@@ -28,6 +32,7 @@ class TemplateQuestionsController < QuestionsController
     end
   end
 
+  # Método para atualizar uma pergunta de um template existente.
   def update
     messages = []
     question = template_question

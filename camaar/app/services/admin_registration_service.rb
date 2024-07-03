@@ -1,5 +1,6 @@
 # Serviço responsável por mandar um email para um administrador se registrar
 class AdminRegistrationService
+  # Método para enviar um email para um novo administrador registrado.
   def self.call(admin)
     return unless admin.persisted?
 

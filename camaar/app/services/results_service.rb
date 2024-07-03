@@ -1,7 +1,9 @@
 # Classe que representa um serviço da AdminsController de gerar respostas de um formulário.
 class ResultsService
+  # Método que executa o serviço de gerar respostas de um formulário.
   def self.call(form); end
 
+  # Método que preenche as respostas dos formulários fornecidos.
   def self.fill_answers(forms)
     answers = []
     forms.each do |form|

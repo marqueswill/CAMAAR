@@ -2,12 +2,14 @@
 # Efetua as operações de exportação de estatísticas referentes a respostas de formulários de
 # alunos e professores.
 class ExportPngService
+  # Método para chamar o serviço de exportação de gráficos em PNG.
   def self.call(filename, graph)
     file_path = File.join('export', filename)
     graph.render_png(file_path)
     file_path
   end
 
+  # Método para gerar o gráfico das respostas dos estudantes.
   def self.generate_student_graph(form)
     num_answers, num_absents = answers?(form)
     graph = Rdata.new
@@ -16,6 +18,7 @@ class ExportPngService
     generate_graph(graph)
   end
 
+  # Método para tomar o número de respostas e ausências de um formulário.
   def self.answers?(form)
     enrollments = Enrollment.where(subject_class_id: form.subject_class_id)
     distinct_classes = enrollments.distinct
@@ -24,6 +27,7 @@ class ExportPngService
     [num_answers, (number_of_students - num_answers)]
   end
 
+  # Método para gerar um gráfico a partir dos dados fornecidos.
   def self.generate_graph(graph)
     graph.add_all_series
     graph.set_abscise_label_serie('Serie2')
@@ -47,6 +51,7 @@ class ExportPngService
     chart
   end
 
+  # Método para gerar o gráfico de resposta dos professores.
   def self.generate_teacher_graph(form)
     form_questions = FormQuestion.where(form_id: form.id)
     text_questions = form_questions.where(question_type: 'text').count

@@ -2,6 +2,7 @@
 # administrador os selecione.
 class DispatchTemplateService
 
+  # Método estático que envia templates pros estudantes.
   def self.dispatch_student(student_template, student_form)
     student_template_questions = TemplateQuestion.where({ template_id: student_template.id })
     student_template_questions.each do |question|
@@ -14,6 +15,7 @@ class DispatchTemplateService
     end
   end
 
+  # Método estático que envia templates pros professores.
   def self.dispatch_teacher(teacher_template, teacher_form)
     teacher_template_questions = TemplateQuestion.where({ template_id: teacher_template.id })
     teacher_template_questions.each do |question|
@@ -26,6 +28,7 @@ class DispatchTemplateService
     end
   end
 
+  # Método estático que despacha um template baseado no papel especificado.
   def self.dispatch(role, template, form)
     case role
     when 'teacher'

@@ -1,6 +1,7 @@
 # Serviço responsável por realizar a importação de classes conforme ações
 # do administrador.
 class ImportClassesService
+  # Método que recebe uma lista de classes e realiza importação.
   def self.call(classes)
     classes.each do |subject_class|
       subject = subject_class['code']
