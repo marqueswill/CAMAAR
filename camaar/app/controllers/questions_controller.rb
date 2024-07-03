@@ -2,7 +2,6 @@
 # É usada no contexto de páginas do administrador para gerenciar questões associadas com templates.
 # Provê métodos para listar, mostrar, editar, criar e deletar TemplareQuestions.
 # A classe também possui suporte a validações para opções de questões baseadas em seus respectivos tipos.
-
 class QuestionsController < ApplicationController
 
   layout "admin"

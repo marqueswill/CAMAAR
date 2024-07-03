@@ -16,10 +16,10 @@ class AdminsController < ApplicationController
   # Carrega os templates e as classes do departamento
   def load
     coord_id = coordinator.id if coordinator
-    if coord_id
+    return unless coord_id
+
     @templates = Template.where(coordinator_id: coord_id)
     @forms = Form.where(coordinator_id: coord_id)
-    end
   end
 
   # Método que recebe uma requisição para importar algum dado a partir de um json. Caso haja sucesso ou erro, serão printadas
@@ -28,9 +28,8 @@ class AdminsController < ApplicationController
   def import
     @errors = []
     json = JSON.parse(File.read(params[:admin_import][:file].tempfile.path))
-    symbol, msg = Import.new.import_data(params[:select_data], json, current_admin.email)
+    symbol, msg = Import.import_data(params[:select_data], json, current_admin.email)
     flash[symbol.to_sym] = msg
     redirect_to '/admins/import'
   end
-
 end

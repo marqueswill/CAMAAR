@@ -1,3 +1,4 @@
+# Classe que representa um serviço da AdminsController de gerar respostas de um formulário.
 class ResultsService
   def self.call(form); end
 

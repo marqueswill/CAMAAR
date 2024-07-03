@@ -1,7 +1,6 @@
 # A classe AplicationController é a classe responsável por gerenciar dados do usuário logado.
 # De acordo com o tipo de usuário logado, a ApplicationController busca os dados do usuário e os disponibiliza para as views.
 # É uma controller base do rails e gerencia as principais requisições a serem herdadas pelas demais controllers.
-
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   skip_before_action :verify_authenticity_token
@@ -79,7 +78,7 @@ class ApplicationController < ActionController::Base
     @errors << 'Não foram encontrados templates'
   end
 
-  
+
 
   # Método que define os dados de um usuário logado de acordo com o tipo de usuário.
   def set_user_data

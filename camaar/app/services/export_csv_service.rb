@@ -1,15 +1,18 @@
 # A classe ExportCsvService é responsável por exportar as respostas de formulários submetidos a
 # discentes e/ou discentes em uma planilha de formato CSV. Ao final da execução dos serviços, será submetido
 # um caminho para que seja possível efetuar a requisição do arquivo CSV.
-
 class ExportCsvService
   def self.call(table)
     head = ['Questão']
-    (table[0].length - 1).times do |i|
-      head << "Resposta #{i + 1}"
+    (table[0].length - 1).times do |item|
+      head << "Resposta #{item + 1}"
     end
     table.unshift(head)
 
+    generate_csv(table)
+  end
+
+  def self.generate_csv(table)
     CSV.generate do |csv|
       table.each do |row|
         csv << row
@@ -17,7 +20,7 @@ class ExportCsvService
     end
   end
 
-  def self.csv?(file_path,csv_data)
+  def self.csv?(file_path, csv_data)
     CSV.open(file_path, 'w') do |csv|
       csv << csv_data.headers
       csv_data.each do |row|
@@ -28,10 +31,11 @@ class ExportCsvService
 
   def self.fill_table(table, form, form_questions)
     form_questions.each do |question|
+      form_question_id = question.id
       answers = if form.role == 'discente'
-                  StudentAnswer.where(form_question_id: question.id)
+                  StudentAnswer.where(form_question_id:)
                 else
-                  TeacherAnswer.where(form_question_id: question.id)
+                  TeacherAnswer.where(form_question_id:)
                 end
 
       line = [question.title]

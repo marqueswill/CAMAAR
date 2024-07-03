@@ -1,5 +1,8 @@
+# Serviço responsável por realizar o envio de templates a alunos e professores caso o
+# administrador os selecione.
 class DispatchTemplateService
-  def self.dispatch_student(student_template,student_form)
+
+  def self.dispatch_student(student_template, student_form)
     student_template_questions = TemplateQuestion.where({ template_id: student_template.id })
     student_template_questions.each do |question|
       FormQuestion.create({
@@ -11,7 +14,7 @@ class DispatchTemplateService
     end
   end
 
-  def self.dispatch_teacher(teacher_template,teacher_form)
+  def self.dispatch_teacher(teacher_template, teacher_form)
     teacher_template_questions = TemplateQuestion.where({ template_id: teacher_template.id })
     teacher_template_questions.each do |question|
       FormQuestion.create({
@@ -23,7 +26,7 @@ class DispatchTemplateService
     end
   end
 
-  def self.dispatch(role,template,form)
+  def self.dispatch(role, template, form)
     case role
     when 'teacher'
       DispatchTemplateService.dispatch_teacher(template, form)

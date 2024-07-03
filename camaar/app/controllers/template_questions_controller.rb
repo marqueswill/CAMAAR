@@ -2,23 +2,20 @@
 # É usada no contexto de páginas do administrador para gerenciar questões associadas com templates.
 # Provê métodos para listar, mostrar, editar, criar e deletar TemplareQuestions.
 # A classe também possui suporte a validações para opções de questões baseadas em seus respectivos tipos.
-
 class TemplateQuestionsController < QuestionsController
   before_action :set_admin_data
   before_action :check_for_commit
   before_action :set_template_question_data
 
-  def edit
-  end
+  def edit; end
 
   def destroy
-    if template_question.destroy
-      redirect_to edit_template_path(template)
-    end
+    return unless template_question.destroy
+
+    redirect_to edit_template_path(template)
   end
 
-  def new
-  end
+  def new; end
 
   def create
     question, messages = Question.new.create(template, question_type, title, options, options_number)

@@ -1,8 +1,11 @@
+# Serviço responsável por realizar a importação de classes conforme ações
+# do administrador.
 class ImportClassesService
   def self.call(classes)
     classes.each do |subject_class|
-      initials = subject_class['code'].gsub(/[^a-zA-Z]/, '')
-      keys = { subject: subject_class['code'],
+      subject = subject_class['code']
+      initials = subject.gsub(/[^a-zA-Z]/, '')
+      keys = { subject:,
                code: subject_class['class']['classCode'],
                semester: subject_class['class']['semester'] }
       imported_data = {
