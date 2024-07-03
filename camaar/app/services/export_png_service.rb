@@ -8,15 +8,20 @@ class ExportPngService
     file_path
   end
 
-  def self.generate_teacher_graph(form)
-    enrollments = Enrollment.where(subject_class_id: form.subject_class_id)
-    number_of_students = enrollments.distinct.count(:student_id)
-    num_answers = StudentAnswer.where(student_id: enrollments.distinct.pluck(:student_id)).count
-    num_absents = number_of_students - num_answers
+  def self.generate_student_graph(form)
+    num_answers, num_absents = answers?(form)
     graph = Rdata.new
     graph.add_point([num_answers, num_absents], 'Serie1')
     graph.add_point(%w[Respostas Ausências], 'Serie2')
     generate_graph(graph)
+  end
+
+  def self.answers?(form)
+    enrollments = Enrollment.where(subject_class_id: form.subject_class_id)
+    distinct_classes = enrollments.distinct
+    number_of_students = distinct_classes.count(:student_id)
+    num_answers = StudentAnswer.where(student_id: distinct_classes.pluck(:student_id)).count
+    [num_answers, (number_of_students - num_answers)]
   end
 
   def self.generate_graph(graph)
@@ -42,7 +47,7 @@ class ExportPngService
     chart
   end
 
-  def self.generate_student_graph(form)
+  def self.generate_teacher_graph(form)
     form_questions = FormQuestion.where(form_id: form.id)
     text_questions = form_questions.where(question_type: 'text').count
     multiple_choice_questions = form_questions.where(question_type: 'multiple_choice').count

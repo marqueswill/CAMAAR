@@ -73,7 +73,6 @@
           null,
           null,
           null,
-          null,
           1,
           1,
           1,
@@ -114,7 +113,6 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/application_controller.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -452,23 +450,20 @@
           null,
           null,
           null,
-          null,
           1,
           1,
           1,
           1,
           null,
           1,
-          null,
           null,
           1,
           2,
+          null,
           2,
           null,
           null,
-          null,
           1,
-          null,
           null,
           1,
           6,
@@ -496,7 +491,6 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/questions_controller.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -597,19 +591,15 @@
         "lines": [
           null,
           null,
-          null,
           1,
           1,
           null,
-          null,
           1,
-          null,
           null
         ]
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/dispatch_controller.rb": {
         "lines": [
-          null,
           null,
           null,
           1,
@@ -642,7 +632,6 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/controllers/forms_controller.rb": {
         "lines": [
-          null,
           null,
           null,
           null,
@@ -734,13 +723,13 @@
         "lines": [
           null,
           null,
-          null,
           1,
           1,
           null,
           1,
           null,
           1,
+          null,
           1,
           14,
           1,
@@ -755,9 +744,7 @@
         "lines": [
           null,
           null,
-          null,
           1,
-          null,
           null,
           null,
           1,
@@ -795,7 +782,6 @@
         "lines": [
           null,
           null,
-          null,
           1,
           1,
           6,
@@ -825,9 +811,7 @@
         "lines": [
           null,
           null,
-          null,
           1,
-          null,
           null,
           null,
           1,
@@ -875,9 +859,7 @@
           null,
           null,
           null,
-          null,
           1,
-          null,
           1,
           null,
           1,
@@ -917,7 +899,6 @@
           1,
           7,
           null,
-          null,
           null
         ]
       },
@@ -927,16 +908,12 @@
           null,
           null,
           null,
-          null,
-          null,
-          1,
-          null,
           1,
           1,
           1,
-          null,
           1,
           null,
+          1,
           null,
           1,
           7,
@@ -944,7 +921,6 @@
           null,
           null,
           1,
-          null,
           null,
           1,
           7,
@@ -954,16 +930,13 @@
           null,
           null,
           6,
-          6,
           null,
+          6,
           null,
           null,
           1,
           7,
-          1,
-          null,
           6,
-          0,
           null,
           6,
           null,
@@ -986,7 +959,6 @@
           null,
           null,
           null,
-          null,
           1,
           1,
           1,
@@ -1009,7 +981,6 @@
           1,
           null,
           1,
-          null,
           null
         ]
       },
@@ -1418,7 +1389,6 @@
           null,
           null,
           null,
-          null,
           1,
           null,
           1,
@@ -1467,8 +1437,6 @@
           null,
           null,
           1,
-          null,
-          null,
           null,
           null,
           null,
@@ -1584,7 +1552,6 @@
           null,
           null,
           null,
-          null,
           1,
           1,
           2,
@@ -1649,7 +1616,6 @@
           null,
           null,
           null,
-          null,
           1,
           1,
           2,
@@ -1660,6 +1626,11 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
           1,
           1,
           1,
@@ -1811,6 +1782,8 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/services/import_departments_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -2001,6 +1974,7 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/services/results_service.rb": {
         "lines": [
+          null,
           1,
           1,
           null,
@@ -2024,6 +1998,7 @@
       },
       "/home/jpantonow/Documents/CAMAAR/camaar/app/services/setup_form_service.rb": {
         "lines": [
+          null,
           1,
           1,
           6,
@@ -2094,7 +2069,7 @@
         ]
       }
     },
-    "timestamp": 1720003255
+    "timestamp": 1720011819
   },
   "Cucumber Features": {
     "coverage": {

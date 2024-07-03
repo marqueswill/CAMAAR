@@ -12,9 +12,9 @@ class ExportService
   def self.generate_graph(form)
     case form.role
     when 'discente'
-      ExportPngService.generate_teacher_graph(form)
-    when 'docente'
       ExportPngService.generate_student_graph(form)
+    when 'docente'
+      ExportPngService.generate_teacher_graph(form)
     end
   end
 
