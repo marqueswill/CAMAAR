@@ -1,18 +1,12 @@
 # Classe que representa uma instância de classe que existe na família de AdminsController para
 # enviar templates/formulários para alunos e/ou professores
-class Dispatch < AdminsController
+class Dispatch
   def execute(classes_ids, student_template_id = nil, teacher_template_id = nil)
     results = []
     classes_ids.each do |subject_class_id|
       results << dispatch?(teacher_template_id, student_template_id, subject_class_id)
     end
     results
-  end
-
-  def commit?(classes_ids, commit)
-    return true if classes_ids.present? && commit == 'confirm'
-
-    false
   end
 
   def dispatch?(teacher_template_id, student_template_id, subject_class_id)
@@ -31,7 +25,7 @@ class Dispatch < AdminsController
   end
 
   def dispatch_template(template_id, subject_class_id, role)
-    form, template = forms?(role, template_id, subject_class_id)
+    form, template = Dispatch.forms?(role, template_id, subject_class_id)
 
     return unless form.save
 
@@ -41,7 +35,7 @@ class Dispatch < AdminsController
      "O formulário para #{role == 'teacher' ? 'o professor' : 'os alunos'} da turma #{SubjectClass.find_by(id: subject_class_id).name} foi criado com sucesso.<br>"]
   end
 
-  def forms?(role, template_id, subject_class_id)
+  def self.forms?(role, template_id, subject_class_id)
     case role
     when 'teacher'
       form, template = SetupFormService.setup_teacher_form(template_id, subject_class_id)

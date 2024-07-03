@@ -15,7 +15,7 @@ class SummaryController < AdminsController
   def summary?
     total_number
     answered_number
-    @form_summary = Results.new.generate_summary(form_questions, form)
+    @form_summary = Results.generate_summary(form_questions, form)
   end
 
   # Método que recupera o respectivo formulário acessado

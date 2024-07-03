@@ -23,7 +23,7 @@ class ResultsController < AdminsController
   # Método auxiliar que age de forma a verificar se houve ou não respostas para um formulário acessado na view de resultados.
   # O método em questão verifica se houve ou não respostas e, caso seja requerido, configura a exportação destas.
   def results?(mode, form, form_questions)
-    if mode.present? && Results.new.answers?(form_questions)
+    if mode.present? && Results.answers?(form_questions)
       flash[:warning] = 'O formulário não possui respostas'
       redirect_to '/admins/results'
     else

@@ -16,7 +16,7 @@ class DispatchController < AdminsController
   def envio
     teacher_template_id, student_template_id, classes_ids, commit = setup_envio(coordinator.id)
     dispatch = Dispatch.new
-    case dispatch.commit?(classes_ids, commit)
+    case classes_ids.present? && commit == 'confirm'
     when true
       dispatch.execute(classes_ids, student_template_id, teacher_template_id).each do |item|
         flash[item[0].to_sym] = item[1]
