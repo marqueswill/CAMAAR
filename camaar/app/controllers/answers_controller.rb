@@ -5,7 +5,6 @@ require 'csv'
 # alunos ou professores. Ela processa e salva as respostas enviadas via requisição POST na forma de um
 # formulário HTML.
 # Também contém métodos protegidos e instâncias de classes auxiliares que são responsáveis por realizar as partes mais lógicas do código.
-
 class AnswersController < ApplicationController
   before_action :set_user_data
   before_action :validate_answers, only: :create

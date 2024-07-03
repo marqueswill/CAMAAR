@@ -1,8 +1,6 @@
 # A classe SummaryController advém da classe AdminsController gerencia as principais ações relacionadas
 # à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores
-
 class SummaryController < AdminsController
-
   # Método que funciona como um "setup" dos parâmetros relacionados ao resumo das respostas de um formulário, configurando
   # os atributos necessários para a interação MVC.
   def summary

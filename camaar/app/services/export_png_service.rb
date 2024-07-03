@@ -1,7 +1,6 @@
 # Classe que representa um serviço da AdminsController de exportar gráficos em png.
 # Efetua as operações de exportação de estatísticas referentes a respostas de formulários de
 # alunos e professores.
-
 class ExportPngService
   def self.call(filename, graph)
     file_path = File.join('export', filename)

@@ -1,3 +1,4 @@
+# Classe que representa um serviço da AdminsController de gerar um setup do resumo das respostas de um formulário.
 class SetupFormService
   def self.setup_student_form(student_template_id, subject_class_id)
     student_template = Template.find_by(id: student_template_id, draft: false)
@@ -17,6 +18,6 @@ class SetupFormService
       coordinator_id: teacher_template.coordinator_id,
       subject_class_id:
     )
-    [teacher_form,teacher_template]
+    [teacher_form, teacher_template]
   end
 end

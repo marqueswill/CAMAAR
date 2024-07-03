@@ -1,8 +1,6 @@
 # A classe ResultsController advém da classe AdminsController gerencia as principais ações relacionadas
 # à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores
-
 class ResultsController < AdminsController
-
   # Método que gerencia as requisições para a visualização e obtenção de resultados para o administrador, que consistem
   # sumariamente nas respostas de alunos e/ou professores a um formulário previamente submetido.
   def results

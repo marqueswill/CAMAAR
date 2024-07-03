@@ -1,8 +1,7 @@
 # A classe DispatchController advém da classe AdminsController gerencia as principais ações relacionadas
 # à visualização de resultados provenientes das respostas de formulários por alunos e/ou professores
-
 class DispatchController < AdminsController
-   # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
+  # Método que funciona como setup para o envio de templates/formulários. O método em questão configura os templates de
   # professor, aluno, as classes e verifica se houve a requisição para enviar um template/formulário.
   def setup_envio(coordinator_id)
     @student_templates = Template.where({ coordinator_id:, draft: false, role: 'discente' })

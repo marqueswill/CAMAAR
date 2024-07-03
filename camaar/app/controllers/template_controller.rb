@@ -1,17 +1,15 @@
-require "json"
+require 'json'
 
 # A classe TemplatesController gerencia ações relacionadas ao gerenciamento de templates.
 # Essa classe inclui a criação, edição, atualização, visualização e deleção de templates,
 # assim como possui métodos de verificação de ações específicas de commit e definição de
 # variáveis de instância a serem usadas nas views.
-
 class TemplateController < ApplicationController
-
-  layout "admin"
+  layout 'admin'
 
   def check_for_commit
     case params[:commit]
-    when "delete"
+    when 'delete'
       destroy
     end
   end
@@ -46,5 +44,4 @@ class TemplateController < ApplicationController
   def template_params
     params.require(:template).permit(:name, :role)
   end
-
 end

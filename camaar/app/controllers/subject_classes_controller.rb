@@ -1,6 +1,5 @@
 # A classe SubjectClassControllers gerencia as principais ações do administrador relacionadas às classes do departamento.
 # Essa classe inclui a visualização de classes do departamento, além de renderizar erros caso não haja autenticação.
-
 class SubjectClassesController < AdminsController
   def index
     bool, msg = index?

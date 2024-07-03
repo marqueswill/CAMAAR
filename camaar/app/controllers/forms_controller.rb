@@ -2,7 +2,6 @@
 # Essa classe contém os métodos públicos responsáveis por mostrar e editar os formulários.
 # Também contém métodos privados que são responsáveis por realizar as partes mais lógicas do
 # código, como identificar o tipo de usuário, identificar as questões e as respostas de um formulário.
-
 class FormsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_data
