@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ruby Critic - Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- StyleSheets -->
+    <link href="../../../assets/vendor/stylesheets/bootstrap.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../../assets/vendor/stylesheets/font-awesome.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../../assets/vendor/stylesheets/prettify.custom_theme.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../../assets/stylesheets/application.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <header class="navbar navbar-default navbar-fixed-top">
+      <a href="#menu-toggle" class="btn btn-default hidden-lg visible-sm-* hidden-md visible-xs-* pull-left" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      <a href="../../../overview.html"><img src="../../../assets/images/logo.png" alt="Ruby Critic Logo" title="Ruby Critic Logo" width="55"><span class="logo">RUBYCRITIC</span></a>
+      
+    </header>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <aside id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a href="../../../overview.html" class="project-nav-item overview-nav"><i class="fa fa-dashboard"></i>Overview</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../../../code_index.html" class="project-nav-item code-index-nav"><i class="fa fa-code"></i>Code</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../../../smells_index.html" class="project-nav-item smells-index-nav"><i class="fa fa-warning"></i>Smells</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../../../simple_cov_index.html" class="project-nav-item coverage-index-nav"><i class="fa fa-umbrella"></i>Coverage</a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /#sidebar-wrapper -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+  <!--Page Title -->
+  <div class="Page_Title">
+    <div class="file-time">
+      <span class="committed-at">
+        
+          Updated <time class='js-timeago' datetime='2024-06-29 18:30:56 -0300'>2024-06-29 18:30:56 -0300</time>
+        
+      </span>
+    </div>
+    <div>
+      <h3><small>camaar/features/step_definitions /</small> steps.rb</h3>
+    </div>
+  </div>
+  <!--End Page Title -->
+  <div class="Content_Wrapper">
+    <!-- code detail -->
+    <div class="code-top-detail clearfix row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="rating f big">
+              F
+            </div>
+          </div>
+          <div class="code-statistics col-md-11">
+            <div class="col-md-3">
+              <div><span class="metric">629</span><small> lines of codes</small></div>
+              <div><span class="metric">2</span><small> methods</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">367.5</span><small> complexity/method</small></div>
+              <div><span class="metric">49</span><small> churn</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">735.02</span><small> complexity</small></div>
+              <div><span class="metric">238</span><small> duplications</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="code-tabs">
+          <ul class="nav nav-pills right-to-left">
+            <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
+            <li class="active">
+              <a href="#" id="toggle-smells" class="toggle-button button">
+                13
+                smells
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">require &#39;uri&#39;
+require &#39;cgi&#39;
+require &#39;i18n&#39;
+require File.expand_path(File.join(File.dirname(__FILE__), &#39;..&#39;, &#39;support&#39;, &#39;paths&#39;))
+require File.expand_path(File.join(File.dirname(__FILE__), &#39;..&#39;, &#39;support&#39;, &#39;selectors&#39;))
+I18n.config.available_locales = :en
+
+def normalize_filename(filename)<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Utility-Function.md" target="_blank"><b>UtilityFunction</b></a>        </span>      </div>      <span>normalize_filename doesn't depend on instance state (maybe move it to another class?)</span>          </div>  </li></ol>
+  I18n.transliterate(filename).gsub(&#39; &#39;, &#39;_&#39;).downcase
+end
+
+module WithinHelpers<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>WithinHelpers has no descriptive comment</span>          </div>  </li></ol>
+  def with_scope(locator, &amp;block)
+    locator ? within(*selector_for(locator), &amp;block) : yield
+  end
+end
+
+World(WithinHelpers)
+
+When(/^(.*) within (.*[^:])$/) do |step, parent|
+  with_scope(parent) { When step }
+end
+
+When(/^(.*) within (.*[^:]):$/) do |step, parent, table_or_string|
+  with_scope(parent) { When &quot;#{step}:&quot;, table_or_string }
+end
+
+# Navigation
+Given(/^(?:|I )am on the &quot;(.+)&quot; page$/) do |page_name|
+  visit path_to(page_name)
+end
+
+When(/^(?:|I )go to the &quot;(.+)&quot; page$/) do |page_name|
+  visit path_to(page_name)
+end
+
+When(/^(?:|I )follow &quot;([^&quot;]*)&quot;$/) do |link|
+  click_link(link)
+end
+
+When(/^(?:|I )follow &quot;([^&quot;]*)&quot; at &quot;([^&quot;]*)&quot;$/) do |link, email|
+  open_email(email).click_link link
+end
+
+When(/I click on registration link at &quot;([^&quot;]*)&quot;$/) do |email|
+  UsersMailer.register_user(email).deliver_now
+  open_email(email).click_link &#39;Registrar&#39;
+end
+
+Then(/^(?:|I )expect to be on the &quot;([^&quot;]*)&quot; page$/) do |page_name|
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :expect
+    current_path.expect == path_to(page_name)
+  else
+    assert_equal path_to(page_name), current_path
+  end
+end
+
+Then(/^show me the page$/) do
+  save_and_open_page
+end
+
+# Buttons and clicks
+
+When(/^(?:|I )press &quot;([^&quot;]*)&quot;$/) do |button|
+  click_link_or_button(button.downcase.gsub(&#39; &#39;, &#39;_&#39;))
+end
+
+When(/I click on &quot;Confirmar&quot;/) do
+  click_button(&#39;Confirmar&#39;)
+end
+
+# Forms and templates
+
+And(/^(?:|I )fill in &quot;([^&quot;]*)&quot; with &quot;([^&quot;]*)&quot;$/) do |field, value|
+  fill_in(field.downcase.gsub(&#39; &#39;, &#39;_&#39;), with: value, match: :prefer_exact, visible: :all)
+end
+
+And(/^(?:|I )fill in &quot;([^&quot;]*)&quot; for &quot;([^&quot;]*)&quot;$/) do |value, field|
+  fill_in(field, with: value)
+end
+
+When(/^(?:|I )fill in the following:$/) do |fields|
+  fields.rows_hash.each do |field, value|
+    fill_in(field.downcase.gsub(&#39; &#39;, &#39;_&#39;), with: value, match: :prefer_exact, visible: :all)
+  end
+end
+
+When(/^(?:|I )select &quot;([^&quot;]*)&quot; from &quot;([^&quot;]*)&quot;$/) do |value, field|
+  select(value, from: field.gsub(&#39; &#39;, &#39;_&#39;).downcase, visible: :all)
+end
+
+When(/^(?:|I )check &quot;([^&quot;]*)&quot;$/) do |field|
+  check(field)
+end
+
+When(/^(?:|I )uncheck &quot;([^&quot;]*)&quot;$/) do |field|
+  uncheck(field)
+end
+
+When(/^(?:|I )choose &quot;([^&quot;]*)&quot;$/) do |field|
+  choose(field.downcase.gsub(&#39; &#39;, &#39;_&#39;))
+end
+
+When(/^(?:|I )attach the file &quot;([^&quot;]*)&quot; to &quot;([^&quot;]*)&quot;$/) do |path, field|
+  attach_file(field, File.expand_path(path))
+end
+
+# Database and examples
+Given(&#39;I am an authenticated User&#39;) do
+  FactoryBot.create(:user, :user1)
+end
+
+Given(&#39;I am an authenticated User from class &quot;BANCOS DE DADOS&quot;&#39;) do
+  FactoryBot.create(:user, :user4)
+end
+
+Given(/I ended my session/) do
+  click_link_or_button(&#39;Sair&#39;)
+end
+
+Given(/I am an authenticated (Teacher|Student) associated with the following classes:$/) do |role, fields|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>VeryHighComplexity</b></a>        </span>      </div>      <span>Given#/I am an authenticated (Teacher|Student) associated with the following classes:$/ has a flog score of 60</span>          </div>  </li></ol>
+  visit(&#39;/users/login&#39;)
+  classes = fields.hashes
+
+  if role == &#39;Student&#39;
+    User.create!(id: 8, email: &#39;peluticaio@gmail.com&#39;, password: &#39;abc123&#39;, password_confirmation: &#39;abc123&#39;,<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L127" class="js-smell-location">0</a>                  <a href="steps.html#L140" class="js-smell-location">1</a>                  </div>  </li></ol>
+                 created_at: Time.now.utc, updated_at: Time.now.utc, confirmed_at: Time.now.utc)
+    student = Student.find_by(email: &#39;peluticaio@gmail.com&#39;)
+    classes.each do |sbj|
+      sbj_class = SubjectClass.find_by({ subject: sbj[&#39;subject&#39;], code: sbj[&#39;code&#39;], semester: sbj[&#39;semester&#39;] })
+      # Enrollment.create(student_id: student.id, subject_class_id: sbj_class.id)
+    end
+
+    fill_in(&#39;email&#39;, with: &#39;peluticaio@gmail.com&#39;)
+    fill_in(&#39;password&#39;, with: &#39;abc123&#39;)
+    click_button(&#39;Confirmar&#39;)
+  else
+    teacher = Teacher.find_by(email: &#39;mholanda@unb.br&#39;)
+    User.create(id: 1, email: &#39;mholanda@unb.br&#39;, password: &#39;abc123&#39;, password_confirmation: &#39;abc123&#39;,<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L127" class="js-smell-location">0</a>                  <a href="steps.html#L140" class="js-smell-location">1</a>                  </div>  </li></ol>
+                created_at: Time.now.utc, updated_at: Time.now.utc, confirmed_at: Time.now.utc)
+    classes.each do |sbj|
+      sbj_class = SubjectClass.find_by(subject: sbj[&#39;subject&#39;], code: sbj[&#39;code&#39;], semester: sbj[&#39;semester&#39;])
+      sbj_class.update(teacher_id: teacher.id)
+    end
+
+    fill_in(&#39;email&#39;, with: &#39;mholanda@unb.br&#39;)
+    fill_in(&#39;password&#39;, with: &#39;abc123&#39;)
+    click_button(&#39;Confirmar&#39;)
+  end
+end
+
+Given(/I am an authenticated Coordinator from the &quot;([^&quot;]*)&quot;$/) do |dpt_name|
+  department = Department.find_by({ name: dpt_name })
+  coordinator = Coordinator.find_by({ department_id: department.id })
+
+  visit(&#39;/admins/login&#39;)
+  fill_in(&#39;email&#39;, with: coordinator.email)
+  fill_in(&#39;password&#39;, with: &#39;admin123&#39;)
+  click_button(&#39;Confirmar&#39;)
+end
+
+Given(/that I imported classes for &quot;DEPTO CIÊNCIAS DA COMPUTAÇÃO&quot;/) do<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Given#/that I imported classes for "DEPTO CIÊNCIAS DA COMPUTAÇÃO"/ has a flog score of 31</span>          </div>  </li></ol>
+  classes = SubjectClass.find_by({ department_id: 508 })
+  unless classes
+    classes = JSON.parse(File.read(&#39;./db/classes.json&#39;))
+    classes.each do |subject_class|
+      initials = subject_class[&#39;code&#39;].gsub(/[^a-zA-Z]/, &#39;&#39;)
+      SubjectClass.create!(
+        {
+          subject: subject_class[&#39;code&#39;],
+          name: subject_class[&#39;name&#39;],
+          code: subject_class[&#39;class&#39;][&#39;classCode&#39;],
+          semester: subject_class[&#39;class&#39;][&#39;semester&#39;],
+          schedule: subject_class[&#39;class&#39;][&#39;time&#39;],
+          department_id: Department.find_by(initials:).id
+        }
+      )
+    end
+  end
+end
+
+When(/I press on &quot;Importar&quot;/) do
+  click_button(&#39;Importar&#39;)
+end
+
+Given &#39;I am not enrolled in any class&#39; do
+  Enrollment.destroy_all
+end
+
+Given(/that I am a registered User/) do # if user or admin
+  User.create!({
+                 email: &#39;mholanda@unb.br&#39;,
+                 password: &#39;professor123&#39;,
+                 password_confirmation: &#39;professor123&#39;,
+                 confirmed_at: Time.now.utc
+               })
+end
+
+Given(/that I am a registered Admin/) do # if user or admin
+  admin = Admin.find_by({ email: &#39;admin.dex@gmail.com&#39; })
+  # visit(&#39;/admins/login&#39;)
+  # fill_in(&#39;email&#39;, with: admin.email)
+  # fill_in(&#39;password&#39;, with: &#39;admin123&#39;)
+  # click_button(&#39;Confirmar&#39;)
+end
+
+Given(/that I am an unregistered ([^&quot;]*)$/) do |_role|
+  User.find_by({ email: &#39;noexists@gmail.com&#39; }) == 0
+end
+
+And(/there are no emails/) do
+  clear_emails
+end
+
+Given(/I have no emails at &quot;([^&quot;]*)&quot;$/) do |email|
+  open_email(email)
+  expect(all_emails).to be_empty
+end
+
+And(/I received a ([^&quot;]*) email at &quot;([^&quot;]*)&quot;$/) do |_email_type, email| # reset or registration
+  open_email(email)
+  current_email == _email_type
+end
+
+Given(/that I imported ([^&quot;]*) for the &quot;([^&quot;]*)&quot;$/) do |_datatype, _dpt_name|
+  pending
+end
+
+Given(/that the department &quot;([^&quot;]*)&quot; has no classes$/) do |dpt_name|
+  department = Department.find_by(name: dpt_name)
+
+  SubjectClass.where(department_id: department.id).each do |sbj|
+    sbj.destroy!
+  end
+end
+
+Given(/^that a form has been assigned to the (students|teachers) of the following classes:$/) do |role, fields|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Given#/^that a form has been assigned to the (students|teachers) of the following classes:$/ has a flog score of 49</span>          </div>  </li></ol>
+  step &#39;I am an authenticated Coordinator from the &quot;DEPTO CIÊNCIAS DA COMPUTAÇÃO&quot;&#39;
+
+  if role == &#39;teachers&#39;
+    fields.hashes.each do |form|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L242" class="js-smell-location">0</a>                  <a href="steps.html#L259" class="js-smell-location">1</a>                  </div>  </li></ol>
+      step &#39;that I created the teacher template &quot;Formulário Professor&quot;&#39;
+
+      step &#39;I follow &quot;Envio&quot;&#39;
+      step &#39;I expect to be on the &quot;Dispatch&quot; page&#39;
+      step &#39;I expect to see &quot;Opções para Envio&quot;&#39;
+
+      step &#39;I select &quot;Formulário Professor&quot; from &quot;Teacher template&quot;&#39;
+      step &#39;I expect to see &quot;Formulário Professor&quot;&#39;
+
+      step %(I check &quot;#{form[&#39;semester&#39;]}_#{form[&#39;subject&#39;]}_#{form[&#39;code&#39;]}&quot;)
+      step &#39;I press &quot;Confirm&quot;&#39;
+      step &#39;I expect to see &quot;O formulário para o professor da turma BANCOS DE DADOS foi criado com sucesso.&quot;&#39;
+
+      step &#39;I ended my session&#39;
+    end
+  else
+    fields.hashes.each do |form|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L242" class="js-smell-location">0</a>                  <a href="steps.html#L259" class="js-smell-location">1</a>                  </div>  </li></ol>
+      step &#39;that I created the student template &quot;Formulário Aluno&quot;&#39;
+
+      step &#39;I follow &quot;Envio&quot;&#39;
+      step &#39;I expect to be on the &quot;Dispatch&quot; page&#39;
+      step &#39;I expect to see &quot;Opções para Envio&quot;&#39;
+
+      step &#39;I select &quot;Formulário Aluno&quot; from &quot;Student template&quot;&#39;
+      step &#39;I expect to see &quot;Formulário Aluno&quot;&#39;
+
+      step %(I check &quot;#{form[&#39;semester&#39;]}_#{form[&#39;subject&#39;]}_#{form[&#39;code&#39;]}&quot;)
+      step &#39;I press &quot;Confirm&quot;&#39;
+      step &#39;I expect to see &quot;O formulário para os alunos da turma BANCOS DE DADOS foi criado com sucesso.&quot;&#39;
+
+      step &#39;I ended my session&#39;
+    end
+  end
+end
+
+Given(&#39;that I am an User associated with the following classes:&#39;) do |_table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending
+end
+
+Then(/I expect the (student|teacher) &quot;([^&quot;]*)&quot; to not be associated with following classes:/) do |role, name, table|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Then#/I expect the (student|teacher) "([^"]*)" to not be associated with following classes:/ has a flog score of 35</span>          </div>  </li></ol>
+  student = Student.find_by(name:)
+  teacher = Teacher.find_by(name:)
+  classes = table.hashes
+  classes.each do |data|
+    subject_class = SubjectClass.find_by(semester: data[&#39;semester&#39;], code: data[&#39;code&#39;], subject: data[&#39;subject&#39;])
+
+    if role == &#39;student&#39;
+      enrollment = Enrollment.find_by(student_id: student.id, subject_class_id: subject_class.id)
+      expect(enrollment.active).to be false
+    else
+      expect(subject_class.teacher_id).to be teacher.id
+    end
+  end
+end
+
+Then(&#39;I expect to see the following classes:&#39;) do |table|
+  expected_classes = table.hashes
+
+  expected_classes.each do |subject_class|
+    text = &quot;#{subject_class[&#39;semester&#39;]} - #{subject_class[&#39;name&#39;]} - #{subject_class[&#39;code&#39;]}&quot;
+    expect(page).to have_text(text)
+  end
+end
+
+Given(&#39;that I have not answered any form&#39;) do
+  pending
+end
+
+Given(/that I answered the &quot;([^&quot;]*)&quot; form/) do |form|
+  step &#39;I expect to be on the &quot;Forms&quot; page&#39;
+  step &#39;I follow &quot;Pendentes&quot;&#39;
+
+  step %(I expect to see &quot;#{form}&quot;)
+  step %(I follow &quot;#{form}&quot;)
+  step %(I expect to be on the &quot;#{form}&quot; page)
+
+  step &#39;I expect to see the following:&#39;, table(%(
+            | name                       |
+            | #{form}         |
+            | Classifique seu rendimento |
+            | Dê uma sugestão            |))
+
+  step &#39;I choose &quot;Question 1 Option 1&quot;&#39;
+  step &#39;I fill in &quot;Question 2&quot; with &quot;Resposta&quot;&#39;
+  step &#39;I press &quot;Submit&quot;&#39;
+
+  step &#39;I follow &quot;Respondidos&quot;&#39;
+  step &#39;I expect to be on the &quot;Forms&quot; page&#39;
+  step %(I expect to see &quot;#{form}&quot;)
+end
+
+Given(/that a form assigned to the (students|teachers) of the following classes were answered:/) do |role, table|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Given#/that a form assigned to the (students|teachers) of the following classes were answered:/ has a flog score of 26</span>          </div>  </li></ol>
+  classes = table.hashes
+  if role == &#39;students&#39;
+    classes.each do |data|
+      step &#39;that a form has been assigned to the students of the following classes:&#39;, table(%(<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L339" class="js-smell-location">0</a>                  <a href="steps.html#L343" class="js-smell-location">1</a>                  </div>  </li></ol>
+            | subject | semester | code |
+            | #{data[&#39;subject&#39;]} | #{data[&#39;semester&#39;]}   | #{data[&#39;code&#39;]}   |))
+
+      step &#39;I am an authenticated Student associated with the following classes:&#39;, table(%(<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L339" class="js-smell-location">0</a>                  <a href="steps.html#L343" class="js-smell-location">1</a>                  </div>  </li></ol>
+            | subject | semester | code |
+            | #{data[&#39;subject&#39;]} | #{data[&#39;semester&#39;]}   | #{data[&#39;code&#39;]}   |))
+
+      step &#39;that I answered the &quot;Formulário Aluno&quot; form&#39;
+      step &#39;I ended my session&#39;
+    end
+  end
+end
+
+Then(/I expect to see a download window with the file &quot;([^&quot;]*)&quot;/) do |expected_filename|
+  actual_filename = page.response_headers[&#39;Content-Disposition&#39;]
+  actual_filename.should include(normalize_filename(expected_filename))
+end
+
+Given(/that the student &quot;([^&quot;]*)&quot; has left the following classes:/) do |name, table|
+  data = table.hashes
+
+  student = Student.find_by(name:)
+  data.each do |sbj|
+    subject_class = SubjectClass.find_by(subject: sbj[&#39;subject&#39;], code: sbj[&#39;code&#39;], semester: sbj[&#39;semester&#39;])
+
+    Enrollment.find_by(subject_class_id: subject_class.id, student_id: student.id).destroy
+  end
+end
+
+Given(&#39;that the classes were updated with the following:&#39;) do |table|
+  data = table.hashes
+  data.each do |sbj|
+    new_data = { name: sbj[&#39;name&#39;], schedule: sbj[&#39;schedule&#39;] }
+    class_key = { subject: sbj[&#39;subject&#39;], code: sbj[&#39;code&#39;], semester: sbj[&#39;semester&#39;] }
+    SubjectClass.find_by(class_key).update(new_data)
+  end
+end
+
+When(/^(?:|I )create a &quot;([^&quot;]*)&quot; question with the following:$/) do |question_type, fields|
+  step &#39;I press &quot;Add Question&quot;&#39;
+  step &#39;I expect to be on the &quot;Add Question&quot; page&#39;
+  step %(I select &quot;#{question_type}&quot; from &quot;question type&quot;)
+
+  case question_type
+  when &#39;Múltipla escolha&#39;
+    options_count = fields.rows.size
+    step %(I select &quot;#{options_count}&quot; from &quot;options number&quot;)
+  end
+
+  fields.rows_hash.each do |field, value|
+    step %(I fill in &quot;#{field}&quot; with &quot;#{value}&quot;)
+  end
+
+  step &#39;I press &quot;Add&quot;&#39;
+  step &#39;I expect to be on the &quot;New Template&quot; page&#39;
+end
+
+Given(/^that I created the (teacher|student) template &quot;([^&quot;]*)&quot;$/) do |template_type, template_name|
+  step &#39;I am on the &quot;Templates&quot; page&#39;
+  step &#39;I press &quot;Add template&quot;&#39;
+  step &#39;I expect to be on the &quot;New Template&quot; page&#39;
+
+  step &#39;I create a &quot;Múltipla escolha&quot; question with the following:&#39;, table(%(
+            | title   | Classifique seu rendimento |
+            | option1 | Ótimo                      |
+            | option2 | Bom                        |
+            | option3 | Médio                      |
+            | option4 | Ruim                       |
+            | option5 | Péssimo                    |))
+  step &#39;I create a &quot;Texto&quot; question with the following:&#39;, table(%(
+    | title | Dê uma sugestão |
+  ))
+
+  step &quot;I fill in \&quot;Name\&quot; with \&quot;#{template_name}\&quot;&quot;
+  if template_type == &#39;teacher&#39;
+    step &#39;I select &quot;Docente&quot; from &quot;Template role&quot;&#39;
+  else
+    step &#39;I select &quot;Discente&quot; from &quot;Template role&quot;&#39;
+  end
+  step &#39;I press &quot;Save&quot;&#39;
+  step &#39;I expect to be on the &quot;Templates&quot; page&#39;
+  step &quot;I expect to see \&quot;#{template_name}\&quot;&quot;
+end
+
+Given(/^that &quot;([^&quot;]*)&quot; was deleted$/) do |template_name|
+  Template.destroy(template_name.scan(/\d+/).first.to_i)
+end
+
+# Visualization
+
+Then(/^(?:|I )expect to see &quot;([^&quot;]*)&quot;$/) do |text|
+  if page.respond_to? :expect
+    page.expect have_content(text)
+  elsif page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
+
+Then(/^(?:|I )expect to see the following:$/) do |fields|
+  fields.raw[1..-1].flatten.each do |text|
+    if page.respond_to? :expect
+      page.should have_content(text)
+    else
+      assert page.has_content?(text)
+    end
+  end
+end
+
+Then(/^(?:|I )expect to not see &quot;([^&quot;]*)&quot;$/) do |text|
+  if page.respond_to? :should
+    page.should have_no_content(text)
+  else
+    assert page.has_no_content?(text)
+  end
+end
+
+Then(/^(?:|I )expect &quot;([^&quot;]*)&quot; to be checked$/) do |field|
+  input_id = field.downcase.gsub(&#39; &#39;, &#39;_&#39;)
+  expect(find(&quot;##{input_id}&quot;, visible: :all)).to be_checked
+end
+
+Then(/I expect to only see classes starting with &quot;([^&quot;]*)&quot;/) do |initials|
+  # Locate the table rows
+  rows = find(&#39;table.table.table-borderless.table-data3 tbody&#39;).all(&#39;tr&#39;)
+
+  # Iterate through the rows and check if the class names start with the initials
+  rows.each do |row|
+    class_name = row.find(&#39;td:nth-child(3)&#39;).text
+    expect(class_name).to start_with(initials)
+  end
+end
+
+Then(/I expect to see the button &quot;([^&quot;]*)&quot;$/) do |button|
+  expect(page).to have_button(id: button.gsub(&#39; &#39;, &#39;_&#39;).downcase)
+end
+
+Then(/I expect to see the link &quot;([^&quot;]*)&quot;$/) do |link|
+  expect(page).to have_link(id: link.gsub(&#39; &#39;, &#39;_&#39;).downcase)
+end
+
+Then(/I expect to see the following forms as ([^&quot;]*):$/) do |_status, _table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending
+end
+
+Given(&#39;that no templates have been created&#39;) do
+  Template.destroy_all
+  visit templates_path
+end
+
+Then(&#39;I expect to see the following templates:&#39;) do |_table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending
+end
+
+Then(&#39;I expect to see the following table:&#39;) do |table|
+  expected_table = table.raw
+
+  actual_table = find(&#39;table&#39;)
+
+  actual_table_data = actual_table.all(&#39;tr&#39;).map do |row|
+    row.all(&#39;th, td&#39;).map(&amp;:text)
+  end
+
+  expect(actual_table_data).to eq(expected_table)
+end
+
+Then(&#39;I expect to see the following results:&#39;) do |_table|
+  pending
+end
+
+# Field verification
+Then(/^the &quot;([^&quot;]*)&quot; field(?: within (.*))? should contain &quot;([^&quot;]*)&quot;$/) do |field, parent, value|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L514" class="js-smell-location">0</a>                  <a href="steps.html#L526" class="js-smell-location">1</a>                  </div>  </li></ol>
+  with_scope(parent) do
+    field = find_field(field)
+    field_value = field.tag_name == &#39;textarea&#39; ? field.text : field.value
+    if field_value.respond_to? :should
+      field_value.should =~ /#{value}/
+    else
+      assert_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then(/^the &quot;([^&quot;]*)&quot; field(?: within (.*))? should not contain &quot;([^&quot;]*)&quot;$/) do |field, parent, value|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="steps.html#L514" class="js-smell-location">0</a>                  <a href="steps.html#L526" class="js-smell-location">1</a>                  </div>  </li></ol>
+  with_scope(parent) do
+    field = find_field(field)
+    field_value = field.tag_name == &#39;textarea&#39; ? field.text : field.value
+    if field_value.respond_to? :should_not
+      field_value.should_not =~ /#{value}/
+    else
+      assert_no_match(/#{value}/, field_value)
+    end
+  end
+end
+
+Then(/^the &quot;([^&quot;]*)&quot; field should have the error &quot;([^&quot;]*)&quot;$/) do |field, error_message|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Then#/^the "([^"]*)" field should have the error "([^"]*)"$/ has a flog score of 45</span>          </div>  </li></ol>
+  element = find_field(field)
+  classes = element.find(:xpath, &#39;..&#39;)[:class].split(&#39; &#39;)
+
+  form_for_input = element.find(:xpath, &#39;ancestor::form[1]&#39;)
+  using_formtastic = form_for_input[:class].include?(&#39;formtastic&#39;)
+  error_class = using_formtastic ? &#39;error&#39; : &#39;field_with_errors&#39;
+
+  if classes.respond_to? :should
+    classes.should include(error_class)
+  else
+    assert classes.include?(error_class)
+  end
+
+  if page.respond_to?(:should)
+    if using_formtastic
+      error_paragraph = element.find(:xpath, &#39;../*[@class=&quot;inline-errors&quot;][1]&#39;)
+      error_paragraph.should have_content(error_message)
+    else
+      page.should have_content(&quot;#{field.titlecase} #{error_message}&quot;)
+    end
+  elsif using_formtastic
+    error_paragraph = element.find(:xpath, &#39;../*[@class=&quot;inline-errors&quot;][1]&#39;)
+    assert error_paragraph.has_content?(error_message)
+  else
+    assert page.has_content?(&quot;#{field.titlecase} #{error_message}&quot;)
+  end
+end
+
+Then(/^the &quot;([^&quot;]*)&quot; field should have no error$/) do |field|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden="true"></i>          <a href="http://docs.seattlerb.org/flog/" target="_blank"><b>HighComplexity</b></a>        </span>      </div>      <span>Then#/^the "([^"]*)" field should have no error$/ has a flog score of 27</span>          </div>  </li></ol>
+  element = find_field(field)
+  classes = element.find(:xpath, &#39;..&#39;)[:class].split(&#39; &#39;)
+  if classes.respond_to? :should
+    classes.should_not include(&#39;field_with_errors&#39;)
+    classes.should_not include(&#39;error&#39;)
+  else
+    assert !classes.include?(&#39;field_with_errors&#39;)
+    assert !classes.include?(&#39;error&#39;)
+  end
+end
+
+Then(/^the &quot;([^&quot;]*)&quot; checkbox(?: within (.*))? should be checked$/) do |label, parent|
+  with_scope(parent) do
+    field_checked = find_field(label)[&#39;checked&#39;]
+    if field_checked.respond_to? :should
+      field_checked.should be_true
+    else
+      assert field_checked
+    end
+  end
+end
+
+Then(/^the &quot;([^&quot;]*)&quot; checkbox(?: within (.*))? should not be checked$/) do |label, parent|
+  with_scope(parent) do
+    field_checked = find_field(label)[&#39;checked&#39;]
+    if field_checked.respond_to? :should
+      field_checked.should be_false
+    else
+      assert !field_checked
+    end
+  end
+end
+
+Then(/^(?:|I )should have the following query string:$/) do |expected_pairs|
+  query = URI.parse(current_url).query
+  actual_params = query ? CGI.parse(query) : {}
+  expected_params = {}
+  expected_pairs.rows_hash.each_pair { |k, v| expected_params[k] = v.split(&#39;,&#39;) }
+
+  if actual_params.respond_to? :should
+    actual_params.should == expected_params
+  else
+    assert_equal expected_params, actual_params
+  end
+end
+
+# Import and export
+Then(&#39;I should download be able to export a {string} file with all the answers&#39;) do |_string|
+  pending
+end
+
+Then(&#39;I should be able to see the answered form as a chart&#39;) do
+  pending
+end
+
+When(/I import a &quot;([^&quot;]*)&quot; file with the ([^&quot;]*) data$/) do |_filetype, _datatype|
+  pending
+end
+
+# When(/When I select &quot;Membros&quot; from &quot;Tipos de dados&quot;/) do
+#   select(value, from: &quot;select-data&quot;, visible: :all)
+# end
+</code>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="../../../assets/vendor/javascripts/jquery.min.js"></script>
+    <script src="../../../assets/vendor/javascripts/jquery.tablesorter.min.js"></script>
+    <script src="../../../assets/vendor/javascripts/jquery.scrollTo.min.js"></script>
+    <script src="../../../assets/vendor/javascripts/jquery.timeago.js"></script>
+    <script src="../../../assets/vendor/javascripts/highcharts.src-4.0.1.js"></script>
+    <script src="../../../assets/vendor/javascripts/prettify.js"></script>
+    <script src="../../../assets/vendor/javascripts/bootstrap.min.js"></script>
+    <script src="../../../assets/javascripts/application.js"></script>
+    <script src="../../../assets/vendor/javascripts/jquery.filtertable.min.js"></script>
+  </body>
+</html>

@@ -112,4 +112,7 @@ Você pode responder formulários enviados acessando a página "Pendentes" e pod
 ![Alt text](rspec_tests.png?raw=true "Rspec")
 
 ### Cucumber Tests
-![Alt text](cucumber_tests.png?raw=true "Rspec")
+![Alt text](cucumber_tests.png?raw=true "Cucumber")
+
+### Rubycritic Quality for MVC
+![Alt text](rubycritic.png?raw=true "Rubycritic")
