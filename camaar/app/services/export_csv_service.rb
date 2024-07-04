@@ -2,6 +2,7 @@
 # discentes e/ou discentes em uma planilha de formato CSV. Ao final da execução dos serviços, será submetido
 # um caminho para que seja possível efetuar a requisição do arquivo CSV.
 class ExportCsvService
+  # Método para chamar o serviço de exportação em CSV.
   def self.call(table)
     head = ['Questão']
     (table[0].length - 1).times do |item|
@@ -12,6 +13,7 @@ class ExportCsvService
     generate_csv(table)
   end
 
+  # Método para gerar um arquivo CSV a partir de uma tabela.
   def self.generate_csv(table)
     CSV.generate do |csv|
       table.each do |row|
@@ -20,6 +22,7 @@ class ExportCsvService
     end
   end
 
+  # Método para salvar os dados CSV em um arquivo.
   def self.csv?(file_path, csv_data)
     CSV.open(file_path, 'w') do |csv|
       csv << csv_data.headers
@@ -29,6 +32,7 @@ class ExportCsvService
     end
   end
 
+  # Método para preencher a tabela com perguntas e respostas de um formulário.
   def self.fill_table(table, form, form_questions)
     form_questions.each do |question|
       form_question_id = question.id

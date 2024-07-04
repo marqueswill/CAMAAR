@@ -2,6 +2,7 @@
 # Efetua as operações de resumo e de estatísticas referentes a respostas de formulários de
 # alunos e professores.
 class SummaryService
+  # Método para gerar summary das respostas de um formulário.
   def self.call(form_questions, form)
     resumo = {}
     form_questions.each do |question|

@@ -1,6 +1,7 @@
 # Classe que representa um serviço da AdminsController de importar membros.
 # Efetua as operações de importação de classes, professores e alunos.
 class ImportMembersService
+  # Método que recebe uma lista de membros e realiza importação.
   def self.call(members)
     members.each do |data|
       subject = data['code']
@@ -22,6 +23,7 @@ class ImportMembersService
     end
   end
 
+  # Método para registrar alunos na classe fornecida.
   def self.register_student(data, db_subject_class)
     new_enrollments = []
     subject_class_id = db_subject_class.id
@@ -70,6 +72,7 @@ class ImportMembersService
     end
   end
 
+  # Método para registrar o professor na classe fornecida.
   def self.register_teacher(data, db_subject_class)
     data_docente = data['docente']
     name = data_docente['nome']

@@ -1,6 +1,7 @@
 # Classe que representa uma instância de classe que existe na família de AdminsController para
 # importar membros de turmas, turmas e departamentos do SIGAA.
 class Import
+  # Método para importar dados de acordo com a seleção.
   def self.import_data(selected_data, json, admin_email)
     case selected_data
     when '1'
